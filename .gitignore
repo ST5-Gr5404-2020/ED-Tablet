@@ -19,3 +19,5 @@ build
 bin 
 # Ignores the .settings
 .settings
+# Ignore vs code settings
+.vscode
