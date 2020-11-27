@@ -1,4 +1,4 @@
-package ED.Tablet;
+package ED.Tablet.model;
 
 public class loginServerConn extends dbConn {
     
