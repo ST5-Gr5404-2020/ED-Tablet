@@ -1,4 +1,4 @@
-package ED.Tablet;
+package ED.Tablet.model;
 
 import java.util.HashMap;
 

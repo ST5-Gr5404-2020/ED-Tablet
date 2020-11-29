@@ -1,4 +1,7 @@
-package ED.Tablet;
+package ED.Tablet.model;
+import java.time.LocalDateTime;
+
+import javax.imageio.IIOImage;
 
 public class patient {
 
@@ -7,27 +10,35 @@ public class patient {
     private medication medication;
     private vitalSigns vitalSigns;
 
-    public void updateTripInfo(){
+    public void updateTripInfo(tripInfo tripInfo) {
+        this.tripInfo=tripInfo;
 
     }
 
-    public void updateMedication(){
+    public void updateMedication(medication medication){
+        this.medication=medication;
 
     }
 
-    public void updateVitalSigns(){
-
+    public void updateVitalSigns(vitalSigns vitalSigns){
+        this.vitalSigns=vitalSigns;
     }
 
     public tripInfo getTripInfo(){
-        
+      return this.tripInfo;
+
     }
 
-    public medication getMedication(){
+    public medication getMedication() {
+        return this.medication;
         
     }
 
     public vitalSigns getVitalSigns(){
-        
+        return this.vitalSigns;
     }   
+
+ 
+
+  
 }
