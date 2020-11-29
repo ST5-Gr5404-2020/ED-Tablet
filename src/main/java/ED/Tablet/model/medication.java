@@ -9,3 +9,7 @@ public class medication {
     public int amount;
     public String note;
 }
+
+public medication(LocalDateTime timestamp, String name, int amount, String note){
+    
+}

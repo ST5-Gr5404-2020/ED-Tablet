@@ -12,3 +12,11 @@ public class tripInfo {
     public IIOImage picture;
     public LocalDateTime ea;
 }
+
+public tripInfo(String dkIndex, int triageScore, String note, IIOImage picture, LocalDateTime ea){
+    this.dkIndex=dkIndex;
+    this.triageScore=triageScore; 
+    this.note=note;
+    this.picture=picture;
+    this.ea=ea;
+}
