@@ -10,6 +10,7 @@ public class personnel {
 
 	public personnel(String ID, String password) {
     this.personnelID = ID;
+    this.password=password;
     
 	}
 
