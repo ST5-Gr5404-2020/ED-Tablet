@@ -11,5 +11,8 @@ public class medication {
 }
 
 public medication(LocalDateTime timestamp, String name, int amount, String note){
-    
+    this.timestamp=timestamp;
+    this.name=name;
+    this.amount=amount;
+    this.note=note;
 }
