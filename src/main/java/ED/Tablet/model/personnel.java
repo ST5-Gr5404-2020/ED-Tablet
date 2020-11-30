@@ -19,7 +19,7 @@ public class personnel {
     String[] cprpatientList = conn.getPatientCprList();
 
     for (int i=0;i<cprpatientList.length;i++){
-      this.patientList.put(cprpatientList[i], patient);
+      this.patientList.put(cprpatientList[i], new patient);
     }
     
       // Cetrea conn -> Få string list af CPR
