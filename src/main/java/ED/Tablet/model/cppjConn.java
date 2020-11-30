@@ -11,9 +11,9 @@ public class cppjConn extends dbConn{
     private String vitalSignsQuery = "SELECT * FROM tripInfo WHERE cpr = ? AND timestamp > ?";
 
     // Constructor
-    public cppjConn(String host, String DBPassword, int port) {
+    public cppjConn(String host, String DBPassword, String username) {
         // Use superclass constructor
-        super(host, DBPassword, port);
+        super(host, DBPassword, username);
     }
 
     //Methods
@@ -28,7 +28,7 @@ public class cppjConn extends dbConn{
         // Validate that a row was returned, by getting row ID. If no rows are
         //  returned row ID will be 0, before moving the cursor.
         if (rs.getRow() == 0) {
-            return NULL;
+            return null;
         }
         // Cursor is instantiated before first row, move cursor forward once
         rs.next();
@@ -50,7 +50,7 @@ public class cppjConn extends dbConn{
         ResultSet rs = super.executeQuery(medicationQuery, cpr, timeStamp);
         // Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {
-            return NULL;
+            return null;
         }
         // Get the number of returned rows. Java has no build in function to
         //  get number of returned rows... (what, why?). Move cursor to last
