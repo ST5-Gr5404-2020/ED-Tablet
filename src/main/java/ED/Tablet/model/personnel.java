@@ -24,6 +24,7 @@ public class personnel {
 
 
     public HashMap <String, patient> getPatientList(){
+      
 
     }
 }

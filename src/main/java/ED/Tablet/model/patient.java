@@ -8,7 +8,7 @@ public class patient {
     private String cpr;
     private tripInfo tripInfo;
     private medication medication[];
-	private vitalSigns vitalSigns[];
+	  private vitalSigns vitalSigns[];
 	
 	private cppjConn conn;
 
@@ -24,12 +24,12 @@ public class patient {
     }
 
     public void updateMedication(medication medication){
-        this.medication=medication;
-		// same as above
+        this.medication=conn.queryMedication(this.cpr, this.timestamp);
+	
     }
 
     public void updateVitalSigns(vitalSigns vitalSigns){
-		this.vitalSigns=vitalSigns;
+		this.vitalSigns=conn.queryVitalSigns(this.cpr, this.timestamp);
 		
     }
 
