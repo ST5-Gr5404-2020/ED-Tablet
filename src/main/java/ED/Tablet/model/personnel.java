@@ -17,14 +17,20 @@ public class personnel {
 
 
     public void updatePatientList(){
-		// Cetrea conn -> Få string list af CPR
+    String cprpatientList[] = conn.getPatientCprList();
+
+    for (int i=0;i<patientList.size();i++){
+      this.patientList.put(cprpatientList[i], patient);
+    }
+    
+      // Cetrea conn -> Få string list af CPR
 		// Gem list af CpR i hashmap som key
-		// For hver key lav en patient instans og gem i hashmap
+    // For hver key lav en patient instans og gem i hashmap
+    
     }
 
 
-    public HashMap <String, patient> getPatientList(){
-      
-
+    public HashMap <cetreaConn, patient> getPatientList(){
+      Hashmap<String> 
     }
 }
