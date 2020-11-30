@@ -17,6 +17,7 @@ public class personnel {
 
 
     public void updatePatientList(){
+      
 		// Cetrea conn -> Få string list af CPR
 		// Gem list af CpR i hashmap som key
 		// For hver key lav en patient instans og gem i hashmap
@@ -24,7 +25,7 @@ public class personnel {
 
 
     public HashMap <String, patient> getPatientList(){
-      
+
 
     }
 }
