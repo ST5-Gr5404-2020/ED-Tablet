@@ -4,7 +4,11 @@ import sun.invoke.util.VerifyType;
 
 public class loginServerConn extends dbConn {
 	
-	// constructor
+	 // Constructor
+	 public loginServerConn(String host, String DBPassword, String username) {
+        // Use superclass constructor
+        super(host, DBPassword, username);
+    }
 	
     public boolean validataLogin(String personnelID, String password) {
 		Boolean verifyLogin = false;

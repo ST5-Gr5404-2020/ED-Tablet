@@ -11,7 +11,7 @@ public class patient {
 	  private vitalSigns vitalSigns[];
 	
 	private cppjConn conn;
-
+ // Lav en ny constructor 
 	public patient(cppjConn conn) {
 		this.conn = conn;
 	}

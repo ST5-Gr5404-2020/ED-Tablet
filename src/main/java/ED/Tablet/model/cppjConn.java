@@ -45,9 +45,9 @@ public class cppjConn extends dbConn{
         return tp;
     }
 
-    public medication[] queryMedication(String cpr, LocalDateTime timeStamp){
+    public medication[] queryMedication(String cpr, LocalDateTime timestamp){
         // Execute the medication MySQL query
-        ResultSet rs = super.executeQuery(medicationQuery, cpr, timeStamp);
+        ResultSet rs = super.executeQuery(medicationQuery, cpr, timestamp);
         // Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {
             return null;

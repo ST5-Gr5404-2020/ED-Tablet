@@ -10,6 +10,10 @@ public class vitalSigns {
     public int etco2;
 
 	public vitalSigns(LocalDateTime timestamp, int bp, int hr, int spo2, int etco2){
-		// Se tripInfo
+        this.timestamp=timestamp;
+        this.bp=bp;
+        this.hr=hr;
+        this.spo2=spo2;
+        this.etco2=etco2;
 	}
 }

@@ -9,23 +9,25 @@ public class personnel {
     public boolean loggedIn;
 
 	public personnel(String ID, String password) {
-		this.personnelID = ID;
-		//
+    this.personnelID = ID;
+    this.password=password;
+    
 	}
 
 
-
-
     public void updatePatientList(){
+    String[] cprpatientList = conn.getPatientCprList();
+
+    for (int i=0;i<cprpatientList.length;i++){
+      this.patientList.put(cprpatientList[i], new patient);
+    }
+    
+      // Cetrea conn -> Få string list af CPR
       
 		// Cetrea conn -> Få string list af CPR
 		// Gem list af CpR i hashmap som key
-		// For hver key lav en patient instans og gem i hashmap
+    // For hver key lav en patient instans og gem i hashmap
+    
     }
 
-
-    public HashMap <String, patient> getPatientList(){
-
-
-    }
 }

@@ -1,7 +1,15 @@
 package ED.Tablet.model;
 
 public class cetreaConn extends dbConn{
-    
+	
+	
+	 // Constructor
+	 public cetreaConn(String host, String DBPassword, String username) {
+        // Use superclass constructor
+        super(host, DBPassword, username);
+	}
+	
+
     public String[] getPatientCprList(String personnelID){
 
 		//Personale ID bliver benyttet til at finde hvilke patienter de har tildelt. 
