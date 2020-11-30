@@ -11,9 +11,9 @@ public class cppjConn extends dbConn{
     private String vitalSignsQuery = "SELECT * FROM tripInfo WHERE cpr = ? AND timestamp > ?";
 
     // Constructor
-    public cppjConn(String host, String password, int port) {
+    public cppjConn(String host, String DBPassword, int port) {
         // Use superclass constructor
-        super(host, password, port);
+        super(host, DBPassword, port);
     }
 
     //Methods
