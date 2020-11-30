@@ -22,8 +22,6 @@ public class cppjConn extends dbConn{
         // TODO: Vi skal have en måde at lave en connection og få et conn object,
         //  måske connectToDB skal lave til at returnere et conn object
 
-        // TODO: Skal det kunne være mere end et billede? I så fald, find ud af
-        //  hvordan vi querier flere billeder. Måske en table ved siden af?
     
         // Execute the tripInfo MySQL query
         ResultSet rs = super.executeQuery(tripInfoQuery, cpr);
@@ -35,17 +33,16 @@ public class cppjConn extends dbConn{
         // Cursor is instantiated before first row, move cursor forward once
         rs.next();
         // Instantiate a tripInfo from the resultset
-        tripInfo tripInfo = new tripInfo(
+        tripInfo tp = new tripInfo(
             rs.getString("dkIndex"), 
             rs.getInt("triageScore"),
             rs.getString("note"),
-            rs.getBlob("Image"),
             rs.getTimestamp("ea")
-        );
+		);
         // Close the resultset
         rs.close();
         // Return the tripInfo
-        return tripInfo;
+        return tp;
     }
 
     public medication[] queryMedication(String cpr, LocalDateTime timeStamp){
@@ -59,11 +56,12 @@ public class cppjConn extends dbConn{
         //  get number of returned rows... (what, why?). Move cursor to last
         //  position. Get the ID, and move cursor back to the first position.
         // Move cursor to last position
-        rs.afterLast();
+		rs.afterLast();
+		rs.previous();
         // Get the row ID
         int returnedRows = rs.getRow();
         // Move the cursor back to the first position
-        rs.beforeFirst();
+		rs.beforeFirst();
         // Prepare an array of medication classes, with length of returned rows
         medication[] med = new medication[returnedRows];
         // Loop through each returned row, and add information to the medication instance
@@ -91,7 +89,8 @@ public class cppjConn extends dbConn{
             return NULL;
         }
         // Get the number of returned rows
-        rs.afterLast();
+		rs.afterLast();
+		rs.previous();
         // Get the row ID
         int returnedRows = rs.getRow();
         // Move the cursor back to the first position

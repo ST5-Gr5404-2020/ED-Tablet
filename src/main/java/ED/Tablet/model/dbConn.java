@@ -10,6 +10,9 @@ public class dbConn {
     protected String DBPassword;
     protected int port;
 
+
+	// Lave en constructor 
+
     //Methods
     protected boolean connectToDB(String host, String DBPassword, int port) {
         try {

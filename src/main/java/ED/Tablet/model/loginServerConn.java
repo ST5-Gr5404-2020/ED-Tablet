@@ -1,17 +1,22 @@
 package ED.Tablet.model;
 
-public class loginServerConn extends dbConn {
-    
-    public void validataLogin(String personnelID, String password) {
-		Boolean verifyLogin = false;
-		
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT " + password + "FROM loginServer WHERE ID = " + personnelID);
+import sun.invoke.util.VerifyType;
 
-		if(rs.getString("password") = password)
+public class loginServerConn extends dbConn {
+	
+	// constructor
+	
+    public boolean validataLogin(String personnelID, String password) {
+		Boolean verifyLogin = false;
+		//TODO: Fin en løsning til dette
+		Statement stmt = conn.createStatement(); 
+		ResultSet rs = stmt.executeQuery("SELECT password FROM loginServer WHERE ID = " + personnelID);
+
+		if(rs.getString("password") == password)
 		{
 			verifyLogin = true;
 		}
 
+		return verifyLogin;
     }
 }

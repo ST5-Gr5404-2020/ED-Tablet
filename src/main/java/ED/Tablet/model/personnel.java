@@ -8,18 +8,18 @@ public class personnel {
     private HashMap <String, patient> patientList; 
     public boolean loggedIn;
 
+	public personnel(String ID, String password) {
+		this.personnelID = ID;
+		//
+	}
 
-    public void setID(String ID){
-        String personnelID = personnelID.getText();
-    }
 
-    
-    public void setPassword(String password){
-        String password= password.getText();
-    }
 
 
     public void updatePatientList(){
+		// Cetrea conn -> Få string list af CPR
+		// Gem list af CpR i hashmap som key
+		// For hver key lav en patient instans og gem i hashmap
     }
 
 
