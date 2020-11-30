@@ -9,11 +9,9 @@ public class personnel {
     public boolean loggedIn;
 
 	public personnel(String ID, String password) {
-		this.personnelID = ID;
-		//
+    this.personnelID = ID;
+    
 	}
-
-
 
 
     public void updatePatientList(){
@@ -31,11 +29,4 @@ public class personnel {
     
     }
 
-
-    public HashMap <cetreaConn, patient> getPatientList(){
-      Hashmap<String> 
-    public HashMap <String, patient> getPatientList(){
-
-
-    }
 }
