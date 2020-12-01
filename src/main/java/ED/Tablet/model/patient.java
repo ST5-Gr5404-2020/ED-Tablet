@@ -7,21 +7,32 @@ public class patient {
 
     private String cpr;
     private tripInfo tripInfo;
-    private medication medication;
-    private vitalSigns vitalSigns;
+    private medication medication[];
+	  private vitalSigns vitalSigns[];
+	
+	public cppjConn conn;
+ 
+  // Constructor
+  public patient(String cpr, cppjConn conn) {
+    this.cpr=cpr;
+    this.conn = conn;
+	}
 
     public void updateTripInfo(tripInfo tripInfo) {
-        this.tripInfo=tripInfo;
-
+		
+        this.tripInfo = conn.queryTripInfo(this.cpr);
+		// Query tripInfo from cppjConn
+		// Overskriv
     }
 
     public void updateMedication(medication medication){
-        this.medication=medication;
-
+        this.medication=conn.queryMedication(this.cpr, this.timestamp);
+	
     }
 
     public void updateVitalSigns(vitalSigns vitalSigns){
-        this.vitalSigns=vitalSigns;
+		this.vitalSigns=conn.queryVitalSigns(this.cpr, this.timestamp);
+		
     }
 
     public tripInfo getTripInfo(){
@@ -29,12 +40,12 @@ public class patient {
 
     }
 
-    public medication getMedication() {
+    public medication[] getMedication() {
         return this.medication;
         
     }
 
-    public vitalSigns getVitalSigns(){
+    public vitalSigns[] getVitalSigns(){
         return this.vitalSigns;
     }   
 

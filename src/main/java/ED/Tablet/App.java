@@ -9,7 +9,18 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+		cppjConn conn = new cppjConn("www.yougay.com/ysql","pass",6969);
+
+		patient gary = new patient(conn);
+		patient tim = new patient(conn);
+
+		personnel kajErSej = new personnel("6969", "nicePass69");
+
+
+		
+
+        //System.out.println(new App().getGreeting());
 
 
         

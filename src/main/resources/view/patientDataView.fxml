@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="471.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="131.0" layoutY="103.0" minWidth="-Infinity" prefHeight="281.0" prefWidth="468.0" style="-fx-background-color: black;">
+      <AnchorPane minWidth="-Infinity" prefHeight="281.0" prefWidth="470.0" style="-fx-background-color: black;">
          <children>
             <AnchorPane layoutY="50.0" prefHeight="115.0" prefWidth="234.0" style="-fx-border-color: grey;">
                <children>
                   <Label layoutX="75.0" layoutY="5.0" text="VITAL SIGNS" textFill="WHITE" />
                   <GridPane layoutX="20.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: white;">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.4905800091157" minWidth="10.0" prefWidth="158.4905800091157" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.75470268382605" minWidth="10.0" prefWidth="43.471691409987386" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints maxHeight="20.0" minHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -40,17 +43,77 @@
             </AnchorPane>
             <AnchorPane layoutX="234.0" layoutY="50.0" prefHeight="115.0" prefWidth="234.0" style="-fx-border-color: grey;">
                <children>
+                  <GridPane layoutX="20.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="45.0" prefWidth="149.0" style="-fx-background-color: white;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.4905800091157" minWidth="10.0" prefWidth="133.26415707081333" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.75470268382605" minWidth="0.0" prefWidth="0.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="20.641507750009062" minHeight="5.0" prefHeight="11.773576822684916" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="26.2641493898136" minHeight="8.056596842216166" prefHeight="15.396235475849128" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="26.2641493898136" minHeight="10.0" prefHeight="19.830188179491444" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label prefHeight="2.0" prefWidth="34.0" text="NAME">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Label>
+                        <Label text="CPR NUMBER" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Label>
+                        <Label text="ACCIDENT NUMBER" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
                   <Label layoutX="67.0" layoutY="6.0" text="INFORMATION" textFill="WHITE" />
+                  <Label layoutX="170.0" layoutY="27.0" prefHeight="45.0" prefWidth="48.0" style="-fx-background-color: red;" text="TRIAGE" />
+                  <GridPane layoutX="20.0" layoutY="72.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: white;">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.4905800091157" minWidth="10.0" prefWidth="133.26415707081333" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.75470268382605" minWidth="0.0" prefWidth="0.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="20.641507750009062" minHeight="5.0" prefHeight="15.207547789071562" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="26.2641493898136" minHeight="9.773587828134062" prefHeight="15.207547789071562" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="26.2641493898136" minHeight="10.0" prefHeight="17.64150174209853" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label prefHeight="14.0" prefWidth="101.0" text="ABULANCE TELEPHONE">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Label>
+                        <Label text="ARRIVED AT EMERGENCY SITE" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="14.0" prefWidth="87.0" text="EA AT THE ED" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
             <AnchorPane layoutY="165.0" prefHeight="115.0" prefWidth="234.0" style="-fx-border-color: grey;">
                <children>
                   <Label layoutX="101.0" layoutY="5.0" text="NOTE" textFill="WHITE" />
+                  <TextArea layoutX="17.0" layoutY="23.0" prefHeight="83.0" prefWidth="203.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="234.0" layoutY="165.0" prefHeight="115.0" prefWidth="234.0" style="-fx-border-color: grey;">
                <children>
                   <Label layoutX="60.0" layoutY="6.0" text="MEDICATION GIVEN" textFill="WHITE" />
+                  <ListView layoutX="15.0" layoutY="24.0" prefHeight="83.0" prefWidth="203.0" />
+                  <ScrollBar layoutX="15.0" layoutY="24.0" orientation="VERTICAL" prefHeight="83.0" prefWidth="14.0" />
                </children>
             </AnchorPane>
             <Label layoutX="176.0" layoutY="14.0" text="PATIENT DATA" textFill="WHITE">
