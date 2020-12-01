@@ -2,6 +2,7 @@ package ED.Tablet.model;
 
 import java.sql.ResultSet;
 import java.sql.RowId;
+import java.sql.SQLException;
 
 public class cetreaConn extends dbConn{
 	private String cetreaQuery = " SELECT * FROM cpr WHERE PersonnelID =?? ";
@@ -19,8 +20,11 @@ public class cetreaConn extends dbConn{
 
 		// Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {
-            return null;
-        }
+			return null;
+		
+		}
+		try{
+
         // Get the number of returned rows. Java has no build in function to
         //  get number of returned rows... (what, why?). Move cursor to last
         //  position. Get the ID, and move cursor back to the first position.
@@ -40,24 +44,17 @@ public class cetreaConn extends dbConn{
             // Get row ID
             int rowID = rs.getRow();
             // Instanciate the medication class. Use row ID - 1 as ID.
-            cprPatientList[rowID-1] = 
-        }
-        // Return the array of medication
-        return cprPatientList[];
+            cprPatientList[rowID-1] = rs.getString("CPR");
+		}
+	}
+		catch(SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+		}
+        
     }
-		
-		
-
-		String[] cprPatientList = new 
-
-
-
-
-
-
-		//Personale ID bliver benyttet til at finde hvilke patienter de har tildelt. 
-		//Her benyttes nedarvning fra bdcConn til at snakke med cetrea Database. executequery bliver benyttet
-		//alt efter hvor mange resultater der er i resultsettet fra executequery giver antallet af pladser i arrayet
-		String patientList [cpr];
-    }
+// Return the array of medication
+return cprPatientList;
 }
+

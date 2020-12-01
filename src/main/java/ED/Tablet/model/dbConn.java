@@ -2,6 +2,7 @@ package ED.Tablet.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,11 +23,11 @@ public class dbConn {
     this.username=username; 
     }
     //Methods
-    protected Connection connectToDB(String host, String DBPassword, String username) {
+    protected Connection getConnection() {
             Connection myDB =null;
             
         try {
-            myDB = DriverManager.getConnection(host, DBPassword, username);
+            myDB = DriverManager.getConnection(this.host, this.DBPassword, this.username);
         }
            catch (SQLException sqlex) {
             System.out.println("Connection Error: " + sqlex.getMessage());
@@ -37,9 +38,19 @@ public class dbConn {
         
     }
 
+    protected PreparedStatement getPreparedStatement(String query) {
+        // tag rå sql: "select * from personnel where id = ?"
+        // lav et prepared statement object
+        // returner object
+    }
+
+    protected ResultSet executeQuery(PreparedStatement pstmt)
+       rs = pstmt.executeQuery();
+       return rs;
+
     protected ResultSet executeQuery(String sqlStatement){
 
-        Connection myDB = connectToDB(host, DBPassword, username);
+        Connection myDB = getConnection();
         
         Statement stmt = null;
         ResultSet rs = null;

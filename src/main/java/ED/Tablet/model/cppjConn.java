@@ -1,6 +1,7 @@
 package ED.Tablet.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 
@@ -23,9 +24,11 @@ public class cppjConn extends dbConn{
         // TODO: Vi skal have en måde at lave en connection og få et conn object,
         //  måske connectToDB skal lave til at returnere et conn object
 
-    
+        PreparedStatement pstmt = super.getPreparedStatement(tripInfoQuery);
+        //
+        pstmt.setString(1, cpr);
         // Execute the tripInfo MySQL query
-        ResultSet rs = super.executeQuery(tripInfoQuery, cpr);
+        ResultSet rs = super.executeQuery(pstmt);
         // Validate that a row was returned, by getting row ID. If no rows are
         //  returned row ID will be 0, before moving the cursor.
         if (rs.getRow() == 0) {
@@ -47,6 +50,12 @@ public class cppjConn extends dbConn{
     }
 
     public medication[] queryMedication(String cpr, LocalDateTime timestamp){
+
+        PreparedStatement pstmt = super.getPreparedStatement(tripInfoQuery);
+        //
+        pstmt.setString(1, cpr);
+        pstmt.set(2, timestamp);
+
         // Execute the medication MySQL query
         ResultSet rs = super.executeQuery(medicationQuery, cpr, timestamp);
         // Validate that one or more row was returned, else return NULL.
