@@ -10,7 +10,8 @@ public class patient {
     private medication medication[];
 	  private vitalSigns vitalSigns[];
 	
-	public cppjConn conn;
+  public cppjConn conn;
+  public cetreaConn cetrea;
  
   // Constructor
   public patient(String cpr, cppjConn conn) {
