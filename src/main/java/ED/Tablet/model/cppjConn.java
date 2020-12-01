@@ -7,16 +7,18 @@ import java.time.LocalDateTime;
 
 public class cppjConn {
 
-    // Attributes
+    // Attributes that defines which database to connect to
     protected static String host = "https://db.course.hst.aau.dk/phpmyadmin/";
     protected static String DBPassword = "pheyiesiehafileingei";
     protected static String username = "hst_2020_20gr5404";
 
+	// Here we make the uniqe connection that can be used in the methods
     private static dbConn db = new dbConn(host, DBPassword, username);
-
+	
+	// query to request data from tripinfo, medication and vitalsigns 
     private static String tripInfoQuery = "SELECT * FROM tripInfo WHERE cpr = ?";
     private static String medicationQuery = "SELECT * FROM medication WHERE cpr = ? AND timestamp > ?";
-    private static String vitalSignsQuery = "SELECT * FROM tripInfo WHERE cpr = ? AND timestamp > ?";
+    private static String vitalSignsQuery = "SELECT * FROM vitalSigns WHERE cpr = ? AND timestamp > ?";
 
     //Methods
     public static tripInfo queryTripInfo(String cpr){

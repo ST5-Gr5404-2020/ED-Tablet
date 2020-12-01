@@ -18,7 +18,7 @@ public class personnel {
 	}
 
     public void updatePatientList(){
-    String[] cprPatientList = conn.getPatientCprList();
+    String[] cprPatientList = cetreaConn.getPatientCprList(this.personnelID);
 
     for (int i=0;i<cprPatientList.length;i++){
       this.patientList.put(cprPatientList[i], new patient);
