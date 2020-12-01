@@ -5,6 +5,8 @@ import sun.invoke.util.VerifyType;
 
 public class loginServerConn extends dbConn {
 	
+	// TODO: lav ligesom cppjConn. Lav static og fjern constructor
+	
 	
 	 // Constructor
 	 public loginServerConn(String host, String DBPassword, String username) {

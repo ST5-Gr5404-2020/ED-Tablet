@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class cetreaConn extends dbConn{
 	private String cetreaQuery = " SELECT * FROM cpr WHERE PersonnelID =?? ";
 	
-	
+	// TODO: lav ligesom cppjConn. Lav static og fjern constructor
 
 	 // Constructor
 	 public cetreaConn(String host, String DBPassword, String username) {

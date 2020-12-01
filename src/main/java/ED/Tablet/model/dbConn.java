@@ -10,17 +10,15 @@ import java.sql.Statement;
 public class dbConn {
 
     //Attributes:
-    protected String host = "https://db.course.hst.aau.dk/phpmyadmin/";
-    protected String DBPassword = "pheyiesiehafileingei";
-    protected String username = "hst_2020_20gr5404";
-   // protected int port = 3306
-
+    protected String host;
+    protected String DBPassword;
+    protected String username;
 
     // Lave en constructor 
     public dbConn(String host, String DBPassword, String username){
-    this.host=host;
-    this.DBPassword=DBPassword;
-    this.username=username; 
+        this.host=host;
+        this.DBPassword=DBPassword;
+        this.username=username; 
     }
     //Methods
     protected Connection getConnection() {
