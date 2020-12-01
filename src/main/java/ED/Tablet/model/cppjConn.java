@@ -24,9 +24,10 @@ public class cppjConn {
         // TODO: Vi skal have en måde at lave en connection og få et conn object,
         //  måske connectToDB skal lave til at returnere et conn object
 
+        // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.   
         PreparedStatement pstmt = db.getPreparedStatement(tripInfoQuery);
-        //
         pstmt.setString(1, cpr);
+
         // Execute the tripInfo MySQL query
         ResultSet rs = db.executeQuery(pstmt);
         // Validate that a row was returned, by getting row ID. If no rows are
@@ -50,14 +51,13 @@ public class cppjConn {
     }
 
     public static medication[] queryMedication(String cpr, LocalDateTime timestamp){
-
-        PreparedStatement pstmt = db.getPreparedStatement(tripInfoQuery);
-        //
+        // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
+        PreparedStatement pstmt = db.getPreparedStatement(medicationQuery);
         pstmt.setString(1, cpr);
-        pstmt.set(2, timestamp);
+        pstmt.setLocalDateTime(2, timestamp);
 
         // Execute the medication MySQL query
-        ResultSet rs = db.executeQuery(medicationQuery, cpr, timestamp);
+        ResultSet rs = db.executeQuery(pstmt);
         // Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {
             return null;
@@ -92,8 +92,14 @@ public class cppjConn {
     }
 
     public static vitalSigns[] queryVitalSigns(String cpr, LocalDateTime timeStamp){
+
+        // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
+        PreparedStatement pstmt = db.getPreparedStatement(vitalSignsQuery);
+        pstmt.setString(1, cpr);
+        pstmt.setLocalDateTime(2,timestamp);
+
         // Execute the medication MySQL query
-        ResultSet rs = db.executeQuery(vitalSignsQuery, cpr, timeStamp);
+        ResultSet rs = db.executeQuery(pstmt);
         // Validate that one or more row was returned, else return NULL
         if (rs.getRow() == 0) {
             return NULL;

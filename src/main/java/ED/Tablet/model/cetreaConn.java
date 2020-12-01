@@ -1,5 +1,6 @@
 package ED.Tablet.model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.RowId;
 import java.sql.SQLException;
@@ -16,7 +17,12 @@ public class cetreaConn extends dbConn{
     // Method
     public static String[] getPatientCprList(String cetreaQuery, String personnelID){
 
-		ResultSet rs = db.executeQuery(cetreaQuery);
+		// Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
+		PreparedStatement pstmt = db.getPreparedStatement(cetreaQuery);
+        pstmt.setString(1, personnelID);
+        
+		
+		ResultSet rs = db.executeQuery(pstmt);
 
 		// Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {
