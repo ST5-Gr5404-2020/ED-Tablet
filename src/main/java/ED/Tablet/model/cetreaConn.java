@@ -1,7 +1,9 @@
 package ED.Tablet.model;
 
+import java.sql.ResultSet;
+
 public class cetreaConn extends dbConn{
-	
+	private String cetreaQuery = " SELECT * FROM cpr WHERE PersonnelID = ?? ";
 	
 	 // Constructor
 	 public cetreaConn(String host, String DBPassword, String username) {
@@ -10,7 +12,11 @@ public class cetreaConn extends dbConn{
 	}
 	
 
-    public String[] getPatientCprList(String personnelID){
+    public String[] getPatientCprList(String cetreaQuery, String personnelID){
+
+		ResultSet rs = super.executeQuery(cetreaQuery, personnelID);
+		
+
 
 		//Personale ID bliver benyttet til at finde hvilke patienter de har tildelt. 
 		//Her benyttes nedarvning fra bdcConn til at snakke med cetrea Database. executequery bliver benyttet
