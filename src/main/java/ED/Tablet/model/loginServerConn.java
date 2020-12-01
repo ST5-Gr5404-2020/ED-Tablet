@@ -4,10 +4,6 @@ import java.sql.Connection;
 import sun.invoke.util.VerifyType;
 
 public class loginServerConn extends dbConn {
-	
-	// TODO: lav ligesom cppjConn. Lav static og fjern constructor
-	
-	
 	 // Attributes
 	 protected static String host = "https://db.course.hst.aau.dk/phpmyadmin/";
 	 protected static String DBPassword = "pheyiesiehafileingei";
