@@ -37,7 +37,7 @@ public class dbConn {
         
     }
 
-    protected void executeQuery(String sqlStatement, String PK){
+    protected void executeQuery(String sqlStatement){
 
         Connection myDB = connectToDB(host, DBPassword, username);
         
@@ -48,7 +48,7 @@ public class dbConn {
             try {
                 
                 stmt = myDB.createStatement();
-                rs = stmt.executeQuery(sqlStatement+PK);
+                rs = stmt.executeQuery(sqlStatement);
             }
             catch (SQLException ex){
                 // handle any errors
