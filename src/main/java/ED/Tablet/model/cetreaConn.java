@@ -6,20 +6,31 @@ import java.sql.RowId;
 import java.sql.SQLException;
 
 public class cetreaConn extends dbConn{
-	private String cetreaQuery = " SELECT * FROM cpr WHERE PersonnelID =?? ";
 	
+	// Attributes that defines which database to connect to
 	protected static String host = "https://db.course.hst.aau.dk/phpmyadmin/";
     protected static String DBPassword = "pheyiesiehafileingei";
     protected static String username = "hst_2020_20gr5404";
-    
+    // Here we make the uniqe connection that can be used in the methods
     private static dbConn db = new dbConn(host, DBPassword, username);
 
-    // Method
-    public static String[] getPatientCprList(String cetreaQuery, String personnelID){
+	// query to request data from crp
+	private static String cetreaQuery = " SELECT * FROM CPR WHERE PersonnelID =?? ";
+
+    // Method to get patientCprlist from personnelID 
+    public static String[] getPatientCprList(String personnelID){
 
 		// Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
 		PreparedStatement pstmt = db.getPreparedStatement(cetreaQuery);
-        pstmt.setString(1, personnelID);
+        try{ 
+			pstmt.setString(1, personnelID);
+	
+		}
+		catch(SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+		}
         
 		
 		ResultSet rs = db.executeQuery(pstmt);
@@ -52,7 +63,7 @@ public class cetreaConn extends dbConn{
             // Instanciate the medication class. Use row ID - 1 as ID.
             cprPatientList[rowID-1] = rs.getString("CPR");
 		}
-	}
+	}	//Gives error message if somthing went wrong
 		catch(SQLException ex){
 			System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());

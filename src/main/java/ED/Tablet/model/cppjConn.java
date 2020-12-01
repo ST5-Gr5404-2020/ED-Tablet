@@ -3,20 +3,23 @@ package ED.Tablet.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class cppjConn {
 
-    // Attributes
+    // Attributes that defines which database to connect to
     protected static String host = "https://db.course.hst.aau.dk/phpmyadmin/";
     protected static String DBPassword = "pheyiesiehafileingei";
     protected static String username = "hst_2020_20gr5404";
 
+	// Here we make the uniqe connection that can be used in the methods
     private static dbConn db = new dbConn(host, DBPassword, username);
-
+	
+	// query to request data from tripinfo, medication and vitalsigns 
     private static String tripInfoQuery = "SELECT * FROM tripInfo WHERE cpr = ?";
     private static String medicationQuery = "SELECT * FROM medication WHERE cpr = ? AND timestamp > ?";
-    private static String vitalSignsQuery = "SELECT * FROM tripInfo WHERE cpr = ? AND timestamp > ?";
+    private static String vitalSignsQuery = "SELECT * FROM vitalSigns WHERE cpr = ? AND timestamp > ?";
 
     //Methods
     public static tripInfo queryTripInfo(String cpr){
@@ -26,7 +29,14 @@ public class cppjConn {
 
         // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.   
         PreparedStatement pstmt = db.getPreparedStatement(tripInfoQuery);
+        try{
         pstmt.setString(1, cpr);
+        }
+		catch(SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+		}
 
         // Execute the tripInfo MySQL query
         ResultSet rs = db.executeQuery(pstmt);
@@ -53,8 +63,15 @@ public class cppjConn {
     public static medication[] queryMedication(String cpr, LocalDateTime timestamp){
         // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
         PreparedStatement pstmt = db.getPreparedStatement(medicationQuery);
-        pstmt.setString(1, cpr);
-        pstmt.setLocalDateTime(2, timestamp);
+        try{
+            pstmt.setString(1, cpr);
+            pstmt.setLocalDateTime(2, timestamp);
+            }
+            catch(SQLException ex){
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+            }
 
         // Execute the medication MySQL query
         ResultSet rs = db.executeQuery(pstmt);
@@ -95,8 +112,15 @@ public class cppjConn {
 
         // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
         PreparedStatement pstmt = db.getPreparedStatement(vitalSignsQuery);
-        pstmt.setString(1, cpr);
-        pstmt.setLocalDateTime(2,timestamp);
+        try{
+            pstmt.setString(1, cpr);
+            pstmt.setLocalDateTime(2,timestamp);
+            }
+            catch(SQLException ex){
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+            }
 
         // Execute the medication MySQL query
         ResultSet rs = db.executeQuery(pstmt);
