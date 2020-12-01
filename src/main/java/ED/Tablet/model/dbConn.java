@@ -23,9 +23,6 @@ public class dbConn {
     this.DBPassword=DBPassword;
     this.username=username; 
     }
-
-   
-
     //Methods
     protected Connection connectToDB(String host, String DBPassword, String username) {
             Connection myDB =null;
