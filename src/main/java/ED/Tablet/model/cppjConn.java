@@ -2,6 +2,7 @@ package ED.Tablet.model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
 
 public class cppjConn extends dbConn{
 

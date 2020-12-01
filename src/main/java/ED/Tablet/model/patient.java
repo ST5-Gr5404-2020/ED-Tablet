@@ -10,10 +10,12 @@ public class patient {
     private medication medication[];
 	  private vitalSigns vitalSigns[];
 	
-	private cppjConn conn;
- // Lav en ny constructor 
-	public patient(cppjConn conn) {
-		this.conn = conn;
+	public cppjConn conn;
+ 
+  // Constructor
+  public patient(String cpr, cppjConn conn) {
+    this.cpr=cpr;
+    this.conn = conn;
 	}
 
     public void updateTripInfo(tripInfo tripInfo) {
