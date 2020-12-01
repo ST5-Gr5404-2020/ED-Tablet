@@ -21,9 +21,6 @@ public class dbConn {
     this.DBPassword=DBPassword;
     this.username=username; 
     }
-
-   
-
     //Methods
     protected Connection connectToDB(String host, String DBPassword, String username) {
             Connection myDB =null;
@@ -40,7 +37,7 @@ public class dbConn {
         
     }
 
-    protected void executeQuery(String sqlStatement){
+    protected void executeQuery(String sqlStatement, String PK){
 
         Connection myDB = connectToDB(host, DBPassword, username);
         
@@ -51,7 +48,7 @@ public class dbConn {
             try {
                 
                 stmt = myDB.createStatement();
-                rs = stmt.executeQuery(sqlStatement);
+                rs = stmt.executeQuery(sqlStatement+PK);
             }
             catch (SQLException ex){
                 // handle any errors
