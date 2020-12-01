@@ -1,12 +1,10 @@
 package ED.Tablet.model;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-
-import org.checkerframework.common.reflection.qual.ForName;
-
-import sun.security.util.Password;
-import sun.tools.tree.FinallyStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class dbConn {
 
@@ -28,16 +26,20 @@ public class dbConn {
             Connection myDB =null;
             
         try {
-           Connection myDB = DriverManager.getConnection(host, DBPassword, username);
-        
+            myDB = DriverManager.getConnection(host, DBPassword, username);
         }
-    
+           catch (SQLException sqlex) {
+            System.out.println("Connection Error: " + sqlex.getMessage());
+        }
+        
+        
         return myDB;
+        
     }
 
-    protected ResultSet executeQuery(String sqlStatement){
+    protected void executeQuery(String sqlStatement){
 
-        Connection myDB = connectToDB();
+        Connection myDB = connectToDB(host, DBPassword, username);
         
         Statement stmt = null;
         ResultSet rs = null;
@@ -47,11 +49,49 @@ public class dbConn {
                 
                 stmt = myDB.createStatement();
                 rs = stmt.executeQuery(sqlStatement);
+            }
+            catch (SQLException ex){
+                // handle any errors
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+            }
+            finally {
+                // it is a good idea to release
+                // resources in a finally{} block
+                // in reverse-order of their creation
+                // if they are no-longer needed
                 
+                // Close result set
+                if (rs != null) {
+                    try {
+                        rs.close();
+                    } catch (SQLException sqlEx) { 
+                        // handle any errors
+                        System.out.println("SQLException: " + sqlEx.getMessage());
+                        System.out.println("SQLState: " + sqlEx.getSQLState());
+                        System.out.println("VendorError: " + sqlEx.getErrorCode());
+                    }
+                    
+                    rs = null;
+                }
                 
-            } 
+                // Close statement
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException sqlEx) { 
+                        // handle any errors
+                        System.out.println("SQLException: " + sqlEx.getMessage());
+                        System.out.println("SQLState: " + sqlEx.getSQLState());
+                        System.out.println("VendorError: " + sqlEx.getErrorCode());
+                    }
+                    
+                    stmt = null;
+                }
+            }
 
-    }
-    
+    }    
+}
 }
 
