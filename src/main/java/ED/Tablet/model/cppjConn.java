@@ -51,13 +51,13 @@ public class cppjConn {
 
     public static medication[] queryMedication(String cpr, LocalDateTime timestamp){
 
-        PreparedStatement pstmt = super.getPreparedStatement(tripInfoQuery);
+        PreparedStatement pstmt = db.getPreparedStatement(tripInfoQuery);
         //
         pstmt.setString(1, cpr);
         pstmt.set(2, timestamp);
 
         // Execute the medication MySQL query
-        ResultSet rs = super.executeQuery(medicationQuery, cpr, timestamp);
+        ResultSet rs = db.executeQuery(medicationQuery, cpr, timestamp);
         // Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {
             return null;
@@ -93,7 +93,7 @@ public class cppjConn {
 
     public static vitalSigns[] queryVitalSigns(String cpr, LocalDateTime timeStamp){
         // Execute the medication MySQL query
-        ResultSet rs = super.executeQuery(vitalSignsQuery, cpr, timeStamp);
+        ResultSet rs = db.executeQuery(vitalSignsQuery, cpr, timeStamp);
         // Validate that one or more row was returned, else return NULL
         if (rs.getRow() == 0) {
             return NULL;

@@ -7,18 +7,16 @@ import java.sql.SQLException;
 public class cetreaConn extends dbConn{
 	private String cetreaQuery = " SELECT * FROM cpr WHERE PersonnelID =?? ";
 	
-	// TODO: lav ligesom cppjConn. Lav static og fjern constructor
+	protected static String host = "https://db.course.hst.aau.dk/phpmyadmin/";
+    protected static String DBPassword = "pheyiesiehafileingei";
+    protected static String username = "hst_2020_20gr5404";
+    
+    private static dbConn db = new dbConn(host, DBPassword, username);
 
-	 // Constructor
-	 public cetreaConn(String host, String DBPassword, String username) {
-        // Use superclass constructor
-        super(host, DBPassword, username);
-	}
-	
+    // Method
+    public static String[] getPatientCprList(String cetreaQuery, String personnelID){
 
-    public String[] getPatientCprList(String cetreaQuery, String personnelID){
-
-		ResultSet rs = super.executeQuery(cetreaQuery);
+		ResultSet rs = db.executeQuery(cetreaQuery);
 
 		// Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {

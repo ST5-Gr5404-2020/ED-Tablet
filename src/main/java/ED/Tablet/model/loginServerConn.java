@@ -8,13 +8,14 @@ public class loginServerConn extends dbConn {
 	// TODO: lav ligesom cppjConn. Lav static og fjern constructor
 	
 	
-	 // Constructor
-	 public loginServerConn(String host, String DBPassword, String username) {
-        // Use superclass constructor
-        super(host, DBPassword, username);
-    }
+	 // Attributes
+	 protected static String host = "https://db.course.hst.aau.dk/phpmyadmin/";
+	 protected static String DBPassword = "pheyiesiehafileingei";
+	 protected static String username = "hst_2020_20gr5404";
+ 
+	 private static dbConn db = new dbConn(host, DBPassword, username);
 	
-    public boolean validateLogin(String personnelID, String password) {
+    public static boolean validateLogin(String personnelID, String password) {
 		Boolean verifyLogin = false;
 		
 
