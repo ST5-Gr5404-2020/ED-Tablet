@@ -39,7 +39,7 @@ public class dbConn {
     }
 
     protected PreparedStatement getPreparedStatement(String query) {
-        // tag rå sql: "select * from personnel where id = ?"
+        // TODO: tag rå sql: "select * from personnel where id = ?"
         // lav et prepared statement object
         // returner object
     }

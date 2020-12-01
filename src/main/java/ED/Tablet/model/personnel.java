@@ -1,6 +1,9 @@
 package ED.Tablet.model;
+
 import java.util.HashMap;
 import javax.swing.JTextField;
+
+import ED.Tablet.App;
 
 public class personnel {
     public String personnelID;
@@ -13,7 +16,6 @@ public class personnel {
     this.password=password;
     
 	}
-
 
     public void updatePatientList(){
     String[] cprPatientList = conn.getPatientCprList();

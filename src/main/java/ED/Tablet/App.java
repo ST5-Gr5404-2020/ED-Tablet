@@ -3,24 +3,42 @@
  */
 package ED.Tablet;
 
+
 public class App {
     public String getGreeting() {
         return "Hello world.";
+
+
     }
 
+
     public static void main(String[] args) {
+        
 
-		cppjConn conn = new cppjConn("www.yougay.com/ysql","pass",6969);
 
-		patient gary = new patient(conn);
-		patient tim = new patient(conn);
+        // 1. Instancierer de tre databaser connections.
+        //      a. Cppj, Login, Cetrea conn er klar til at blive brugt. 
+        // 2. Instancier personnel, som der kan lægges password/ID ind i. 
+        // 3. Vis loginView.
+        // 4. LoginCtrl --> sæt værdier ind i personnel.
+        //      a. Login verified / not verified. 
+        //      b. If not verified --> delete instance of personnel --> go to 2. 
+        // 5. Skift til / vis mainView
+        // 6. (i mainCtrl) mainView skal bruge personnel til at hente patients, som er assigned.
+        //      a. input til mainCtrl er personnel. 
+        //      b. personnel.updatePatientList().
+        //      c. Display patientList
+        // 7. mainCtrl kør funktion for at der trykkes på patient
+        // 8. mainCtrl indsætter patientDataView i mainView, for valgt patient.
+        // 9. For hvert view laves en controller, som gør det muligt at hoppe fra et view til et andet. 
 
-		personnel kajErSej = new personnel("6969", "nicePass69");
-
+        // Evt. 
+        // Implementer stages for hvert view som der kan hoppes imellem. Eksempel login = stage1 og spo2=stage 9, 
+        // og så en funktion der hopper fra stage 9 til stage 2. 
 
 		
 
-        //System.out.println(new App().getGreeting());
+        
 
 
         

@@ -8,7 +8,7 @@ public class vitalSigns {
     public int hr;
     public int spo2;
     public int etco2;
-
+// TODO: opdater med sys og dia
 	public vitalSigns(LocalDateTime timestamp, int bp, int hr, int spo2, int etco2){
         this.timestamp=timestamp;
         this.bp=bp;

@@ -1,4 +1,4 @@
-package ED.Tablet;
+package ED.Tablet.controller;
 
 import ED.Tablet.model.personnel;
 import ED.Tablet.model.loginServerConn;
@@ -21,26 +21,29 @@ public class loginCtrl {
 	@FXML
 	TextField password;
 
-	@FXML
+	
 	private loginCtrl(mainCtrl mainCtrl, personnel personnel){
 		//this.loginView = loginView;
-		this.mainCtrl = mainCtrl;
+		//this.mainCtrl = mainCtrl;
 		this.personnel = personnel;
 	}
-
-	public void handleLogin(string personnelID, string password){
-		personnelID = personnelID.getText();
-		password = password.getText();
+	@FXML
+	public void handleLogin(){
+		String value1 = this.personnelID.getText();
+		String value2 = this.password.getText();
 		//string username = personnelID;
 
 		boolean isVerified = false;
 
-		isVerified = loginServerConn.validateLogin(personnelID,password);
+		isVerified = loginServerConn.validateLogin(value1,value2);
 
 		if (isVerified) {
-			personnel tempPersonnel = new personnel(personnelID,password);
+			personnel tempPersonnel = new personnel(value1,value2);
 
 		}
+
+		//TODO: Opret instans af personnel i App istedet. 
+		// TODO: Skift til mainView
 
 		
 

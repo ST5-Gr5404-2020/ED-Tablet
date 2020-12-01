@@ -7,6 +7,8 @@ import java.sql.SQLException;
 public class cetreaConn extends dbConn{
 	private String cetreaQuery = " SELECT * FROM cpr WHERE PersonnelID =?? ";
 	
+	
+
 	 // Constructor
 	 public cetreaConn(String host, String DBPassword, String username) {
         // Use superclass constructor

@@ -112,12 +112,12 @@ public class cppjConn extends dbConn{
             // Get row ID
             int rowID = rs.getRow();
             // Instanciate the vitalSigns class.
+            
             vs[rowID - 1] = new vitalSigns(
                 rs.getTimestamp("timestamp"),
-                rs.getFloat("bt"),
-                rs.getInt("bp"),
+                rs.getInt("bpsys"),
+                rs.getInt("bpdia"),
                 rs.getInt("hr"),
-                rs.getInt("rr"),
                 rs.getInt("spo2"),
                 rs.getInt("etco2")
             );
