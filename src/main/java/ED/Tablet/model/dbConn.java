@@ -37,7 +37,7 @@ public class dbConn {
         
     }
 
-    protected void executeQuery(String sqlStatement){
+    protected ResultSet executeQuery(String sqlStatement){
 
         Connection myDB = connectToDB(host, DBPassword, username);
         
@@ -91,7 +91,8 @@ public class dbConn {
                 }
             }
 
-    }    
+    }
+    return rs;
 }
 }
 
