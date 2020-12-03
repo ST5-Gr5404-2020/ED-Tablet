@@ -37,17 +37,24 @@ public class dbConn {
     }
 
     protected PreparedStatement getPreparedStatement(String query) {
-        
+        try {
         return this.getConnection().prepareStatement(query);
-        
+        }
+        catch(SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+		}
+
+        }
         // TODO: tag rå sql: "select * from personnel where id = ?"
         // lav et prepared statement object
         // returner object
-    }
 
-    protected ResultSet executeQuery(PreparedStatement pstmt)
-       rs = pstmt.executeQuery();
-       return rs;
+    protected ResultSet executeQuery(PreparedStatement pstmt){
+        rs = pstmt.executeQuery();
+        return rs;
+    }
 
     protected ResultSet executeQuery(String sqlStatement){
 
