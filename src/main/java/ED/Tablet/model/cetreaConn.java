@@ -7,14 +7,14 @@ import java.sql.SQLException;
 public class cetreaConn{
 	
 	// Attributes that defines which database to connect to
-	private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404&serverTimezone=UTC";
+	private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404";
     private static String DBPassword = "pheyiesiehafileingei";
     private static String username = "hst_2020_20gr5404";
     // Here we make the uniqe connection that can be used in the methods
-	private static dbConn db = new dbConn(host, DBPassword, username);
+	private static dbConn db = new dbConn(host, username, DBPassword);
 
 	// query to request data from crp
-	private static String cetreaQuery = " SELECT * FROM CPR WHERE personnelID = ?";
+	private static String cetreaQuery = " SELECT * FROM assignments WHERE personnelID = ?";
 
     // Method to get patientCprlist from personnelID 
     public static String[] getPatientCprList(int personnelID){
@@ -26,6 +26,7 @@ public class cetreaConn{
 			pstmt.setInt(1, personnelID); 	
 		}
 		catch(SQLException ex){
+			System.out.println("Failed to incert personnelID");
 			System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
@@ -33,7 +34,12 @@ public class cetreaConn{
 			return null; 
 		}        
 		//Executes prepared statement
-		ResultSet rs = db.executeQuery(pstmt);		     
+		ResultSet rs = db.executeQuery(pstmt);	
+		// Fail if resultset is null
+		if (rs == null) {
+			System.out.println("ResultSet is null");
+			return null;
+		}
 		//Find number of rows
 		int returnedRows = 0;
 		try{
@@ -49,6 +55,7 @@ public class cetreaConn{
 			rs.beforeFirst();
 		}
 		catch(SQLException ex){
+			System.out.println("Failed to get number of returned rows");
 			System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());			
@@ -71,6 +78,7 @@ public class cetreaConn{
 			}
 		}	//Gives error message if somthing went wrong
 		catch(SQLException ex){
+			System.out.println("Failed to loop through all returned patient CPR-numbers");
 			System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());

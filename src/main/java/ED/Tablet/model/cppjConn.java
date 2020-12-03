@@ -7,17 +7,17 @@ import java.sql.Timestamp;
 public class cppjConn {
 
     // Attributes that defines which database to connect to
-    private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404&serverTimezone=UTC";
+    private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404";
     private static String DBPassword = "pheyiesiehafileingei";
     private static String username = "hst_2020_20gr5404";
 
 	// Here we make the uniqe connection that can be used in the methods
-    private static dbConn db = new dbConn(host, DBPassword, username);
+    private static dbConn db = new dbConn(host, username, DBPassword);
 	
 	// query to request data from tripinfo, medication and vitalsigns 
-    private static String tripInfoQuery = "SELECT * FROM tripInfo WHERE cpr = ?";
-    private static String medicationQuery = "SELECT * FROM medication WHERE cpr = ? AND timestamp > ?";
-    private static String vitalSignsQuery = "SELECT * FROM vitalSigns WHERE cpr = ? AND timestamp > ?";
+    private static String tripInfoQuery = "SELECT * FROM tripInfo WHERE CPR = ?";
+    private static String medicationQuery = "SELECT * FROM medication WHERE CPR = ? AND timeStamp > ?";
+    private static String vitalSignsQuery = "SELECT * FROM vitalSigns WHERE CPR = ? AND timeStamp > ?";
 
     //Methods
     public static tripInfo queryTripInfo(String cpr){    
@@ -47,8 +47,8 @@ public class cppjConn {
 				rs.getString("note"),
 				rs.getTimestamp("eta"),
 				rs.getString("patientName"),
-				rs.getString("accidentNumber"),
-				rs.getString("ambulancePhoneNumber"),
+				rs.getString("accidentNr"),
+				rs.getString("ambulancePhoneNr"),
 				rs.getTimestamp("arrivedAtScene")
 			);
 			// Close the resultset

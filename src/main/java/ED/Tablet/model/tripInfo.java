@@ -25,4 +25,12 @@ public class tripInfo {
 		this.ambulancePhoneNumber=ambulancePhoneNumber;
 		this.arrivedAtScene=arrivedAtScene;
 	}
+
+	public void printTripInfo() {
+		System.out.println("DK index: " + this.dkIndex);
+		System.out.println("Triage score: " + this.triageScore);
+		System.out.println("Note: " + this.note);
+		System.out.println("Patient name: " + this.patientName);
+		System.out.println("Accident number: " + this.accidentNumber);
+	}
 }

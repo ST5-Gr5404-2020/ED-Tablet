@@ -7,15 +7,15 @@ import java.sql.SQLException;
 public class loginServerConn {
 	
 	// Attributes that defines which database to connect to
-	private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404&serverTimezone=UTC";
+	private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404";
 	private static String DBPassword = "pheyiesiehafileingei";
 	private static String username = "hst_2020_20gr5404";
  
 	// Here we make the uniqe connection that can be used in the methods
-	private static dbConn db = new dbConn(host, DBPassword, username);
+	private static dbConn db = new dbConn(host, username, DBPassword);
 
 	// query to request verification of login information.  
-	private static String loginQuery = "SELECT password FROM personnel WHERE personnelID = ?";
+	private static String loginQuery = "SELECT * FROM personnel WHERE personnelID = ?";
 
 	// Method to verify login
     public static boolean validateLogin(String personnelID, String password) {

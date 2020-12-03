@@ -16,7 +16,7 @@ public class dbConn {
     private String username;
 
     // Constructor
-    public dbConn(String host, String DBPassword, String username){
+    public dbConn(String host, String username, String DBPassword){
         this.host=host;
         this.DBPassword=DBPassword;
         this.username=username; 
@@ -26,8 +26,14 @@ public class dbConn {
     protected Connection getConnection() {
 		Connection myDB =null;            
         try {
-            myDB = DriverManager.getConnection(this.host, this.DBPassword, this.username);
-        }
+			// Try loading the MySQL driver
+            Class.forName("com.mysql.cj.jdbc.Driver");   
+            myDB = DriverManager.getConnection(this.host, this.username, this.DBPassword);
+		} 
+		catch (ClassNotFoundException ex) {
+            // Print out the exception
+			System.out.println("Class not found: " + ex.getMessage());
+		}
 		catch (SQLException sqlex) {
             System.out.println("Connection Error: " + sqlex.getMessage());
         }    
@@ -60,18 +66,18 @@ public class dbConn {
 		}
 		finally {						
 			// Close prepared statement
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} 
-				catch (SQLException sqlEx) { 
-					// handle any errors
-					System.out.println("SQLException: " + sqlEx.getMessage());
-					System.out.println("SQLState: " + sqlEx.getSQLState());
-					System.out.println("VendorError: " + sqlEx.getErrorCode());
-				}				
-				pstmt = null;
-			}
+			// if (pstmt != null) {
+			// 	try {
+			// 		pstmt.close();
+			// 	} 
+			// 	catch (SQLException sqlEx) { 
+			// 		// handle any errors
+			// 		System.out.println("SQLException: " + sqlEx.getMessage());
+			// 		System.out.println("SQLState: " + sqlEx.getSQLState());
+			// 		System.out.println("VendorError: " + sqlEx.getErrorCode());
+			// 	}				
+			// 	pstmt = null;
+			// }
 			
 		}    
 		return rs;

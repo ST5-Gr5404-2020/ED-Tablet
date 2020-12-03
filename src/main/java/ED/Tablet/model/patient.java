@@ -3,18 +3,18 @@ package ED.Tablet.model;
 
 
 public class patient {
-    private String cpr;
-    private tripInfo tripInfo;
-    private medication medication[];
-	private vitalSigns vitalSigns[];
+  private String cpr;
+  private tripInfo tripInfo;
+  private medication medication[];
+  private vitalSigns vitalSigns[];
  
-    // Constructor
-    public patient(String cpr) {
-    	this.cpr=cpr;   
+  // Constructor
+  public patient(String cpr) {
+    this.cpr=cpr;   
 	}
 
     public void updateTripInfo() {		
-        this.tripInfo = cppjConn.queryTripInfo(this.cpr);
+      this.tripInfo = cppjConn.queryTripInfo(this.cpr);
     }
 
     public void updateMedication(){

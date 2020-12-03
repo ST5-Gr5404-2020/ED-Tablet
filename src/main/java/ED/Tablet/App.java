@@ -3,6 +3,9 @@
  */
 package ED.Tablet;
 
+import java.util.HashMap;
+
+import ED.Tablet.model.patient;
 import ED.Tablet.model.personnel;
 
 // import java.io.IOException;
@@ -41,11 +44,16 @@ public class App { //extends Application
 
 
 
-		personnel robert = new personnel(123456,"ironman69");
+        personnel robert = new personnel(123456,"ironman69");
+        //System.out.println(robert);
 
 		robert.updatePatientList();
 		System.out.println(robert.getPatientList());
 
+        patient deep = robert.getPatientList().get("0906634738");
+
+        deep.updateTripInfo();
+        deep.getTripInfo().printTripInfo();
 
         // 1. Instancierer de tre databaser connections.
         //      a. Cppj, Login, Cetrea conn er klar til at blive brugt. 
