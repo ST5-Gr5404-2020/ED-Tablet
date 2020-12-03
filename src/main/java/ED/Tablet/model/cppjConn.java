@@ -3,32 +3,43 @@ package ED.Tablet.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 
-public class cppjConn extends dbConn{
+public class cppjConn {
 
-    // Attributes
-    private String tripInfoQuery = "SELECT * FROM tripInfo WHERE cpr = ?";
-    private String medicationQuery = "SELECT * FROM medication WHERE cpr = ? AND timestamp > ?";
-    private String vitalSignsQuery = "SELECT * FROM tripInfo WHERE cpr = ? AND timestamp > ?";
+    // Attributes that defines which database to connect to
+    private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404&serverTimezone=UTC";
+    private static String DBPassword = "pheyiesiehafileingei";
+    private static String username = "hst_2020_20gr5404";
 
-    // Constructor
-    public cppjConn(String host, String DBPassword, String username) {
-        // Use superclass constructor
-        super(host, DBPassword, username);
-    }
+	// Here we make the uniqe connection that can be used in the methods
+    private static dbConn db = new dbConn(host, DBPassword, username);
+	
+	// query to request data from tripinfo, medication and vitalsigns 
+    private static String tripInfoQuery = "SELECT * FROM tripInfo WHERE cpr = ?";
+    private static String medicationQuery = "SELECT * FROM medication WHERE cpr = ? AND timestamp > ?";
+    private static String vitalSignsQuery = "SELECT * FROM vitalSigns WHERE cpr = ? AND timestamp > ?";
 
     //Methods
-    public tripInfo queryTripInfo(String cpr){
+    public static tripInfo queryTripInfo(String cpr){
 
         // TODO: Vi skal have en måde at lave en connection og få et conn object,
         //  måske connectToDB skal lave til at returnere et conn object
 
-        PreparedStatement pstmt = super.getPreparedStatement(tripInfoQuery);
-        //
+        // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.   
+        PreparedStatement pstmt = db.getPreparedStatement(tripInfoQuery);
+        try{
         pstmt.setString(1, cpr);
+        }
+		catch(SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+		}
+
         // Execute the tripInfo MySQL query
-        ResultSet rs = super.executeQuery(pstmt);
+        ResultSet rs = db.executeQuery(pstmt);
         // Validate that a row was returned, by getting row ID. If no rows are
         //  returned row ID will be 0, before moving the cursor.
         if (rs.getRow() == 0) {
@@ -49,15 +60,21 @@ public class cppjConn extends dbConn{
         return tp;
     }
 
-    public medication[] queryMedication(String cpr, LocalDateTime timestamp){
-
-        PreparedStatement pstmt = super.getPreparedStatement(tripInfoQuery);
-        //
-        pstmt.setString(1, cpr);
-        pstmt.set(2, timestamp);
+    public static medication[] queryMedication(String cpr, LocalDateTime timestamp){
+        // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
+        PreparedStatement pstmt = db.getPreparedStatement(medicationQuery);
+        try{
+            pstmt.setString(1, cpr);
+            pstmt.setLocalDateTime(2, timestamp);
+            }
+            catch(SQLException ex){
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+            }
 
         // Execute the medication MySQL query
-        ResultSet rs = super.executeQuery(medicationQuery, cpr, timestamp);
+        ResultSet rs = db.executeQuery(pstmt);
         // Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {
             return null;
@@ -91,9 +108,22 @@ public class cppjConn extends dbConn{
         return med;
     }
 
-    public vitalSigns[] queryVitalSigns(String cpr, LocalDateTime timeStamp){
+    public static vitalSigns[] queryVitalSigns(String cpr, LocalDateTime timeStamp){
+
+        // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
+        PreparedStatement pstmt = db.getPreparedStatement(vitalSignsQuery);
+        try{
+            pstmt.setString(1, cpr);
+            pstmt.setLocalDateTime(2,timestamp);
+            }
+            catch(SQLException ex){
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+            }
+
         // Execute the medication MySQL query
-        ResultSet rs = super.executeQuery(vitalSignsQuery, cpr, timeStamp);
+        ResultSet rs = db.executeQuery(pstmt);
         // Validate that one or more row was returned, else return NULL
         if (rs.getRow() == 0) {
             return NULL;

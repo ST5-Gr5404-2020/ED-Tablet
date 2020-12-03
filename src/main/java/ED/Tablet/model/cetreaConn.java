@@ -1,24 +1,39 @@
 package ED.Tablet.model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.RowId;
 import java.sql.SQLException;
 
-public class cetreaConn extends dbConn{
-	private String cetreaQuery = " SELECT * FROM cpr WHERE PersonnelID =?? ";
+public class cetreaConn{
 	
+	// Attributes that defines which database to connect to
+	private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404&serverTimezone=UTC";
+    private static String DBPassword = "pheyiesiehafileingei";
+    private static String username = "hst_2020_20gr5404";
+    // Here we make the uniqe connection that can be used in the methods
+    private static dbConn db = new dbConn(host, DBPassword, username);
+
+	// query to request data from crp
+	private static String cetreaQuery = " SELECT * FROM CPR WHERE personnelID = ?";
+
+    // Method to get patientCprlist from personnelID 
+    public static String[] getPatientCprList(String personnelID){
+
+		// Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
+		PreparedStatement pstmt = db.getPreparedStatement(cetreaQuery);
+        try{ 
+			pstmt.setString(1, personnelID);
 	
-
-	 // Constructor
-	 public cetreaConn(String host, String DBPassword, String username) {
-        // Use superclass constructor
-        super(host, DBPassword, username);
-	}
-	
-
-    public String[] getPatientCprList(String cetreaQuery, String personnelID){
-
-		ResultSet rs = super.executeQuery(cetreaQuery);
+		}
+		catch(SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+		}
+        
+		
+		ResultSet rs = db.executeQuery(pstmt);
 
 		// Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {
@@ -48,7 +63,7 @@ public class cetreaConn extends dbConn{
             // Instanciate the medication class. Use row ID - 1 as ID.
             cprPatientList[rowID-1] = rs.getString("CPR");
 		}
-	}
+	}	//Gives error message if somthing went wrong
 		catch(SQLException ex){
 			System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());

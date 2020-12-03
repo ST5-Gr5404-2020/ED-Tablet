@@ -1,26 +1,45 @@
 package ED.Tablet.model;
 
-import java.sql.Connection;
-import sun.invoke.util.VerifyType;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class loginServerConn extends dbConn {
+public class loginServerConn {
 	
+	// Attributes that defines which database to connect to
+	private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404&serverTimezone=UTC";
+	private static String DBPassword = "pheyiesiehafileingei";
+	private static String username = "hst_2020_20gr5404";
+ 
+	// Here we make the uniqe connection that can be used in the methods
+	private static dbConn db = new dbConn(host, DBPassword, username);
+
+	// query to request verification of login information.  
+	private static String loginQuery = "SELECT password FROM personnel WHERE personnelID = ?";
+
+	// Method to verify login
+    public static boolean validateLogin(String personnelID, String password) {
+		// Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
+		PreparedStatement pstmt = db.getPreparedStatement(loginQuery);
+        try{ 
+			pstmt.setString(1, personnelID);
 	
-	 // Constructor
-	 public loginServerConn(String host, String DBPassword, String username) {
-        // Use superclass constructor
-        super(host, DBPassword, username);
-    }
-	
-    public Boolean validateLogin(String personnelID, String password) {
+		}
+		catch(SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+		}
+
 		Boolean verifyLogin = false;
 		
 
-		Statement stmt = conn.createStatement(); 
-		ResultSet rs = stmt.executeQuery("SELECT password FROM loginServer WHERE ID = " + personnelID);
+		 
+		ResultSet rs = db.executeQuery(pstmt);
+		
 
 
-		if(rs.getString("password") == password)
+		if(rs.getString("PASSWORD") == password);
 		{
 			verifyLogin = true;
 		}
