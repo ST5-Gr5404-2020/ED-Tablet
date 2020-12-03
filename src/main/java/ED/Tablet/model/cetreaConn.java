@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.RowId;
 import java.sql.SQLException;
 
-public class cetreaConn {
+public class cetreaConn{
 	
 	// Attributes that defines which database to connect to
 	private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404&serverTimezone=UTC";
