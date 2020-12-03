@@ -10,9 +10,9 @@ import java.sql.Statement;
 public class dbConn {
 
     //Attributes:
-    protected String host;
-    protected String DBPassword;
-    protected String username;
+    private String host;
+    private String DBPassword;
+    private String username;
 
     // Lave en constructor 
     public dbConn(String host, String DBPassword, String username){
@@ -20,6 +20,7 @@ public class dbConn {
         this.DBPassword=DBPassword;
         this.username=username; 
     }
+
     //Methods
     protected Connection getConnection() {
             Connection myDB =null;
