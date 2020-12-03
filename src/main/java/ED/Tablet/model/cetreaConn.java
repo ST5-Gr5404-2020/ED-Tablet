@@ -5,17 +5,17 @@ import java.sql.ResultSet;
 import java.sql.RowId;
 import java.sql.SQLException;
 
-public class cetreaConn extends dbConn{
+public class cetreaConn{
 	
 	// Attributes that defines which database to connect to
-	protected static String host = "https://db.course.hst.aau.dk/phpmyadmin/";
-    protected static String DBPassword = "pheyiesiehafileingei";
-    protected static String username = "hst_2020_20gr5404";
+	private static String host = "jdbc:mysql://db.course.hst.aau.dk:3306/hst_2020_20gr5404&serverTimezone=UTC";
+    private static String DBPassword = "pheyiesiehafileingei";
+    private static String username = "hst_2020_20gr5404";
     // Here we make the uniqe connection that can be used in the methods
     private static dbConn db = new dbConn(host, DBPassword, username);
 
 	// query to request data from crp
-	private static String cetreaQuery = " SELECT * FROM CPR WHERE PersonnelID =?? ";
+	private static String cetreaQuery = " SELECT * FROM CPR WHERE personnelID = ?";
 
     // Method to get patientCprlist from personnelID 
     public static String[] getPatientCprList(String personnelID){
