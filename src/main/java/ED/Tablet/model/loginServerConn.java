@@ -22,28 +22,26 @@ public class loginServerConn {
 		// Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
 		PreparedStatement pstmt = db.getPreparedStatement(loginQuery);
         try{ 
-			pstmt.setString(1, personnelID);
-	
+			pstmt.setString(1, personnelID);	
 		}
 		catch(SQLException ex){
 			System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
 		}
-
-		Boolean verifyLogin = false;
-		
-
-		 
+		Boolean verifyLogin = false;		 
 		ResultSet rs = db.executeQuery(pstmt);
-		
 
-
-		if(rs.getString("PASSWORD") == password);
-		{
-			verifyLogin = true;
+		try {
+			if(rs.getString("password") == password){
+				verifyLogin = true;
+			}
 		}
-
+		catch (SQLException ex) {
+			System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+		}
 		return verifyLogin;
     }
 }

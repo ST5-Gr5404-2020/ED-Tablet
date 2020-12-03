@@ -1,17 +1,18 @@
 package ED.Tablet.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 public class vitalSigns {
-    public LocalDateTime timestamp;
-    public int bp;
+    public Timestamp timestamp;
+	public int bpsys;
+	public int bpdia;
     public int hr;
     public int spo2;
     public int etco2;
-// TODO: opdater med sys og dia
-	public vitalSigns(LocalDateTime timestamp, int bp, int hr, int spo2, int etco2){
+	public vitalSigns(Timestamp timestamp, int bpsys, int bpdia, int hr, int spo2, int etco2){
         this.timestamp=timestamp;
-        this.bp=bp;
+		this.bpsys=bpsys;
+		this.bpdia=bpdia;
         this.hr=hr;
         this.spo2=spo2;
         this.etco2=etco2;
