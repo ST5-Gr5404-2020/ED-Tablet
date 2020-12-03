@@ -12,7 +12,7 @@ public class loginServerConn extends dbConn {
         super(host, DBPassword, username);
     }
 	
-    public boolean validateLogin(String personnelID, String password) {
+    public Boolean validateLogin(String personnelID, String password) {
 		Boolean verifyLogin = false;
 		
 

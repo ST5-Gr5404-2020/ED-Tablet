@@ -3,17 +3,39 @@
  */
 package ED.Tablet;
 
+import java.io.IOException;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
-    }
+public class App extends Application{
 
+/**
+ * Funktion der loader første scene (loginView). Kører automatisk når main() sættes i gang.
+ * @param stage
+ * @throws Exception
+ */
+	@Override
+	public void start(Stage stage) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
 
+		Scene scene = new Scene(root);
+
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	
     public static void main(String[] args) {
-        
+		/**
+		 * Får Start() til at køre når main kører, således at loginView åbnes.
+		 */
+		launch(args); 
 
 
         // 1. Instancierer de tre databaser connections.
