@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.RowId;
 import java.sql.SQLException;
 
-public class cetreaConn extends dbConn{
+public class cetreaConn{
 	
 	// Attributes that defines which database to connect to
 	protected static String host = "https://db.course.hst.aau.dk/phpmyadmin/";
