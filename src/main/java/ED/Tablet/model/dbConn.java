@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
+
 
 public class dbConn {
 
@@ -14,8 +15,8 @@ public class dbConn {
     private String DBPassword;
     private String username;
 
-    // Lave en constructor 
-    public dbConn(String host, String DBPassword, String username){
+    // Constructor
+    public dbConn(String host, String username, String DBPassword){
         this.host=host;
         this.DBPassword=DBPassword;
         this.username=username; 
@@ -23,96 +24,64 @@ public class dbConn {
 
     //Methods
     protected Connection getConnection() {
-            Connection myDB =null;
-            
+		Connection myDB =null;            
         try {
-            myDB = DriverManager.getConnection(this.host, this.DBPassword, this.username);
-        }
-           catch (SQLException sqlex) {
+			// Try loading the MySQL driver
+            Class.forName("com.mysql.cj.jdbc.Driver");   
+            myDB = DriverManager.getConnection(this.host, this.username, this.DBPassword);
+		} 
+		catch (ClassNotFoundException ex) {
+            // Print out the exception
+			System.out.println("Class not found: " + ex.getMessage());
+		}
+		catch (SQLException sqlex) {
             System.out.println("Connection Error: " + sqlex.getMessage());
-        }
-        
-        
-        return myDB;
-        
+        }    
+        return myDB;        
     }
 
     protected PreparedStatement getPreparedStatement(String query) {
         try {
-        return this.getConnection().prepareStatement(query);
-        }
+        	return this.getConnection().prepareStatement(query);
+		}
         catch(SQLException ex){
 			System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
+			System.out.println("VendorError: " + ex.getErrorCode());
+			return null;
 		}
-
-        }
-        // TODO: tag rå sql: "select * from personnel where id = ?"
-        // lav et prepared statement object
-        // returner object
+	}
 
     protected ResultSet executeQuery(PreparedStatement pstmt){
-        rs = pstmt.executeQuery();
-        return rs;
-    }
-
-    protected ResultSet executeQuery(String sqlStatement){
-
-        Connection myDB = getConnection();
-        
-        Statement stmt = null;
         ResultSet rs = null;
-
-        if (myDB != null){
-            try {
-                
-                stmt = myDB.createStatement();
-                rs = stmt.executeQuery(sqlStatement);
-            }
-            catch (SQLException ex){
-                // handle any errors
-                System.out.println("SQLException: " + ex.getMessage());
-                System.out.println("SQLState: " + ex.getSQLState());
-                System.out.println("VendorError: " + ex.getErrorCode());
-            }
-            finally {
-                // it is a good idea to release
-                // resources in a finally{} block
-                // in reverse-order of their creation
-                // if they are no-longer needed
-                
-                // Close result set
-                if (rs != null) {
-                    try {
-                        rs.close();
-                    } catch (SQLException sqlEx) { 
-                        // handle any errors
-                        System.out.println("SQLException: " + sqlEx.getMessage());
-                        System.out.println("SQLState: " + sqlEx.getSQLState());
-                        System.out.println("VendorError: " + sqlEx.getErrorCode());
-                    }
-                    
-                    rs = null;
-                }
-                
-                // Close statement
-                if (stmt != null) {
-                    try {
-                        stmt.close();
-                    } catch (SQLException sqlEx) { 
-                        // handle any errors
-                        System.out.println("SQLException: " + sqlEx.getMessage());
-                        System.out.println("SQLState: " + sqlEx.getSQLState());
-                        System.out.println("VendorError: " + sqlEx.getErrorCode());
-                    }
-                    
-                    stmt = null;
-                }
-            }
-
-    }
-    return rs;
-}
+        
+		try {                
+			rs = pstmt.executeQuery();
+		}
+		catch (SQLException ex){
+			// handle any errors
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode());
+		}
+		finally {						
+			// Close prepared statement
+			// if (pstmt != null) {
+			// 	try {
+			// 		pstmt.close();
+			// 	} 
+			// 	catch (SQLException sqlEx) { 
+			// 		// handle any errors
+			// 		System.out.println("SQLException: " + sqlEx.getMessage());
+			// 		System.out.println("SQLState: " + sqlEx.getSQLState());
+			// 		System.out.println("VendorError: " + sqlEx.getErrorCode());
+			// 	}				
+			// 	pstmt = null;
+			// }
+			
+		}    
+		return rs;
+		//TODO: Create method to close resultset after use
+	}
 }
 

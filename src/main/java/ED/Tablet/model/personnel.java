@@ -1,35 +1,31 @@
 package ED.Tablet.model;
 
 import java.util.HashMap;
-import javax.swing.JTextField;
-
-import ED.Tablet.App;
 
 public class personnel {
-    public String personnelID;
+    public int personnelID;
     public String password;
     private HashMap <String, patient> patientList; 
     public boolean loggedIn;
 
-	public personnel(String ID, String password) {
+	public personnel(int ID, String password) {
     this.personnelID = ID;
     this.password=password;
+
+    this.patientList = new HashMap<String, patient>();
     
 	}
 
-    public void updatePatientList(){
+  public void updatePatientList(){
     String[] cprPatientList = cetreaConn.getPatientCprList(this.personnelID);
 
-    for (int i=0;i<cprPatientList.length;i++){
-      this.patientList.put(cprPatientList[i], new patient);
-    }
-    
-      // Cetrea conn -> Få string list af CPR
-      
-		// Cetrea conn -> Få string list af CPR
-		// Gem list af CpR i hashmap som key
-    // For hver key lav en patient instans og gem i hashmap
-    
-    }
+    for (int i=0; i<cprPatientList.length; i++){
+      this.patientList.put(cprPatientList[i], new patient(cprPatientList[i]));
+    }    
+  }
+	
+	public HashMap <String, patient> getPatientList(){
+		return this.patientList;	
+	}
 
 }

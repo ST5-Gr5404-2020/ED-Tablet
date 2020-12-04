@@ -1,56 +1,41 @@
 package ED.Tablet.model;
-import java.time.LocalDateTime;
 
-import javax.imageio.IIOImage;
+
 
 public class patient {
-
-    private String cpr;
-    private tripInfo tripInfo;
-    private medication medication[];
-	  private vitalSigns vitalSigns[];
-	
-  public cppjConn conn;
-  public cetreaConn cetrea;
+  private String cpr;
+  private tripInfo tripInfo;
+  private medication medication[];
+  private vitalSigns vitalSigns[];
  
   // Constructor
-  public patient(String cpr, cppjConn conn) {
-    this.cpr=cpr;
-    this.conn = conn;
+  public patient(String cpr) {
+    this.cpr=cpr;   
 	}
 
-    public void updateTripInfo(tripInfo tripInfo) {
-		
-        this.tripInfo = conn.queryTripInfo(this.cpr);
-		// Query tripInfo from cppjConn
-		// Overskriv
+    public void updateTripInfo() {		
+      this.tripInfo = cppjConn.queryTripInfo(this.cpr);
     }
 
-    public void updateMedication(medication medication){
-        this.medication=conn.queryMedication(this.cpr, this.timestamp);
-	
+    public void updateMedication(){
+		//TODO: Create method to find newest timestamp, and insert it into the query, so that it comes after the newest data
+        //this.medication=conn.queryMedication(this.cpr, this.timestamp);	
     }
 
-    public void updateVitalSigns(vitalSigns vitalSigns){
-		this.vitalSigns=conn.queryVitalSigns(this.cpr, this.timestamp);
-		
+    public void updateVitalSigns(){
+		//TODO: Create method to find newest timestamp, and insert it into the query, so that it comes after the newest data
+		//this.vitalSigns=conn.queryVitalSigns(this.cpr, this.timestamp);		
     }
 
     public tripInfo getTripInfo(){
-      return this.tripInfo;
-
+    	return this.tripInfo;
     }
 
     public medication[] getMedication() {
-        return this.medication;
-        
+    	return this.medication;        
     }
 
     public vitalSigns[] getVitalSigns(){
         return this.vitalSigns;
-    }   
-
- 
-
-  
+    }     
 }

@@ -1,22 +1,21 @@
 package ED.Tablet.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 
 public class tripInfo {
 
-    public String dkIndex;
-    public int triageScore;
-    public String note;
-	public LocalDateTime eta;
+	public String dkIndex;
+	public int triageScore;
+	public String note;
+	public Timestamp eta;
 	public String patientName;
 	public String accidentNumber;
 	public String ambulancePhoneNumber;
-	public LocalDateTime arrivedAtScene; 
+	public Timestamp arrivedAtScene;
 
-
-	public tripInfo(String dkIndex, int triageScore, String note, LocalDateTime eta, 
-	String patientName, String accidentNumber, String ambulancePhoneNumber, LocalDateTime arrivedAtScene){
+	public tripInfo(String dkIndex, int triageScore, String note, Timestamp eta,
+	String patientName, String accidentNumber, String ambulancePhoneNumber, Timestamp arrivedAtScene) {
 		this.dkIndex=dkIndex;
 		this.triageScore=triageScore; 
 		this.note=note;
@@ -25,5 +24,13 @@ public class tripInfo {
 		this.accidentNumber=accidentNumber;
 		this.ambulancePhoneNumber=ambulancePhoneNumber;
 		this.arrivedAtScene=arrivedAtScene;
+	}
+
+	public void printTripInfo() {
+		System.out.println("DK index: " + this.dkIndex);
+		System.out.println("Triage score: " + this.triageScore);
+		System.out.println("Note: " + this.note);
+		System.out.println("Patient name: " + this.patientName);
+		System.out.println("Accident number: " + this.accidentNumber);
 	}
 }

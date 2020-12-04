@@ -3,40 +3,57 @@
  */
 package ED.Tablet;
 
-import java.io.IOException;
+import java.util.HashMap;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import ED.Tablet.model.patient;
+import ED.Tablet.model.personnel;
+
+// import java.io.IOException;
+
+// import javafx.application.Application;
+// import javafx.fxml.FXMLLoader;
+// import javafx.scene.Scene;
+// import javafx.scene.layout.AnchorPane;
+// import javafx.scene.layout.BorderPane;
+// import javafx.stage.Stage;
 
 
-public class App extends Application{
+public class App { //extends Application
 
 /**
  * Funktion der loader første scene (loginView). Kører automatisk når main() sættes i gang.
  * @param stage
  * @throws Exception
  */
-	@Override
-	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
+	// @Override
+	// public void start(Stage stage) throws Exception {
+	// 	Parent root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
 
-		Scene scene = new Scene(root);
+	// 	Scene scene = new Scene(root);
 
-		stage.setScene(scene);
-		stage.show();
-	}
+	// 	stage.setScene(scene);
+	// 	stage.show();
+	// }
 
 	
     public static void main(String[] args) {
 		/**
 		 * Får Start() til at køre når main kører, således at loginView åbnes.
 		 */
-		launch(args); 
+		// launch(args); 
 
+
+
+        personnel robert = new personnel(123456,"ironman69");
+        //System.out.println(robert);
+
+		robert.updatePatientList();
+		System.out.println(robert.getPatientList());
+
+        patient deep = robert.getPatientList().get("0906634738");
+
+        deep.updateTripInfo();
+        deep.getTripInfo().printTripInfo();
 
         // 1. Instancierer de tre databaser connections.
         //      a. Cppj, Login, Cetrea conn er klar til at blive brugt. 
