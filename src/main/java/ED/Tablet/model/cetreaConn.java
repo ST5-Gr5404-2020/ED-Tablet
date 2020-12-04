@@ -35,11 +35,12 @@ public class cetreaConn{
 		
 		ResultSet rs = db.executeQuery(pstmt);
 
+
 		// Validate that one or more row was returned, else return NULL.
         if (rs.getRow() == 0) {
 			return null;
-		
-		}
+        }
+        
 		try{
 
         // Get the number of returned rows. Java has no build in function to
@@ -69,9 +70,9 @@ public class cetreaConn{
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
 		}
-        
+        return cprPatientList; 
     }
 // Return the array of medication
-return cprPatientList;
+
 }
 
