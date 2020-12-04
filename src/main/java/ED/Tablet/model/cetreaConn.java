@@ -83,7 +83,7 @@ public class cetreaConn{
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
 		}
-        // Return the array of medication
+        // Return the array of patients
 		return cprPatientList;
     }
 
