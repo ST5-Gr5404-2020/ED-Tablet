@@ -3,57 +3,110 @@
  */
 package ED.Tablet;
 
+import java.io.IOException;
 import java.util.HashMap;
 
+import ED.Tablet.controller.*;
 import ED.Tablet.model.patient;
 import ED.Tablet.model.personnel;
 
-// import java.io.IOException;
 
-// import javafx.application.Application;
-// import javafx.fxml.FXMLLoader;
-// import javafx.scene.Scene;
-// import javafx.scene.layout.AnchorPane;
-// import javafx.scene.layout.BorderPane;
-// import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
-public class App { //extends Application
+public class App extends Application {
+    public BorderPane rootLayout;
+    public Stage primaryStage;
+    public static personnel personnel = new personnel();
 
-/**
- * Funktion der loader første scene (loginView). Kører automatisk når main() sættes i gang.
- * @param stage
- * @throws Exception
- */
-	// @Override
-	// public void start(Stage stage) throws Exception {
-	// 	Parent root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
+    public void initRootLayout(){
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getClassLoader().getResource("view/rootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+            
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	// 	Scene scene = new Scene(root);
+    public void showLoginView (){
+        try {
+            // Load loginView
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getClassLoader().getResource("view/loginView.fxml"));
+            AnchorPane loginView = (AnchorPane) loader.load();
+            // Set loginView into the center of root layout.
+            rootLayout.setCenter(loginView);
+            // Give the controller access to the main app.
+            ED.Tablet.controller.loginCtrl controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	// 	stage.setScene(scene);
-	// 	stage.show();
-	// }
+    public void showMainView (){
+        try {
+            // Load mainView
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getClassLoader().getResource("view/mainView.fxml"));
+            AnchorPane mainView = (AnchorPane) loader.load();
+            // Set loginView into the center of root layout.
+            rootLayout.setCenter(mainView);
+            // Give the controller access to the main app.
+            ED.Tablet.controller.mainCtrl controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //Funktion der loader første scene (loginView). Kører automatisk når main() sættes i gang.
+    //@param stage
+    //@throws Exception
+
+    public void start(Stage primaryStage){
+        this.primaryStage = primaryStage;
+        initRootLayout();
+        showLoginView();
+
+        // FXMLLoader loader = new FXMLLoader();
+        // ED.Tablet.controller.loginCtrl controller = loader.getController();
+        // System.out.println(controller);
+        // controller.setMainApp(this);
+        // controller.showLoginView();
+    }
+
+
 
 	
     public static void main(String[] args) {
-		/**
-		 * Får Start() til at køre når main kører, således at loginView åbnes.
-		 */
-		// launch(args); 
+		//Får Start() til at køre når main kører, således at loginView åbnes.
+        launch(args); 
+        
 
 
+        // System.out.println(robert);
 
-        personnel robert = new personnel(123456,"ironman69");
-        //System.out.println(robert);
+		// robert.updatePatientList();
+		// System.out.println(robert.getPatientList());
 
-		robert.updatePatientList();
-		System.out.println(robert.getPatientList());
+        // patient deep = robert.getPatientList().get("0906634738");
 
-        patient deep = robert.getPatientList().get("0906634738");
-
-        deep.updateTripInfo();
-        deep.getTripInfo().printTripInfo();
+        // deep.updateTripInfo();
+        // deep.getTripInfo().printTripInfo();
 
         // 1. Instancierer de tre databaser connections.
         //      a. Cppj, Login, Cetrea conn er klar til at blive brugt. 

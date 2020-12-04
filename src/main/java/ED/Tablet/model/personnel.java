@@ -8,12 +8,8 @@ public class personnel {
     private HashMap <String, patient> patientList; 
     public boolean loggedIn;
 
-	public personnel(int ID, String password) {
-    this.personnelID = ID;
-    this.password=password;
-
-    this.patientList = new HashMap<String, patient>();
-    
+	public personnel() {
+    this.patientList = new HashMap<String, patient>(); 
 	}
 
   public void updatePatientList(){

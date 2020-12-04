@@ -18,29 +18,33 @@ public class loginServerConn {
 	private static String loginQuery = "SELECT * FROM personnel WHERE personnelID = ?";
 
 	// Method to verify login
-    public static boolean validateLogin(String personnelID, String password) {
+    public static boolean validateLogin(int personnelID, String password) {
 		// Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
 		PreparedStatement pstmt = db.getPreparedStatement(loginQuery);
         try{ 
-			pstmt.setString(1, personnelID);	
+			pstmt.setInt(1, personnelID);	
 		}
 		catch(SQLException ex){
+			System.out.println("Failed to insert parameters");
 			System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
 		}
 		Boolean verifyLogin = false;		 
 		ResultSet rs = db.executeQuery(pstmt);
-
 		try {
-			if(rs.getString("password") == password){
+			rs.next();
+			if(rs.getString("password").compareTo(password) == 0){
 				verifyLogin = true;
 			}
 		}
 		catch (SQLException ex) {
+			System.out.println("Failed to process resultset");
 			System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
+			System.out.println("VendorError: " + ex.getErrorCode());
+			
+
 		}
 		return verifyLogin;
     }

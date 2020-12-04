@@ -1,8 +1,61 @@
-// package ED.Tablet;
+package ED.Tablet.controller;
 
+import java.io.IOException;
+import java.util.Observable;
 
-// public class mainCtrl(){
+import ED.Tablet.App;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 
-
-	
-// }
+public class mainCtrl {
+    @FXML
+    private ListView<String> lstListView;
+    private ObservableList<String> cprList = FXCollections.observableArrayList();
+    private App mainApp;
+    @FXML
+    public AnchorPane anchorPatientData;
+    public mainCtrl(){}
+    //Give the controller access to the main app
+    public void setMainApp(App mainApp) {
+        this.mainApp = mainApp;
+        this.mainApp.personnel.updatePatientList();
+        //System.out.println(this.mainApp.personnel.personnelID);
+        cprList.setAll(this.mainApp.personnel.getPatientList().keySet());
+        this.lstListView.setItems(cprList);
+    }
+    // This method is automatically run after FXML file is loaded
+    @FXML
+    private void initialize(){
+        lstListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+                showPatientDataView(newValue);
+            }
+        });
+    }
+    public void showPatientDataView (String cpr){
+        try {
+            // Load mainView
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getClassLoader().getResource("view/patientDataView.fxml"));
+            AnchorPane anchorPatientDataView = (AnchorPane) loader.load();
+            // Set loginView into the center of root layout.
+            this.anchorPatientData.getChildren().setAll(anchorPatientDataView);
+            // Give the controller access to the main app.
+            //ED.Tablet.controller.mainCtrl controller = loader.getController();
+            //controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void handleSelectPatient(){
+        System.out.println("Der er klikket");
+    }
+}
