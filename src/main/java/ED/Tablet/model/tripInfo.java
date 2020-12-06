@@ -13,7 +13,7 @@ public class tripInfo {
 	public String accidentNumber;
 	public String ambulancePhoneNumber;
 	public Timestamp arrivedAtScene;
-
+	// Constructor for tripinfo
 	public tripInfo(String dkIndex, int triageScore, String note, Timestamp eta,
 	String patientName, String accidentNumber, String ambulancePhoneNumber, Timestamp arrivedAtScene) {
 		this.dkIndex=dkIndex;

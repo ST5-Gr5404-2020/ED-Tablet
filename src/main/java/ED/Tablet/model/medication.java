@@ -9,7 +9,7 @@ public class medication {
     public int amount;
 	public String note;
 	
-
+	// Constructor to medication
 	public medication(Timestamp timestamp, String name, int amount, String note){
 		this.timestamp=timestamp;
 		this.name=name;
