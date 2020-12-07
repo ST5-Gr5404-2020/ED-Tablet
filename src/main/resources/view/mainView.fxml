@@ -15,7 +15,7 @@
          <items>
             <AnchorPane fx:id="anchorPatientData" prefHeight="200.0" prefWidth="200.0" />
          </items></SplitPane>
-      <Button fx:id="logout" layoutX="516.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="LOGOUT" />
+      <Button fx:id="btnLogout" layoutX="516.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="30.0" prefWidth="70.0" text="LOGOUT" />
       <GridPane layoutX="7.0" layoutY="6.0" prefHeight="43.0" prefWidth="286.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="100.0" />

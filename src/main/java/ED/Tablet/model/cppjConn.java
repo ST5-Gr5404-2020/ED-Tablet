@@ -125,9 +125,9 @@ public class cppjConn {
             int rowID = rs.getRow();
             // Instanciate the medication class. Use row ID - 1 as ID.
             med[rowID - 1] = new medication(
-                rs.getTimestamp("timestamp"),
+                rs.getTimestamp("timeStamp"),
                 rs.getString("name"),
-				rs.getInt("amount"),
+				rs.getString("amount"),
 				rs.getString("note")
 				);
 			}	

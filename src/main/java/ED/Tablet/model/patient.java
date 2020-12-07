@@ -1,9 +1,9 @@
 package ED.Tablet.model;
 
-
+import java.sql.Timestamp;
 
 public class patient {
-  private String cpr;
+  public String cpr;
   private tripInfo tripInfo;
   private medication medication[];
   private vitalSigns vitalSigns[];
@@ -19,7 +19,9 @@ public class patient {
 
     public void updateMedication(){
 		//TODO: Create method to find newest timestamp, and insert it into the query, so that it comes after the newest data
-        //this.medication=conn.queryMedication(this.cpr, this.timestamp);	
+        // this.medication=conn.queryMedication(this.cpr, this.timestamp);
+        
+        this.medication = cppjConn.queryMedication(this.cpr, new Timestamp(System.currentTimeMillis()));	
     }
 
     public void updateVitalSigns(){

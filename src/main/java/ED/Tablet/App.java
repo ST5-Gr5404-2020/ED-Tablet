@@ -80,9 +80,13 @@ public class App extends Application {
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
         initRootLayout();
-		//showLoginView();
+		// showLoginView();
 		personnel.personnelID = 123456;
-		showMainView();
+        showMainView();
+        
+        
+
+
 
         // FXMLLoader loader = new FXMLLoader();
         // ED.Tablet.controller.loginCtrl controller = loader.getController();
@@ -97,6 +101,8 @@ public class App extends Application {
     public static void main(String[] args) {
 		//Får Start() til at køre når main kører, således at loginView åbnes.
         launch(args); 
+        
+
         
 
 

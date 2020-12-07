@@ -6,11 +6,11 @@ public class medication {
 
     public Timestamp timestamp;
     public String name;
-    public int amount;
+    public String amount;
 	public String note;
 	
 	// Constructor to medication
-	public medication(Timestamp timestamp, String name, int amount, String note){
+	public medication(Timestamp timestamp, String name, String amount, String note){
 		this.timestamp=timestamp;
 		this.name=name;
 		this.amount=amount;
