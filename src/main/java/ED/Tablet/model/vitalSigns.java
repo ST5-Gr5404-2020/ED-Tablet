@@ -8,7 +8,8 @@ public class vitalSigns {
 	public int bpdia;
     public int hr;
     public int spo2;
-    public int etco2;
+	public int etco2;
+	// Constructor ti vitalSigns
 	public vitalSigns(Timestamp timestamp, int bpsys, int bpdia, int hr, int spo2, int etco2){
         this.timestamp=timestamp;
 		this.bpsys=bpsys;
