@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class mainCtrl {    
     private App mainApp;
@@ -23,7 +24,11 @@ public class mainCtrl {
     @FXML
     public AnchorPane anchorPatientData;
     @FXML
-    private Button btnLogout;
+	private Button btnLogout;
+	@FXML
+	private Label txtSignedInAs;
+	@FXML
+	private Label txtPatientsAss;
 
 
     public mainCtrl(){}
@@ -43,7 +48,16 @@ public class mainCtrl {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedCpr){
                 showPatientDataView(selectedCpr);
             }
-        });
+		});
+		
+	
+		//Displays personnel ID
+		this.txtSignedInAs.setText(Integer.toString(this.mainApp.personnel.personnelID));
+		//Updates patient list
+		this.mainApp.personnel.updatePatientList();
+		//Displays number of patients assigned to the personnel
+		this.txtPatientsAss.setText(Integer.toString((this.mainApp.personnel.getPatientList()).size()));
+		
     }
     public void showPatientDataView (String cpr){
         try {
