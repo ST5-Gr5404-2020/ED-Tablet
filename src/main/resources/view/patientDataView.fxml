@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPatientDataView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="471.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPatientDataView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="471.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.patientDataCtrl">
    <children>
       <AnchorPane minWidth="-Infinity" prefHeight="281.0" prefWidth="470.0" style="-fx-background-color: black;">
          <children>
@@ -33,10 +33,10 @@
                         <Label text="OXYGEN SATURATION" GridPane.rowIndex="1" />
                         <Label text="END TIDAL CO2" GridPane.rowIndex="2" />
                         <Label text="HEART RATE" GridPane.rowIndex="3" />
-                        <Label style="-fx-background-color: green;" text="VALUE" GridPane.columnIndex="1" />
-                        <Label style="-fx-background-color: red;" text="VALUE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label style="-fx-background-color: red;" text="VALUE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label style="-fx-background-color: yellow;" text="VALUE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="valBP" style="-fx-background-color: green;" GridPane.columnIndex="1" />
+                        <Label style="-fx-background-color: red;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label style="-fx-background-color: red;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label style="-fx-background-color: yellow;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>

@@ -80,7 +80,9 @@ public class App extends Application {
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
         initRootLayout();
-        showLoginView();
+		//showLoginView();
+		personnel.personnelID = 123456;
+		showMainView();
 
         // FXMLLoader loader = new FXMLLoader();
         // ED.Tablet.controller.loginCtrl controller = loader.getController();

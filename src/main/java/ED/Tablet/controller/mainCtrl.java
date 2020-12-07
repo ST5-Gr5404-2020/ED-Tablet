@@ -48,11 +48,13 @@ public class mainCtrl {
             // Set loginView into the center of root layout.
             this.anchorPatientData.getChildren().setAll(anchorPatientDataView);
             // Give the controller access to the main app.
-            //ED.Tablet.controller.mainCtrl controller = loader.getController();
-            //controller.setMainApp(this);
+            ED.Tablet.controller.patientDataCtrl controller = loader.getController();
+			controller.setMainApp(this.mainApp);
+			controller.setVitalSigns("12");
         } catch (IOException e) {
             e.printStackTrace();
-        }
+		}
+
     }
     @FXML
     public void handleSelectPatient(){

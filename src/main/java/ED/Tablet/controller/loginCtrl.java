@@ -46,9 +46,7 @@ public class loginCtrl {
             this.mainApp.showMainView();
             
 		}
-		
 	
-
     }
     
     
