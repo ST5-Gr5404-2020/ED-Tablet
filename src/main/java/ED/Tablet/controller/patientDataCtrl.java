@@ -1,11 +1,18 @@
 package ED.Tablet.controller;
 
+import java.util.Observable;
+
+import javax.swing.text.html.ListView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import ED.Tablet.App;
 import ED.Tablet.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import jdk.nashorn.api.tree.ForLoopTree;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 
 public class patientDataCtrl {
     // Vitalsigns labels 
@@ -41,7 +48,16 @@ public class patientDataCtrl {
     //Note lavel
     @FXML
     public TextArea txtNoteArea;
-
+    
+    //Medication labels
+    @FXML
+    public TableView<medication> tblViewMed;
+    public ObservableList<medication> medList = FXCollections.observableArrayList();
+    @FXML
+    public TableColumn<medication, String> medNameColumn;
+    @FXML
+    public TableColumn<medication, String> medAmountColumn;
+   
     public App mainApp;
 	public patient patient; 
 	
@@ -50,7 +66,17 @@ public class patientDataCtrl {
     // Constructor
 	public patientDataCtrl(){
 
-	}
+    }
+    
+
+    @FXML
+    private void initialize() {
+        // Initialize the person table with the two columns.
+        medNameColumn.setCellValueFactory(cellData -> cellData.getValue().medName());
+        medAmountColumn.setCellValueFactory(cellData -> cellData.getValue().medAmount());
+    
+        }
+
     //Give the controller access to the main app
 	public void setMainApp(App mainApp) {
 		this.mainApp = mainApp;
@@ -74,7 +100,7 @@ public class patientDataCtrl {
         this.tripInfo = this.patient.getTripInfo(); 
         displayTripInfo();
         displayNote();
-        //displayMedication();
+        displayMedication();
         //displayVitalSigns();
 
     }
@@ -97,10 +123,27 @@ public class patientDataCtrl {
     }
 
     public void displayMedication(){
+        
         this.patient.updateMedication();
         medication[] med = this.patient.getMedication();
 
-        if(med==null){
+       if(med==null){
+            System.out.println("Den gik ik Theis");
+        } else {
+           /* for (int i=0; i<med.length;i++){
+                //med[i].name.setAll(this.medication.getMedication().keySet());
+                //this.tblViewMed.setItems(med[i].name);
+
+                medName.addAll(med[i].name);
+                medAmount.addAll(med[i].amount);
+            }*/
+            this.medList.addAll(med);
+            this.tblViewMed.setItems(this.medList);
+        }
+
+        //medNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
+        
+       /* if(med==null){
             System.out.println("Den gik ik Theis");
         } else {
             for (int i = 0; i<med.length;i++){
@@ -108,7 +151,7 @@ public class patientDataCtrl {
             System.out.println(med[i].amount);
             System.out.println(med[i].note);
             }
-        }
+        }*/
     }
 
 	
