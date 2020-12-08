@@ -50,7 +50,6 @@ public class mainCtrl {
             }
 		});
 		
-	
 		//Displays personnel ID
 		this.txtSignedInAs.setText("Signed in as: " + Integer.toString(this.mainApp.personnel.personnelID));
 		//Updates patient list
@@ -71,7 +70,7 @@ public class mainCtrl {
             ED.Tablet.controller.patientDataCtrl controller = loader.getController();
             controller.setMainApp(this.mainApp);
             controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
-            controller.displayTripInfo();
+            controller.updateView();
             
         } catch (IOException e) {
             e.printStackTrace();

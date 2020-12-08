@@ -4,6 +4,7 @@ import ED.Tablet.App;
 import ED.Tablet.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import jdk.nashorn.api.tree.ForLoopTree;
 
 public class patientDataCtrl {
@@ -37,6 +38,10 @@ public class patientDataCtrl {
     @FXML
     public Label txtDkIndex;
 
+    //Note lavel
+    @FXML
+    public TextArea txtNoteArea;
+
     public App mainApp;
 	public patient patient; 
 	
@@ -64,8 +69,34 @@ public class patientDataCtrl {
         // this.valHR.setText(Integer.parseint(patient.getVitalSigns[0].hr));
 
 	}
+    public void updateView(){
+        this.patient.updateTripInfo();
+        this.tripInfo = this.patient.getTripInfo(); 
+        displayTripInfo();
+        displayNote();
+        //displayMedication();
+        //displayVitalSigns();
 
-    public void displayTripInfo(){
+    }
+    public void displayTripInfo(){ 
+		//Sets value from this.tripInfo in patientDataView
+		this.txtPatientName.setText(this.tripInfo.patientName);	
+		this.txtCprNumber.setText(this.patient.cpr);	
+		this.txtAccidentNumber.setText(this.tripInfo.accidentNumber);	
+        this.txtAmbulancePhone.setText(this.tripInfo.ambulancePhoneNumber);
+        this.txtDkIndex.setText(this.tripInfo.dkIndex);			
+		//TimeStamps converted to string with .toString(), substring removes year/month/date, so that only time is left
+		this.txtArrivedAtScene.setText((this.tripInfo.arrivedAtScene.toString()).substring(11,19));	
+        this.txtEta.setText((this.tripInfo.eta.toString()).substring(11,19));	
+        //Integer converted to string
+        this.txtTriageScore.setText(Integer.toString(this.tripInfo.triageScore));	
+    }
+
+    public void displayNote(){
+        this.txtNoteArea.setText(this.tripInfo.note);
+    }
+
+    public void displayMedication(){
         this.patient.updateMedication();
         medication[] med = this.patient.getMedication();
 
@@ -78,34 +109,7 @@ public class patientDataCtrl {
             System.out.println(med[i].note);
             }
         }
-        
-        // System.out.println(this.patient.getMedication());
-        //this.patient.updateMedication();
-        // System.out.println(this.patient.getMedication());
-
-
-        //Fetches tripinfo from patient
-        this.tripInfo = this.patient.getTripInfo();
-        
-        if(this.tripInfo==null){
-            this.patient.updateTripInfo();
-            this.tripInfo = this.patient.getTripInfo();
-        }
-		//Sets value from this.tripInfo in patientDataView
-		this.txtPatientName.setText(this.tripInfo.patientName);	
-		this.txtCprNumber.setText(this.patient.cpr);	
-		this.txtAccidentNumber.setText(this.tripInfo.accidentNumber);	
-        this.txtAmbulancePhone.setText(this.tripInfo.ambulancePhoneNumber);
-        this.txtDkIndex.setText(this.tripInfo.dkIndex);			
-		//TimeStamps converted to string with .toString(), substring removes year/month/date, so that only time is left
-		this.txtArrivedAtScene.setText((this.tripInfo.arrivedAtScene.toString()).substring(11,19));	
-        this.txtEta.setText((this.tripInfo.eta.toString()).substring(11,19));	
-        //Integer converted to string
-        this.txtTriageScore.setText(Integer.toString(this.tripInfo.triageScore));	
-        
     }
-
-
 
 	
 }
