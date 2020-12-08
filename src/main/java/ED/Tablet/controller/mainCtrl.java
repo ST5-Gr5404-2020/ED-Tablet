@@ -36,7 +36,6 @@ public class mainCtrl {
     public void setMainApp(App mainApp) {
         this.mainApp = mainApp;
         this.mainApp.personnel.updatePatientList();
-        //System.out.println(this.mainApp.personnel.personnelID);
         cprList.setAll(this.mainApp.personnel.getPatientList().keySet());
         this.lstListView.setItems(cprList);
     }
@@ -69,14 +68,30 @@ public class mainCtrl {
             // Give the controller access to the main app.
             ED.Tablet.controller.patientDataCtrl controller = loader.getController();
             controller.setMainApp(this.mainApp);
+            controller.setMainCtrl(this);
             controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
             controller.updateView();
+        } catch (IOException e) {
+            e.printStackTrace();
+		}
+    }
+    public void showVitalSignsView(){
+        try {
+            // Load vitalSignsView
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getClassLoader().getResource("view/vitalSignsView.fxml"));
+            AnchorPane anchorpaneVitalSignsView = (AnchorPane) loader.load();
+            // Set loginView into the center of root layout.
+            this.anchorPatientData.getChildren().setAll(anchorpaneVitalSignsView);
+            // Give the controller access to the main app.
+            ED.Tablet.controller.vitalSignsCtrl controller = loader.getController();
+            controller.setMainApp(this.mainApp);
             
         } catch (IOException e) {
             e.printStackTrace();
 		}
-
     }
+
     @FXML
     public void handleSelectPatient(){
         System.out.println("Der er klikket");

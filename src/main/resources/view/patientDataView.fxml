@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -45,6 +46,7 @@
                         </HBox>
                      </children>
                   </GridPane>
+                  <Button fx:id="btnExtendVitalSigns" layoutY="1.0" mnemonicParsing="false" onAction="#handleExtendVitalSigns" text="EXTEND" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="234.0" layoutY="50.0" prefHeight="115.0" prefWidth="234.0" style="-fx-border-color: grey;">
@@ -152,6 +154,7 @@
                <children>
                   <Label layoutX="101.0" layoutY="5.0" text="NOTE" textFill="WHITE" />
                   <TextArea fx:id="txtNoteArea" layoutX="17.0" layoutY="23.0" prefHeight="83.0" prefWidth="203.0" wrapText="true" />
+                  <Button fx:id="btnExtendNote" layoutX="-2.0" layoutY="4.0" mnemonicParsing="false" text="EXTEND" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="234.0" layoutY="165.0" prefHeight="115.0" prefWidth="234.0" style="-fx-border-color: grey;">
@@ -164,6 +167,7 @@
                       <TableColumn fx:id="medAmountColumn" prefWidth="75.0" text="Amount" />
                     </columns>
                   </TableView>
+                  <Button fx:id="btnExtendMedication" layoutX="-2.0" layoutY="1.0" mnemonicParsing="false" text="EXTEND" />
                </children>
             </AnchorPane>
             <Label layoutX="176.0" layoutY="14.0" text="PATIENT DATA" textFill="WHITE">

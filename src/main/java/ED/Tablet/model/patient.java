@@ -18,19 +18,17 @@ public class patient {
     }
 
     public void updateMedication(){
-		//TODO: Create method to find newest timestamp, and insert it into the query, so that it comes after the newest data
-        // this.medication=conn.queryMedication(this.cpr, this.timestamp);
-        
         this.medication = cppjConn.queryMedication(this.cpr, new Timestamp(System.currentTimeMillis()));	
     }
 
     public void updateVitalSigns(){
+      this.vitalSigns = cppjConn.queryVitalSigns(this.cpr, new Timestamp(System.currentTimeMillis()));
 		//TODO: Create method to find newest timestamp, and insert it into the query, so that it comes after the newest data
 		//this.vitalSigns=conn.queryVitalSigns(this.cpr, this.timestamp);		
     }
 
     public tripInfo getTripInfo(){
-    	return this.tripInfo;
+      return this.tripInfo;
     }
 
     public medication[] getMedication() {

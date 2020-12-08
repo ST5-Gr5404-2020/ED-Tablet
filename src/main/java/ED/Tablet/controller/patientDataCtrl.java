@@ -1,5 +1,6 @@
 package ED.Tablet.controller;
 
+import java.io.IOException;
 import java.util.Observable;
 
 import javax.swing.text.html.ListView;
@@ -7,9 +8,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import ED.Tablet.App;
 import ED.Tablet.model.*;
+import ED.Tablet.controller.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import jdk.nashorn.api.tree.ForLoopTree;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
@@ -59,7 +64,12 @@ public class patientDataCtrl {
     public TableColumn<medication, String> medAmountColumn;
    
     public App mainApp;
-	public patient patient; 
+    public patient patient; 
+    
+    private mainCtrl mainCtrl;
+
+    @FXML 
+    private Button btnExtendVitalSigns;
 	
 	tripInfo tripInfo;
 
@@ -68,6 +78,9 @@ public class patientDataCtrl {
 
     }
     
+    public void setMainCtrl(mainCtrl mainCtrl) {
+        this.mainCtrl = mainCtrl;
+    }
 
     @FXML
     private void initialize() {
@@ -86,25 +99,30 @@ public class patientDataCtrl {
 		this.patient = patient;
 	}
 
-	public void displayVitalSigns(){
-        // this.valHR.setText(Integer.parseint(patient.getVitalSigns()[0].hr));
-        // this.valBPsys.setText.(patient.getVitalSigns[0].bpsys);
-        // this.valBPdia.setText(patient.getVitalSigns[0].bpdia);
-        // this.valSPO2.setText(patient.getVitalSigns[0].spo2);
-        // this.valETCO2.setText(patient.getVitalSigns[0].etco2);
-        // this.valHR.setText(Integer.parseint(patient.getVitalSigns[0].hr));
-
-	}
+	
     public void updateView(){
-        this.patient.updateTripInfo();
-        this.tripInfo = this.patient.getTripInfo(); 
         displayTripInfo();
         displayNote();
         displayMedication();
-        //displayVitalSigns();
+        displayVitalSigns();
 
     }
+    public void displayVitalSigns(){
+        this.patient.updateVitalSigns();
+        vitalSigns[] vitalSigns = this.patient.getVitalSigns();
+        if(vitalSigns == null){
+            System.out.println("Den gik ik Theis");
+        }else{
+            this.valBPsys.setText((Integer.toString(vitalSigns[vitalSigns.length-1].bpsys)));
+            this.valBPdia.setText((Integer.toString(vitalSigns[vitalSigns.length-1].bpdia)));
+            this.valHR.setText((Integer.toString(vitalSigns[vitalSigns.length-1].hr)));
+            this.valSPO2.setText((Integer.toString(vitalSigns[vitalSigns.length-1].spo2)));
+            this.valETCO2.setText((Integer.toString(vitalSigns[vitalSigns.length-1].etco2)));
+        }
+    }
     public void displayTripInfo(){ 
+        this.patient.updateTripInfo();
+        this.tripInfo = this.patient.getTripInfo(); 
 		//Sets value from this.tripInfo in patientDataView
 		this.txtPatientName.setText(this.tripInfo.patientName);	
 		this.txtCprNumber.setText(this.patient.cpr);	
@@ -123,35 +141,19 @@ public class patientDataCtrl {
     }
 
     public void displayMedication(){
-        
         this.patient.updateMedication();
         medication[] med = this.patient.getMedication();
-
-       if(med==null){
+        if(med==null){
             System.out.println("Den gik ik Theis");
         } else {
-           /* for (int i=0; i<med.length;i++){
-                //med[i].name.setAll(this.medication.getMedication().keySet());
-                //this.tblViewMed.setItems(med[i].name);
-
-                medName.addAll(med[i].name);
-                medAmount.addAll(med[i].amount);
-            }*/
             this.medList.addAll(med);
             this.tblViewMed.setItems(this.medList);
         }
-
-        //medNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-        
-       /* if(med==null){
-            System.out.println("Den gik ik Theis");
-        } else {
-            for (int i = 0; i<med.length;i++){
-            System.out.println(med[i].name);
-            System.out.println(med[i].amount);
-            System.out.println(med[i].note);
-            }
-        }*/
+    }
+    
+    @FXML
+    public void handleExtendVitalSigns(){
+        this.mainCtrl.showVitalSignsView();
     }
 
 	
