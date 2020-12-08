@@ -52,11 +52,11 @@ public class mainCtrl {
 		
 	
 		//Displays personnel ID
-		this.txtSignedInAs.setText(Integer.toString(this.mainApp.personnel.personnelID));
+		this.txtSignedInAs.setText("Signed in as: " + Integer.toString(this.mainApp.personnel.personnelID));
 		//Updates patient list
 		this.mainApp.personnel.updatePatientList();
 		//Displays number of patients assigned to the personnel
-		this.txtPatientsAss.setText(Integer.toString((this.mainApp.personnel.getPatientList()).size()));
+		this.txtPatientsAss.setText("Patients Assigned: " + Integer.toString((this.mainApp.personnel.getPatientList()).size()));
 		
     }
     public void showPatientDataView (String cpr){
