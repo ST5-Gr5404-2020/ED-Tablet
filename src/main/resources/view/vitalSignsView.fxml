@@ -19,7 +19,7 @@
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <LineChart horizontalGridLinesVisible="false" layoutX="-17.0" layoutY="2.0" prefHeight="150.0" prefWidth="255.0">
+                  <LineChart fx:id="lineChartBP" horizontalGridLinesVisible="false" layoutX="-17.0" layoutY="2.0" prefHeight="150.0" prefWidth="255.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -29,7 +29,7 @@
                   </LineChart>
                   <Label layoutX="14.0" layoutY="2.0" text="mmHg" textFill="WHITE" />
                   <Label layoutX="195.0" layoutY="108.0" text="Time" />
-                  <Button layoutX="168.0" layoutY="2.0" mnemonicParsing="false" prefHeight="3.0" prefWidth="66.0" text="EXTEND" />
+                  <Button fx:id="btnBpExtend" layoutX="168.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBpExtend" prefHeight="3.0" prefWidth="66.0" text="EXTEND" />
                </children>
             </AnchorPane>
             <AnchorPane layoutY="151.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="235.0" style="-fx-background-color: black;">
@@ -44,7 +44,7 @@
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <LineChart horizontalGridLinesVisible="false" layoutX="-13.0" layoutY="1.0" prefHeight="150.0" prefWidth="248.0" style="-fx-alternative-column-fill-visible: black;">
+                  <LineChart fx:id="lineChartEtCo2" horizontalGridLinesVisible="false" layoutX="-13.0" layoutY="1.0" prefHeight="150.0" prefWidth="248.0" style="-fx-alternative-column-fill-visible: black;">
                      <xAxis>
                         <CategoryAxis prefWidth="191.0" side="BOTTOM" />
                      </xAxis>
@@ -53,7 +53,7 @@
                      </yAxis>
                   </LineChart>
                   <Label layoutX="195.0" layoutY="110.0" text="Time" />
-                  <Button layoutX="169.0" layoutY="2.0" mnemonicParsing="false" prefHeight="3.0" prefWidth="66.0" text="EXTEND" />
+                  <Button fx:id="btnEtCo2Extend" layoutX="169.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleEtcO2Extend" prefHeight="3.0" prefWidth="66.0" text="EXTEND" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="235.0" layoutY="151.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="235.0" style="-fx-background-color: black;">
@@ -63,7 +63,7 @@
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <LineChart horizontalGridLinesVisible="false" layoutX="-13.0" layoutY="1.0" prefHeight="150.0" prefWidth="242.0">
+                  <LineChart fx:id="lineChartHr" horizontalGridLinesVisible="false" layoutX="-13.0" layoutY="1.0" prefHeight="150.0" prefWidth="242.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -82,7 +82,7 @@
                      </font>
                   </Label>
                   <Label layoutX="14.0" text="\% O2" textFill="WHITE" />
-                  <LineChart horizontalGridLinesVisible="false" layoutX="-12.0" layoutY="1.0" prefHeight="150.0" prefWidth="242.0">
+                  <LineChart fx:id="lineChartSpO2" horizontalGridLinesVisible="false" layoutX="-12.0" layoutY="1.0" prefHeight="150.0" prefWidth="242.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -92,8 +92,8 @@
                   </LineChart>
                   <Label layoutX="189.0" layoutY="108.0" text="Time" />
                   <Label layoutX="14.0" layoutY="130.0" text="BPM" textFill="WHITE" />
-                  <Button layoutX="169.0" layoutY="2.0" mnemonicParsing="false" prefHeight="3.0" prefWidth="66.0" text="EXTEND" />
-                  <Button layoutX="169.0" layoutY="135.0" mnemonicParsing="false" prefHeight="3.0" prefWidth="66.0" text="EXTEND" />
+                  <Button fx:id="btnSpO2Extend" layoutX="169.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleSpO2Extend" prefHeight="3.0" prefWidth="66.0" text="EXTEND" />
+                  <Button fx:id="btnHrExtend" layoutX="169.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleHrExtend" prefHeight="3.0" prefWidth="66.0" text="EXTEND" />
                </children>
             </AnchorPane>
             <Label layoutY="-3.0" prefHeight="20.0" prefWidth="470.0" style="-fx-background-color: black;" text="                                     VITAL SIGNS" textFill="WHITE">

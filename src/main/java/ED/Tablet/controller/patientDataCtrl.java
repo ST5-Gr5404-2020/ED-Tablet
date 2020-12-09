@@ -87,6 +87,7 @@ public class patientDataCtrl {
         // Initialize the med table with the two columns.
         medNameColumn.setCellValueFactory(cellData -> cellData.getValue().medName());
         medAmountColumn.setCellValueFactory(cellData -> cellData.getValue().medAmount());
+        
     
         }
 
@@ -153,7 +154,7 @@ public class patientDataCtrl {
     
     @FXML
     public void handleExtendVitalSigns(){
-        this.mainCtrl.showVitalSignsView();
+        this.mainCtrl.showVitalSignsView(this.patient.cpr);
     }
 
 	

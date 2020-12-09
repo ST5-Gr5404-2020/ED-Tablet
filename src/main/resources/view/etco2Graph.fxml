@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="282.0" prefWidth="470.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="282.0" prefWidth="470.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.etco2GraphCtrl">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="470.0" style="-fx-background-color: white;">
          <children>
             <AnchorPane layoutX="-1.0" prefHeight="71.0" prefWidth="470.0" style="-fx-background-color: black; -fx-border-color: white;">
                <children>
-                  <Button layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="BACK" />
+                  <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnBack" prefHeight="25.0" prefWidth="76.0" text="BACK" />
                   <Label layoutX="169.0" layoutY="8.0" prefHeight="36.0" prefWidth="132.0" text="END TIDAL CO2" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
@@ -22,7 +22,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <LineChart layoutX="1.0" layoutY="68.0" prefHeight="217.0" prefWidth="470.0">
+            <LineChart fx:id="lineChartEtCo2" layoutX="1.0" layoutY="68.0" prefHeight="217.0" prefWidth="470.0">
               <xAxis>
                 <CategoryAxis label="Time" prefHeight="20.0" prefWidth="399.0" side="BOTTOM" />
               </xAxis>
