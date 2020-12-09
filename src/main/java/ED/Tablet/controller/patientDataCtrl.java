@@ -84,7 +84,7 @@ public class patientDataCtrl {
 
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
+        // Initialize the med table with the two columns.
         medNameColumn.setCellValueFactory(cellData -> cellData.getValue().medName());
         medAmountColumn.setCellValueFactory(cellData -> cellData.getValue().medAmount());
     
