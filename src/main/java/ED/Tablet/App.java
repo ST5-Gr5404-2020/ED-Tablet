@@ -10,9 +10,9 @@ import ED.Tablet.controller.*;
 import ED.Tablet.model.patient;
 import ED.Tablet.model.personnel;
 
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
@@ -35,6 +35,7 @@ public class App extends Application {
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+            //primaryStage.setMaximized(true);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,10 +46,11 @@ public class App extends Application {
         try {
             // Load loginView
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getClassLoader().getResource("view/loginView.fxml"));
-            AnchorPane loginView = (AnchorPane) loader.load();
+            loader.setLocation(App.class.getClassLoader().getResource("view/loginView2.fxml"));
+            AnchorPane loginView2 = (AnchorPane) loader.load();
             // Set loginView into the center of root layout.
-            rootLayout.setCenter(loginView);
+            
+            rootLayout.setCenter(loginView2);
             // Give the controller access to the main app.
             ED.Tablet.controller.loginCtrl controller = loader.getController();
             controller.setMainApp(this);
@@ -80,9 +82,9 @@ public class App extends Application {
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
         initRootLayout();
-		// showLoginView();
-		personnel.personnelID = 123456;
-        showMainView();
+		showLoginView();
+		//personnel.personnelID = 123456;
+        // showMainView();
         
         
 
@@ -116,7 +118,7 @@ public class App extends Application {
         // deep.updateTripInfo();
         // deep.getTripInfo().printTripInfo();
 
-        // 1. Instancierer de tre databaser connections.
+        // 1. Instantierer de tre databaser connections.
         //      a. Cppj, Login, Cetrea conn er klar til at blive brugt. 
         // 2. Instancier personnel, som der kan lægges password/ID ind i. 
         // 3. Vis loginView.
