@@ -75,7 +75,7 @@ public class mainCtrl {
             e.printStackTrace();
 		}
     }
-    public void showVitalSignsView(){
+    public void showVitalSignsView(String cpr){
         try {
             // Load vitalSignsView
             FXMLLoader loader = new FXMLLoader();
@@ -84,13 +84,42 @@ public class mainCtrl {
             // Set loginView into the center of root layout.
             this.anchorPatientData.getChildren().setAll(anchorpaneVitalSignsView);
             // Give the controller access to the main app.
-            ED.Tablet.controller.vitalSignsCtrl controller = loader.getController();
-            controller.setMainApp(this.mainApp);
+			ED.Tablet.controller.vitalSignsCtrl controller = loader.getController();			
+			controller.setMainApp(this.mainApp);  
+			controller.setMainCtrl(this);          
+			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
+			controller.updateBPChart();
+			controller.updateEtCo2Chart();
+			controller.updateSpO2Chart();
+			controller.updateHrChart();
+			
             
         } catch (IOException e) {
             e.printStackTrace();
 		}
     }
+
+	public void showEtCo2Extend(String cpr){
+		try {
+			// Load EtCo2Extended View
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(App.class.getClassLoader().getResource("view/etco2Graph.fxml"));
+			AnchorPane anchorpaneEtCo2View = (AnchorPane) loader.load();
+			// Set loginView into the center of root layout.
+			this.anchorPatientData.getChildren().setAll(anchorpaneEtCo2View);
+			ED.Tablet.controller.etco2GraphCtrl controller = loader.getController();
+			controller.setMainCtrl(this);
+			controller.setMainApp(this.mainApp); 
+			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
+			controller.updateEtCo2Chart();
+
+		} catch(IOException e) {
+			e.printStackTrace();
+			}
+
+
+	}
+
 
     @FXML
     public void handleSelectPatient(){

@@ -153,7 +153,7 @@ public class patientDataCtrl {
     
     @FXML
     public void handleExtendVitalSigns(){
-        this.mainCtrl.showVitalSignsView();
+        this.mainCtrl.showVitalSignsView(this.patient.cpr);
     }
 
 	
