@@ -82,9 +82,9 @@ public class App extends Application {
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
         initRootLayout();
-		showLoginView();
-		//personnel.personnelID = 123456;
-         //showMainView();
+		// showLoginView();
+		personnel.personnelID = 123456;
+        showMainView();
         
         
 

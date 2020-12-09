@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 
@@ -26,14 +27,14 @@
             <Button fx:id="btnExtendNote" layoutX="38.0" layoutY="1.0" mnemonicParsing="false" text="EXTEND" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-4.0" layoutY="103.0" prefHeight="220.0" prefWidth="500.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="224.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="109.0">
+      <AnchorPane layoutX="-4.0" layoutY="102.0" prefHeight="226.0" prefWidth="503.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="224.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="109.0">
          <children>
             <Label layoutX="173.0" layoutY="-5.0" text="VITAL SIGNS" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <GridPane layoutX="4.0" layoutY="39.0" prefHeight="176.0" prefWidth="491.0" style="-fx-background-color: white;">
+            <GridPane layoutX="4.0" layoutY="39.0" prefHeight="169.0" prefWidth="491.0" style="-fx-background-color: white;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.39524841308594" minWidth="10.0" prefWidth="327.39524841308594" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.1830291748047" minWidth="10.0" prefWidth="170.60475158691406" />
@@ -45,51 +46,60 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
+                  <StackPane fx:id="myStackpaneHR" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="3" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="1" />
                   <Label prefHeight="34.0" prefWidth="317.0" text="BLOOD PRESSURE">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label text="OXYGEN SATURATION" GridPane.rowIndex="1">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label text="END TIDAL CO2" GridPane.rowIndex="2">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label text="HEART RATE" GridPane.rowIndex="3">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="valSPO2" prefHeight="34.0" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="valSPO2" prefHeight="48.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="valETCO2" prefHeight="34.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="valETCO2" prefHeight="41.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="valHR" prefHeight="34.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="valHR" prefHeight="41.0" prefWidth="172.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Label fx:id="valBPsys" prefHeight="34.0" prefWidth="42.0">
+                        <Label fx:id="valBPsys" prefHeight="46.0" prefWidth="61.0">
                            <font>
-                              <Font size="28.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="valBPdia" prefHeight="34.0" prefWidth="41.0">
+                        <Label prefHeight="34.0" prefWidth="41.0" text="   /">
                            <font>
-                              <Font size="28.0" />
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="valBPdia" prefHeight="43.0" prefWidth="76.0">
+                           <font>
+                              <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
@@ -117,6 +127,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="1" />
                   <Label text="NAME" />
                   <Label text="CPR-NUMBER" GridPane.rowIndex="1" />
                   <Label text="ACCIDENT NUMBER" GridPane.rowIndex="2" />
@@ -136,34 +148,46 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="2" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" />
                   <Label text="AMBULANCE TELEPHONE" />
                   <Label prefHeight="17.0" prefWidth="196.0" text="ARRIVED AT EMERGENCY SITE" GridPane.rowIndex="1" />
                   <Label text="ETA IN ED" GridPane.rowIndex="2" />
                   <Label fx:id="txtAmbulancePhone" text="Label" GridPane.columnIndex="1" />
                   <Label fx:id="txtArrivedAtScene" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="txtEtatxtEta" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="txtEta" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <GridPane layoutX="283.0" layoutY="42.0" prefHeight="83.0" prefWidth="211.0" style="-fx-background-color: white;">
+            <GridPane layoutX="283.0" layoutY="42.0" prefHeight="83.0" prefWidth="211.0" style="-fx-background-color: red;">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.68035888671875" minWidth="10.0" prefWidth="103.68035888671875" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.144287109375" minWidth="10.0" prefWidth="96.81964111328125" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.72760009765625" minWidth="10.0" prefWidth="99.20281982421875" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.144287109375" minWidth="10.0" prefWidth="112.29718017578125" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="txtTriageScore1" text="TRIAGESCORE" />
-                  <Label fx:id="txtTriageScore11" text="DANISH INDEX" GridPane.rowIndex="1" />
-                  <Label fx:id="txtTriageScore" text="Label" GridPane.columnIndex="1">
+                  <Label text="Triage:">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="txtDkIndextxtDkIndex" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label text="DI:" GridPane.rowIndex="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtTriageScore" prefHeight="26.0" prefWidth="66.0" text="Label" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtDkIndex" prefHeight="26.0" prefWidth="73.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -177,7 +201,7 @@
                   <Font size="28.0" />
                </font>
             </Label>
-            <TableView fx:id="tblViewMed" layoutX="10.0" layoutY="49.0" prefHeight="164.0" prefWidth="486.0">
+            <TableView fx:id="tblViewMed" layoutX="10.0" layoutY="39.0" prefHeight="172.0" prefWidth="486.0">
                <columns>
                   <TableColumn fx:id="medNameColumn" prefWidth="353.5507507324219" text="Name" />
                   <TableColumn fx:id="medAmountColumn" minWidth="5.71563720703125" prefWidth="131.94921875" text="Amount" />
