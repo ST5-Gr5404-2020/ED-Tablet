@@ -87,6 +87,7 @@ public class patientDataCtrl {
         // Initialize the person table with the two columns.
         medNameColumn.setCellValueFactory(cellData -> cellData.getValue().medName());
         medAmountColumn.setCellValueFactory(cellData -> cellData.getValue().medAmount());
+        
     
         }
 

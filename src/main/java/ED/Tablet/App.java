@@ -46,11 +46,11 @@ public class App extends Application {
         try {
             // Load loginView
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getClassLoader().getResource("view/loginView2.fxml"));
-            AnchorPane loginView2 = (AnchorPane) loader.load();
+            loader.setLocation(App.class.getClassLoader().getResource("view/loginView.fxml"));
+            AnchorPane loginView = (AnchorPane) loader.load();
             // Set loginView into the center of root layout.
             
-            rootLayout.setCenter(loginView2);
+            rootLayout.setCenter(loginView);
             // Give the controller access to the main app.
             ED.Tablet.controller.loginCtrl controller = loader.getController();
             controller.setMainApp(this);
@@ -84,7 +84,7 @@ public class App extends Application {
         initRootLayout();
 		showLoginView();
 		//personnel.personnelID = 123456;
-        // showMainView();
+         //showMainView();
         
         
 

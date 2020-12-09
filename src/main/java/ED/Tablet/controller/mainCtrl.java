@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -47,7 +48,8 @@ public class mainCtrl {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedCpr){
                 showPatientDataView(selectedCpr);
             }
-		});
+        });
+        
 		
 		//Displays personnel ID
 		this.txtSignedInAs.setText("Signed in as: " + Integer.toString(this.mainApp.personnel.personnelID));
@@ -62,7 +64,7 @@ public class mainCtrl {
             // Load mainView
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getClassLoader().getResource("view/patientDataView.fxml"));
-            AnchorPane anchorPatientDataView = (AnchorPane) loader.load();
+            AnchorPane anchorPatientDataView= (AnchorPane) loader.load();
             // Set loginView into the center of root layout.
             this.anchorPatientData.getChildren().setAll(anchorPatientDataView);
             // Give the controller access to the main app.

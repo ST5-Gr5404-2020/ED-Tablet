@@ -2,31 +2,32 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.loginCtrl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.loginCtrl">
    <children>
-      <Label layoutX="188.0" layoutY="65.0" prefHeight="57.0" prefWidth="220.0" text="Region Nordjylland" textFill="WHITE">
+      <Label alignment="TOP_CENTER" layoutX="431.0" layoutY="170.0" prefHeight="70.0" prefWidth="447.0" text="Region Nordjylland" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
-            <Font size="24.0" />
+            <Font size="52.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPersonnelID" layoutX="201.0" layoutY="138.0" prefHeight="40.0" prefWidth="186.0" promptText="Username">
+      <TextField fx:id="txtPersonnelID" alignment="CENTER" layoutX="329.0" layoutY="292.0" prefHeight="92.0" prefWidth="638.0" promptText="Username">
          <font>
-            <Font size="16.0" />
+            <Font size="32.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtPassword" layoutX="201.0" layoutY="188.0" prefHeight="40.0" prefWidth="186.0" promptText="Password">
+      <Button fx:id="btnLogin" layoutX="507.0" layoutY="558.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="77.0" prefWidth="277.0" text="Login">
          <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Button fx:id="btnLogin" layoutX="259.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="70.0" text="Login">
-         <font>
-            <Font size="16.0" />
+            <Font size="32.0" />
          </font>
       </Button>
+      <PasswordField fx:id="txtPassword" alignment="CENTER" layoutX="329.0" layoutY="415.0" prefHeight="92.0" prefWidth="638.0" promptText="Password">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </PasswordField>
    </children>
 </AnchorPane>
