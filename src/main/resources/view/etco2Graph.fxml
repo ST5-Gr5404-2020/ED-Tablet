@@ -14,7 +14,7 @@
          <children>
             <AnchorPane layoutX="-1.0" prefHeight="71.0" prefWidth="470.0" style="-fx-background-color: black; -fx-border-color: white;">
                <children>
-                  <Button layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="BACK" />
+                  <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnBack" prefHeight="25.0" prefWidth="76.0" text="BACK" />
                   <Label layoutX="169.0" layoutY="8.0" prefHeight="36.0" prefWidth="132.0" text="END TIDAL CO2" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="18.0" />

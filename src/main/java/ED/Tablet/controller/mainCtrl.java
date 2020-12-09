@@ -118,11 +118,64 @@ public class mainCtrl {
 		} catch(IOException e) {
 			e.printStackTrace();
 			}
-
-
 	}
 
+	public void showHrExtend(String cpr){
+		try {
+			// Load HrExtended View
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(App.class.getClassLoader().getResource("view/heartRateGraph.fxml"));
+			AnchorPane anchorpaneHrView = (AnchorPane) loader.load();
+			// Set Hr into the center of root layout.
+			this.anchorPatientData.getChildren().setAll(anchorpaneHrView);
+			ED.Tablet.controller.heartRateGraphCtrl controller = loader.getController();
+			controller.setMainCtrl(this);
+			controller.setMainApp(this.mainApp); 
+			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
+			controller.updateHrChart();
 
+		} catch(IOException e) {
+			e.printStackTrace();
+			}
+	}
+
+	public void showSpO2Extend(String cpr){
+		try {
+			// Load HrExtended View
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(App.class.getClassLoader().getResource("view/spo2Graph.fxml"));
+			AnchorPane anchorpaneSpO2View = (AnchorPane) loader.load();
+			// Set Hr into the center of root layout.
+			this.anchorPatientData.getChildren().setAll(anchorpaneSpO2View);
+			ED.Tablet.controller.spo2GraphCtrl controller = loader.getController();
+			controller.setMainCtrl(this);
+			controller.setMainApp(this.mainApp); 
+			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
+			controller.updateSpO2Chart();
+
+		} catch(IOException e) {
+			e.printStackTrace();
+			}
+	}
+
+	public void showBpExtend(String cpr){
+		try {
+			// Load HrExtended View
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(App.class.getClassLoader().getResource("view/bloodPressureGraph.fxml"));
+			AnchorPane anchorpaneBpView = (AnchorPane) loader.load();
+			// Set Hr into the center of root layout.
+			this.anchorPatientData.getChildren().setAll(anchorpaneBpView);
+			ED.Tablet.controller.bpGraphCtrl controller = loader.getController();
+			controller.setMainCtrl(this);
+			controller.setMainApp(this.mainApp); 
+			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
+			controller.updateBpChart();
+
+		} catch(IOException e) {
+			e.printStackTrace();
+			}
+	}
     @FXML
     public void handleSelectPatient(){
         System.out.println("Der er klikket");
