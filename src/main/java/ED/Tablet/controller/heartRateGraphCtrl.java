@@ -10,14 +10,14 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 
-public class etco2GraphCtrl {
-public App mainApp;	
+public class heartRateGraphCtrl {
+	public App mainApp;	
 public patient patient;
 private mainCtrl mainCtrl;
 CategoryAxis xAxis = new CategoryAxis();
 NumberAxis yAxis = new NumberAxis();
 @FXML
-LineChart<String,Number> lineChartEtCo2 = new LineChart<String,Number>(xAxis, yAxis);
+LineChart<String,Number> lineChartHr = new LineChart<String,Number>(xAxis, yAxis);
 @FXML 
 Button btnBack;
 
@@ -36,16 +36,16 @@ public void setPatient(patient patient){
 public void handleBtnBack(){
 	this.mainCtrl.showVitalSignsView(this.patient.cpr);
 }
-	public void updateEtCo2Chart(){
+	public void updateHrChart(){
 		this.patient.updateVitalSigns();
 		vitalSigns[] vitalSigns = this.patient.getVitalSigns();
 		XYChart.Series<String,Number> series = new XYChart.Series<>();
 		
 		for(int i = 0;i<vitalSigns.length;i++){			
-			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 19), vitalSigns[i].etco2)); 
+			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 19), vitalSigns[i].hr)); 
 			 
 		}
-		lineChartEtCo2.getData().add(series);		
+		lineChartHr.getData().add(series);		
 	}
 	
 }

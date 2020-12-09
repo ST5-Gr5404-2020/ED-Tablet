@@ -55,16 +55,24 @@ public class vitalSignsCtrl {
 		this.mainCtrl.showEtCo2Extend(this.patient.cpr);
 	}
 
+	public void handleHrExtend(){
+		this.mainCtrl.showHrExtend(this.patient.cpr);
+	}
+
+	public void handleSpO2Extend(){
+		this.mainCtrl.showSpO2Extend(this.patient.cpr);
+	}
+
+	public void handleBpExtend(){
+		this.mainCtrl.showBpExtend(this.patient.cpr);
+	}
 	
-
-
-
 	public void updateBPChart(){
 		this.patient.updateVitalSigns();
 		vitalSigns[] vitalSigns = this.patient.getVitalSigns();
 		XYChart.Series<String,Number> seriesSys = new XYChart.Series<>();
 		XYChart.Series<String,Number> seriesDia = new XYChart.Series<>();
-		
+				
 		for(int i = 0;i<vitalSigns.length;i++){			
 			seriesSys.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 19), vitalSigns[i].bpsys)); 
 			seriesDia.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 19), vitalSigns[i].bpdia)); 
@@ -78,8 +86,7 @@ public class vitalSignsCtrl {
 		XYChart.Series<String,Number> series = new XYChart.Series<>();
 		
 		for(int i = 0;i<vitalSigns.length;i++){			
-			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 19), vitalSigns[i].etco2)); 
-			 
+			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 19), vitalSigns[i].etco2));  
 		}
 		lineChartEtCo2.getData().add(series);		
 	}
