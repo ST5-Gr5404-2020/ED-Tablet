@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -74,40 +73,26 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="valSPO2" prefHeight="48.0" prefWidth="167.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Label fx:id="valBP" prefHeight="46.0" prefWidth="134.0" textAlignment="CENTER" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="valETCO2" prefHeight="41.0" prefWidth="169.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Label fx:id="valSPO2" prefHeight="46.0" prefWidth="134.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="valHR" prefHeight="41.0" prefWidth="172.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Label fx:id="valETCO2" prefHeight="46.0" prefWidth="134.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
-                     <children>
-                        <Label fx:id="valBPsys" prefHeight="46.0" prefWidth="61.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="34.0" prefWidth="41.0" text="   /">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="valBPdia" prefHeight="43.0" prefWidth="76.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <Label fx:id="valHR" prefHeight="46.0" prefWidth="134.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                   <Label fx:id="lblBpTimestamp" text="Time" />
                   <Label fx:id="lblEtco2Timestamp" text="Time" GridPane.rowIndex="2" />
                   <Label fx:id="lblSpo2Timestamp" text="Time" GridPane.rowIndex="1" />

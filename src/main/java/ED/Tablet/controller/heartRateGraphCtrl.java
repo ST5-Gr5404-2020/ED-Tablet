@@ -45,7 +45,9 @@ public void handleBtnBack(){
 			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].hr)); 
 			 
 		}
-		lineChartHr.getData().add(series);		
+		lineChartHr.getData().add(series);	
+		series.setName("Heart rate");
+		
 	}
 	
 }

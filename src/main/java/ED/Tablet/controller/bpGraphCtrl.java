@@ -49,7 +49,9 @@ public void updateBpChart(){
 		seriesDia.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 19), vitalSigns[i].bpdia));  
 			
 	}
-	lineChartBp.getData().addAll(seriesSys,seriesDia);		
+	lineChartBp.getData().addAll(seriesSys,seriesDia);	
+	seriesSys.setName("Systolic");
+	seriesDia.setName("Diastolic");	
 }
 	
 }

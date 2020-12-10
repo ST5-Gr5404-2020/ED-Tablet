@@ -45,6 +45,7 @@ public class spo2GraphCtrl {
 		for(int i = 0;i<vitalSigns.length;i++){			
 			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].spo2));	
 		}
-		lineChartSpO2.getData().add(series);		
+		lineChartSpO2.getData().add(series);	
+		series.setName("SPO2");	
 	}		
 }

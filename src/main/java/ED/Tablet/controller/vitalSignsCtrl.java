@@ -31,10 +31,8 @@ public class vitalSignsCtrl {
 	Button btnEtCo2Extend;
 	@FXML
 	Button btnHrExtend;
-	
-	
-
-	
+	@FXML 
+	Button btnBack;
 	
 
     //Give the controller access to the main app
@@ -66,6 +64,9 @@ public class vitalSignsCtrl {
 	public void handleBpExtend(){
 		this.mainCtrl.showBpExtend(this.patient.cpr);
 	}
+	public void handleBtnBack(){
+		this.mainCtrl.showPatientDataView(this.patient.cpr);
+	}
 	
 	public void updateBPChart(){
 		this.patient.updateVitalSigns();
@@ -77,7 +78,9 @@ public class vitalSignsCtrl {
 			seriesSys.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].bpsys)); 
 			seriesDia.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].bpdia)); 
 		}
-		lineChartBP.getData().addAll(seriesSys,seriesDia);		
+		lineChartBP.getData().addAll(seriesSys,seriesDia);	
+		seriesSys.setName("Systolic");
+		seriesDia.setName("Diastolic");
 	}
 
 	public void updateEtCo2Chart(){
@@ -88,7 +91,8 @@ public class vitalSignsCtrl {
 		for(int i = 0;i<vitalSigns.length;i++){			
 			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].etco2));  
 		}
-		lineChartEtCo2.getData().add(series);		
+		lineChartEtCo2.getData().add(series);	
+		series.setName("ETCO2");	
 	}
 
 	public void updateSpO2Chart(){
@@ -100,7 +104,8 @@ public class vitalSignsCtrl {
 			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].spo2)); 
 			 
 		}
-		lineChartSpO2.getData().add(series);		
+		lineChartSpO2.getData().add(series);
+		series.setName("SPO2");		
 	}
 
 	public void updateHrChart(){
@@ -112,6 +117,7 @@ public class vitalSignsCtrl {
 			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].hr)); 
 			 
 		}
-		lineChartHr.getData().add(series);		
+		lineChartHr.getData().add(series);
+		series.setName("Heart rate");		
 	}
 }

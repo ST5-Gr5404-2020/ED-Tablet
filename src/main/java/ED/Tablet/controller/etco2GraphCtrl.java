@@ -45,7 +45,8 @@ public void handleBtnBack(){
 			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].etco2)); 
 			 
 		}
-		lineChartEtCo2.getData().add(series);		
+		lineChartEtCo2.getData().add(series);
+		series.setName("ETCO2");	
 	}
 	
 }
