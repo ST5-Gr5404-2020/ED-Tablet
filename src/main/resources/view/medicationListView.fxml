@@ -19,7 +19,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TableView fx:id="tblViewFullMed" layoutX="-1.0" layoutY="98.0" prefHeight="512.0" prefWidth="1005.0">
+      <TableView fx:id="tblViewFullMed" layoutY="92.0" prefHeight="501.0" prefWidth="1005.0">
         <columns>
           <TableColumn fx:id="medTimestampColumn" prefWidth="96.90563595294952" text="Time Stamp" />
           <TableColumn fx:id="medNameColumn" prefWidth="313.3584899902344" text="Name" />
