@@ -75,7 +75,7 @@ public class App extends Application {
         }
     }
     
-    //Funktion der loader første scene (loginView). Kører automatisk når main() sættes i gang.
+    //Function that loads the first scene loginView, runs automatically when main() is initiated.
     //@param stage
     //@throws Exception
 
