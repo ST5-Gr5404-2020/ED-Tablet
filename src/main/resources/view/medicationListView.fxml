@@ -19,12 +19,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TableView fx:id="tblViewFullMed" layoutY="92.0" prefHeight="501.0" prefWidth="1005.0">
+      <TableView fx:id="tblViewFullMed" layoutX="10.0" layoutY="92.0" prefHeight="501.0" prefWidth="976.0">
         <columns>
-          <TableColumn fx:id="medTimestampColumn" prefWidth="96.90563595294952" text="Time Stamp" />
-          <TableColumn fx:id="medNameColumn" prefWidth="313.3584899902344" text="Name" />
-            <TableColumn fx:id="medAmountColumn" minWidth="0.0" prefWidth="92.37738037109375" text="Amount" />
-            <TableColumn fx:id="medNoteColumn" prefWidth="506.26422119140625" text="Note" />
+          <TableColumn fx:id="medTimestampColumn" prefWidth="159.40151000022888" text="Time Stamp" />
+          <TableColumn fx:id="medNameColumn" prefWidth="164.0056610107422" text="Name" />
+            <TableColumn fx:id="medAmountColumn" minWidth="0.0" prefWidth="144.79364013671875" text="Amount" />
+            <TableColumn fx:id="medNoteColumn" prefWidth="543.2063293457031" text="Note" />
         </columns>
       </TableView>
    </children>

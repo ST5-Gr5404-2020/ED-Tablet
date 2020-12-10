@@ -26,7 +26,6 @@
                <font>
                   <Font size="18.0" />
                </font></TextArea>
-            <Button fx:id="btnExtendNote" layoutX="363.0" layoutY="6.0" mnemonicParsing="false" text="SHOW EXTENDED" AnchorPane.rightAnchor="14.5" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-4.0" layoutY="82.0" prefHeight="241.0" prefWidth="503.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="502.0" AnchorPane.topAnchor="83.0">
@@ -38,7 +37,8 @@
             </Label>
             <GridPane layoutX="4.0" layoutY="39.0" prefHeight="186.0" prefWidth="491.0" style="-fx-background-color: white;">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.39524841308594" minWidth="10.0" prefWidth="327.39524841308594" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.39524841308594" minWidth="10.0" prefWidth="113.63900756835938" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.39524841308594" minWidth="10.0" prefWidth="317.3609924316406" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.1830291748047" minWidth="10.0" prefWidth="170.60475158691406" />
               </columnConstraints>
               <rowConstraints>
@@ -48,46 +48,48 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <StackPane fx:id="myStackpaneHR" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <StackPane prefHeight="150.0" prefWidth="324.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="3" />
-                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="3" />
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="1" />
-                  <Label prefHeight="34.0" prefWidth="317.0" text="BLOOD PRESSURE">
+                  <StackPane fx:id="myStackpaneHR" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <StackPane prefHeight="150.0" prefWidth="324.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label prefHeight="34.0" prefWidth="317.0" text="BLOOD PRESSURE" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label text="OXYGEN SATURATION" GridPane.rowIndex="1">
+                  <Label text="OXYGEN SATURATION" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label text="END TIDAL CO2" GridPane.rowIndex="2">
+                  <Label text="END TIDAL CO2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label text="HEART RATE" GridPane.rowIndex="3">
+                  <Label text="HEART RATE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="valSPO2" prefHeight="48.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="valSPO2" prefHeight="48.0" prefWidth="167.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="valETCO2" prefHeight="41.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="valETCO2" prefHeight="41.0" prefWidth="169.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="valHR" prefHeight="41.0" prefWidth="172.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="valHR" prefHeight="41.0" prefWidth="172.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                      <children>
                         <Label fx:id="valBPsys" prefHeight="46.0" prefWidth="61.0">
                            <font>
@@ -106,6 +108,10 @@
                         </Label>
                      </children>
                   </HBox>
+                  <Label fx:id="lblBpTimestamp" text="Time" />
+                  <Label fx:id="lblEtco2Timestamp" text="Time" GridPane.rowIndex="2" />
+                  <Label fx:id="lblSpo2Timestamp" text="Time" GridPane.rowIndex="1" />
+                  <Label fx:id="lblHrTimestamp" text="Time" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <Button fx:id="btnExtendVitalSigns" layoutX="375.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleExtendVitalSigns" text="SHOW GRAPHS" AnchorPane.rightAnchor="13.5" AnchorPane.topAnchor="0.0" />
@@ -209,7 +215,7 @@
                   <TableColumn fx:id="medAmountColumn" minWidth="5.71563720703125" prefWidth="131.94921875" text="Amount" />
                </columns>
             </TableView>
-            <Button fx:id="btnExtendNote1" layoutX="405.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleMedList" text="FULL LIST" AnchorPane.rightAnchor="13.5" AnchorPane.topAnchor="1.0" />
+            <Button fx:id="btnFullMedList" layoutX="405.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleMedList" text="FULL LIST" AnchorPane.rightAnchor="13.5" AnchorPane.topAnchor="1.0" />
          </children>
       </AnchorPane>
       <Label layoutX="363.0" layoutY="12.0" prefHeight="66.0" prefWidth="288.0" text="PATIENT DATA" textFill="WHITE">

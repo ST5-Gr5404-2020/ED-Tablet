@@ -7,19 +7,19 @@ import javafx.beans.property.StringProperty;
 
 public class medication {
 
-    public Timestamp timestamp;
+    private final StringProperty timestamp;
     private final StringProperty name;
     private final StringProperty amount;
-	public String note;
+	private final StringProperty note;
 
 
 	
 	// Constructor to medication
 	public medication(Timestamp timestamp, String name, String amount, String note){
-		this.timestamp=timestamp;
+		this.timestamp= new SimpleStringProperty(timestamp.toString().substring(11,19));
 		this.name= new SimpleStringProperty(name);
 		this.amount= new SimpleStringProperty(amount);
-		this.note=note;
+		this.note= new SimpleStringProperty(note); 
 
 
 	}
@@ -30,6 +30,13 @@ public class medication {
 	}
 	public StringProperty medAmount(){
 		return amount;
+	}
+
+	public StringProperty medTimestamp(){
+		return timestamp;
+	}
+	public StringProperty medNote(){
+		return note;
 	}
 }
 
