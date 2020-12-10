@@ -75,7 +75,7 @@ public class cppjConn {
 	
 
     public static medication[] queryMedication(String cpr, Timestamp timestamp){
-        // Forberder statement, så vi får indsæt det rigtige på spørgsmålstegnet.
+		// Prepare a statement, so we insert the proper query and avoid SQL injections
         PreparedStatement pstmt = db.getPreparedStatement(medicationQuery);
         try{
             pstmt.setString(1, cpr);
