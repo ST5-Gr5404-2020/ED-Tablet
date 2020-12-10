@@ -14,27 +14,27 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="1005.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.patientDataCtrl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1005.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.patientDataCtrl">
    <children>
-      <AnchorPane layoutX="448.0" layoutY="330.0" prefHeight="220.0" prefWidth="500.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="330.0">
+      <AnchorPane layoutX="448.0" layoutY="322.0" prefHeight="228.0" prefWidth="503.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="502.0" AnchorPane.topAnchor="322.0">
          <children>
             <Label layoutX="212.0" layoutY="-3.0" text="NOTE" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtNoteArea" layoutX="4.0" layoutY="38.0" prefHeight="171.0" prefWidth="485.0" wrapText="true" />
-            <Button fx:id="btnExtendNote" layoutX="38.0" layoutY="1.0" mnemonicParsing="false" text="EXTEND" />
+            <TextArea fx:id="txtNoteArea" layoutX="4.0" layoutY="38.0" prefHeight="229.0" prefWidth="485.0" wrapText="true" />
+            <Button fx:id="btnExtendNote" layoutX="363.0" layoutY="6.0" mnemonicParsing="false" text="SHOW EXTENDED" AnchorPane.rightAnchor="14.5" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-4.0" layoutY="102.0" prefHeight="226.0" prefWidth="503.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="224.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="109.0">
+      <AnchorPane layoutX="-4.0" layoutY="82.0" prefHeight="241.0" prefWidth="503.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="502.0" AnchorPane.topAnchor="83.0">
          <children>
             <Label layoutX="173.0" layoutY="-5.0" text="VITAL SIGNS" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <GridPane layoutX="4.0" layoutY="39.0" prefHeight="169.0" prefWidth="491.0" style="-fx-background-color: white;">
+            <GridPane layoutX="4.0" layoutY="39.0" prefHeight="186.0" prefWidth="491.0" style="-fx-background-color: white;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.39524841308594" minWidth="10.0" prefWidth="327.39524841308594" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.1830291748047" minWidth="10.0" prefWidth="170.60475158691406" />
@@ -47,7 +47,7 @@
               </rowConstraints>
                <children>
                   <StackPane fx:id="myStackpaneHR" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="3" />
+                  <StackPane prefHeight="150.0" prefWidth="324.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="3" />
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="1" />
                   <Label prefHeight="34.0" prefWidth="317.0" text="BLOOD PRESSURE">
@@ -106,17 +106,17 @@
                   </HBox>
                </children>
             </GridPane>
-            <Button fx:id="btnExtendVitalSigns" layoutX="41.0" mnemonicParsing="false" onAction="#handleExtendVitalSigns" text="EXTEND" />
+            <Button fx:id="btnExtendVitalSigns" layoutX="375.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleExtendVitalSigns" text="SHOW GRAPHS" AnchorPane.rightAnchor="13.5" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="526.0" layoutY="109.0" prefHeight="220.0" prefWidth="500.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="224.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="109.0">
+      <AnchorPane layoutX="526.0" layoutY="83.0" prefHeight="240.0" prefWidth="503.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="502.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="83.0">
          <children>
             <Label layoutX="150.0" layoutY="-5.0" text="INFORMATION" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <GridPane layoutX="9.0" layoutY="42.0" prefHeight="83.0" prefWidth="274.0" style="-fx-background-color: white;">
+            <GridPane layoutX="9.0" layoutY="42.0" prefHeight="95.0" prefWidth="274.0" style="-fx-background-color: white;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.60296630859375" minWidth="10.0" prefWidth="188.57696533203125" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.35211181640625" minWidth="10.0" prefWidth="134.92303466796875" />
@@ -137,7 +137,7 @@
                   <Label fx:id="txtAccidentNumber" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <GridPane layoutX="9.0" layoutY="124.0" prefHeight="83.0" prefWidth="485.0" style="-fx-background-color: white;">
+            <GridPane layoutX="9.0" layoutY="136.0" prefHeight="91.0" prefWidth="485.0" style="-fx-background-color: white;">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.76116943359375" minWidth="10.0" prefWidth="221.7344970703125" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.2501220703125" minWidth="10.0" prefWidth="252.2655029296875" />
@@ -150,7 +150,7 @@
                <children>
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowIndex="2" />
-                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" />
+                  <StackPane prefHeight="150.0" prefWidth="227.0" style="-fx-background-color: lightgrey;" />
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" />
                   <Label text="AMBULANCE TELEPHONE" />
                   <Label prefHeight="17.0" prefWidth="196.0" text="ARRIVED AT EMERGENCY SITE" GridPane.rowIndex="1" />
@@ -160,7 +160,7 @@
                   <Label fx:id="txtEta" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <GridPane layoutX="283.0" layoutY="42.0" prefHeight="83.0" prefWidth="211.0" style="-fx-background-color: red;">
+            <GridPane layoutX="283.0" layoutY="42.0" prefHeight="95.0" prefWidth="211.0" style="-fx-background-color: red;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.72760009765625" minWidth="10.0" prefWidth="99.20281982421875" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.144287109375" minWidth="10.0" prefWidth="112.29718017578125" />
@@ -194,20 +194,20 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="506.0" layoutY="343.0" prefHeight="220.0" prefWidth="500.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="330.0">
+      <AnchorPane layoutX="506.0" layoutY="322.0" prefHeight="228.0" prefWidth="503.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="502.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="322.0">
          <children>
             <Label layoutX="172.0" layoutY="-3.0" text="MEDICATION" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <TableView fx:id="tblViewMed" layoutX="10.0" layoutY="39.0" prefHeight="172.0" prefWidth="486.0">
+            <TableView fx:id="tblViewMed" layoutX="10.0" layoutY="39.0" prefHeight="230.0" prefWidth="486.0">
                <columns>
                   <TableColumn fx:id="medNameColumn" prefWidth="353.5507507324219" text="Name" />
                   <TableColumn fx:id="medAmountColumn" minWidth="5.71563720703125" prefWidth="131.94921875" text="Amount" />
                </columns>
             </TableView>
-            <Button fx:id="btnExtendNote1" layoutX="24.0" layoutY="1.0" mnemonicParsing="false" text="EXTEND" />
+            <Button fx:id="btnExtendNote1" layoutX="405.0" layoutY="4.0" mnemonicParsing="false" text="FULL LIST" AnchorPane.rightAnchor="13.5" AnchorPane.topAnchor="1.0" />
          </children>
       </AnchorPane>
       <Label layoutX="363.0" layoutY="12.0" prefHeight="66.0" prefWidth="288.0" text="PATIENT DATA" textFill="WHITE">

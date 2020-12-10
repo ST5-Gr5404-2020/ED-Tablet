@@ -10,12 +10,18 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.mainCtrl">
    <children>
-      <SplitPane layoutX="273.0" layoutY="189.0" prefHeight="554.0" prefWidth="1007.0">
+      <SplitPane layoutX="273.0" layoutY="139.0" prefHeight="604.0" prefWidth="1007.0">
          <items>
-            <AnchorPane fx:id="anchorPatientData" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" />
+            <AnchorPane fx:id="anchorPatientData" prefHeight="606.0" prefWidth="1005.0" style="-fx-background-color: black;">
+               <children>
+                  <Label layoutX="335.0" layoutY="275.0" text="SELECT PATIENT" textFill="WHITE">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
          </items>
       </SplitPane>
       <GridPane layoutX="13.0" layoutY="16.0" prefHeight="120.0" prefWidth="748.0">
