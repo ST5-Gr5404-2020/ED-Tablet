@@ -176,6 +176,28 @@ public class mainCtrl {
 			e.printStackTrace();
 			}
 	}
+
+	public void showExtendedMedication(String cpr){
+		try {
+			// Load HrExtended View
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(App.class.getClassLoader().getResource("view/medicationListView.fxml"));
+			AnchorPane anchorpaneMedListView = (AnchorPane) loader.load();
+			// Set Hr into the center of root layout.
+			this.anchorPatientData.getChildren().setAll(anchorpaneMedListView);
+			ED.Tablet.controller.medicationCtrl controller = loader.getController();
+			controller.setMainCtrl(this);
+			controller.setMainApp(this.mainApp); 
+			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
+			controller.displayFullMedication();
+
+		} catch(IOException e) {
+			e.printStackTrace();
+			}
+	}
+
+
+
     @FXML
     public void handleSelectPatient(){
         System.out.println("Der er klikket");

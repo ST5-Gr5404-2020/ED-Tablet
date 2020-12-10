@@ -37,6 +37,16 @@ public class patientDataCtrl {
     public Label valETCO2;
     @FXML
     public Label valHR;
+    @FXML
+    public Label lblBpTimestamp;
+    @FXML
+    public Label lblSpo2Timestamp;
+    @FXML
+    public Label lblEtco2Timestamp;
+    @FXML
+    public Label lblHrTimestamp;
+
+
     
     @FXML 
     public StackPane myStackpaneHR;
@@ -79,6 +89,8 @@ public class patientDataCtrl {
 
     @FXML
     private Button btnExtendVitalSigns;
+    @FXML 
+    private Button btnFullMedList;
 
     tripInfo tripInfo;
 
@@ -126,19 +138,25 @@ public class patientDataCtrl {
         } else {
             this.valBPsys.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].bpsys)));
             this.valBPdia.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].bpdia)));
-            this.valHR.setText((Integer.toString(vitalSigns[vitalSigns.length - 2].hr)));
+            this.valHR.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].hr)));
             this.valSPO2.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].spo2)));
             this.valETCO2.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].etco2)));
+            this.lblBpTimestamp.setText(vitalSigns[vitalSigns.length - 1].timestamp.toString().substring(11,19));
+            this.lblSpo2Timestamp.setText(vitalSigns[vitalSigns.length - 1].timestamp.toString().substring(11,19));
+            this.lblEtco2Timestamp.setText(vitalSigns[vitalSigns.length - 1].timestamp.toString().substring(11,19));
+            this.lblHrTimestamp.setText(vitalSigns[vitalSigns.length - 1].timestamp.toString().substring(11,19));
         }
-        
-        // Set alert colours
-        if (vitalSigns[vitalSigns.length - 2].hr>=80 && vitalSigns[vitalSigns.length - 2].hr<=120) {
+        // Set alert colours for bloodpressure
+
+
+        // Set alert colours for heartrate
+        if (vitalSigns[vitalSigns.length - 1].hr>=80 && vitalSigns[vitalSigns.length - 1].hr<=120) {
             valHR.setBackground(new Background(new BackgroundFill(Color.web("#d7dd2b"), CornerRadii.EMPTY, Insets.EMPTY)));
         }
-        else if (vitalSigns[vitalSigns.length - 2].hr>=130 && vitalSigns[vitalSigns.length - 2].hr<=500){
+        else if (vitalSigns[vitalSigns.length - 1].hr>=130 && vitalSigns[vitalSigns.length - 1].hr<=500){
             valHR.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
         }
-        else if (vitalSigns[vitalSigns.length - 2].hr>=1 && vitalSigns[vitalSigns.length - 2].hr<=50){
+        else if (vitalSigns[vitalSigns.length - 1].hr>=1 && vitalSigns[vitalSigns.length - 1].hr<=50){
             valHR.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
         }
     }
@@ -179,5 +197,9 @@ public class patientDataCtrl {
         this.mainCtrl.showVitalSignsView(this.patient.cpr);
     }
 
+    @FXML
+    public void handleMedList(){
+        this.mainCtrl.showExtendedMedication(this.patient.cpr);
+    }
 	
 }
