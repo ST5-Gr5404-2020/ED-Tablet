@@ -8,35 +8,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.spo2GraphCtrl">
+<AnchorPane fx:id="anchorpaneSpO2View" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1005.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.spo2GraphCtrl">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane prefHeight="200.0" prefWidth="1280.0" style="-fx-background-color: black; -fx-border-color: white;">
-               <children>
-                  <Button fx:id="btnBack" layoutX="120.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnBack" prefHeight="70.0" prefWidth="150.0" text="BACK">
-                     <font>
-                        <Font size="36.0" />
-                     </font></Button>
-                  <Label layoutX="375.0" layoutY="63.0" prefHeight="70.0" prefWidth="567.0" text="OXYGEN SATURATION" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <LineChart fx:id="lineChartSpO2" layoutY="200.0" prefHeight="600.0" prefWidth="1280.0">
-              <xAxis>
-                <CategoryAxis label="Time" prefHeight="20.0" prefWidth="399.0" side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis label="\% O2" side="LEFT">
-                     <tickLabelFont>
-                        <Font size="14.0" />
-                     </tickLabelFont></NumberAxis>
-              </yAxis>
-            </LineChart>
-         </children>
-      </AnchorPane>
+      <Label layoutX="257.0" layoutY="21.0" prefHeight="70.0" prefWidth="504.0" text="OXYGEN SATURATION" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnBack" layoutX="829.0" layoutY="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnBack" prefHeight="46.0" prefWidth="113.0" text="BACK">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <LineChart fx:id="lineChartSpO2" layoutX="-3.0" layoutY="96.0" prefHeight="461.0" prefWidth="976.0">
+        <xAxis>
+          <CategoryAxis label="Time" prefHeight="20.0" prefWidth="957.0" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis label="\% O2" side="LEFT">
+               <tickLabelFont>
+                  <Font size="14.0" />
+               </tickLabelFont>
+            </NumberAxis>
+        </yAxis>
+      </LineChart>
    </children>
 </AnchorPane>

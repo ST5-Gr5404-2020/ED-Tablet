@@ -43,7 +43,7 @@ public class spo2GraphCtrl {
 		XYChart.Series<String,Number> series = new XYChart.Series<>();
 		
 		for(int i = 0;i<vitalSigns.length;i++){			
-			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 19), vitalSigns[i].spo2));	
+			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].spo2));	
 		}
 		lineChartSpO2.getData().add(series);		
 	}		

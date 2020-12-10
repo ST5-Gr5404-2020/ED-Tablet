@@ -20,6 +20,7 @@ NumberAxis yAxis = new NumberAxis();
 LineChart<String,Number> lineChartBp = new LineChart<String,Number>(xAxis, yAxis);
 @FXML 
 Button btnBack;
+private boolean addAll;
 
 public void setMainApp(App mainApp) {
 	this.mainApp = mainApp;

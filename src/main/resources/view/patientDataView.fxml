@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1005.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.patientDataCtrl">
    <children>
       <AnchorPane layoutX="448.0" layoutY="322.0" prefHeight="228.0" prefWidth="503.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="502.0" AnchorPane.topAnchor="322.0">
@@ -23,7 +22,10 @@
                   <Font size="28.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtNoteArea" layoutX="4.0" layoutY="38.0" prefHeight="229.0" prefWidth="485.0" wrapText="true" />
+            <TextArea fx:id="txtNoteArea" layoutX="4.0" layoutY="38.0" prefHeight="229.0" prefWidth="485.0" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
             <Button fx:id="btnExtendNote" layoutX="363.0" layoutY="6.0" mnemonicParsing="false" text="SHOW EXTENDED" AnchorPane.rightAnchor="14.5" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>

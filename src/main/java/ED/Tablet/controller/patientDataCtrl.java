@@ -126,19 +126,19 @@ public class patientDataCtrl {
         } else {
             this.valBPsys.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].bpsys)));
             this.valBPdia.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].bpdia)));
-            this.valHR.setText((Integer.toString(vitalSigns[vitalSigns.length - 2].hr)));
+            this.valHR.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].hr)));
             this.valSPO2.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].spo2)));
             this.valETCO2.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].etco2)));
         }
         
         // Set alert colours
-        if (vitalSigns[vitalSigns.length - 2].hr>=80 && vitalSigns[vitalSigns.length - 2].hr<=120) {
+        if (vitalSigns[vitalSigns.length - 1].hr>=80 && vitalSigns[vitalSigns.length - 1].hr<=120) {
             valHR.setBackground(new Background(new BackgroundFill(Color.web("#d7dd2b"), CornerRadii.EMPTY, Insets.EMPTY)));
         }
-        else if (vitalSigns[vitalSigns.length - 2].hr>=130 && vitalSigns[vitalSigns.length - 2].hr<=500){
+        else if (vitalSigns[vitalSigns.length - 1].hr>=130 && vitalSigns[vitalSigns.length - 1].hr<=500){
             valHR.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
         }
-        else if (vitalSigns[vitalSigns.length - 2].hr>=1 && vitalSigns[vitalSigns.length - 2].hr<=50){
+        else if (vitalSigns[vitalSigns.length - 1].hr>=1 && vitalSigns[vitalSigns.length - 1].hr<=50){
             valHR.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
         }
     }
