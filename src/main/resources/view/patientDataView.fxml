@@ -209,7 +209,7 @@
                   <TableColumn fx:id="medAmountColumn" minWidth="5.71563720703125" prefWidth="131.94921875" text="Amount" />
                </columns>
             </TableView>
-            <Button fx:id="btnExtendNote1" layoutX="405.0" layoutY="4.0" mnemonicParsing="false" text="FULL LIST" AnchorPane.rightAnchor="13.5" AnchorPane.topAnchor="1.0" />
+            <Button fx:id="btnExtendNote1" layoutX="405.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleMedList" text="FULL LIST" AnchorPane.rightAnchor="13.5" AnchorPane.topAnchor="1.0" />
          </children>
       </AnchorPane>
       <Label layoutX="363.0" layoutY="12.0" prefHeight="66.0" prefWidth="288.0" text="PATIENT DATA" textFill="WHITE">
