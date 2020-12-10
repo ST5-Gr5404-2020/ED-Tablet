@@ -65,7 +65,7 @@ public class App extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getClassLoader().getResource("view/mainView.fxml"));
             AnchorPane mainView = (AnchorPane) loader.load();
-            // Set loginView into the center of root layout.
+            // Set mainView into the center of root layout.
             rootLayout.setCenter(mainView);
             // Give the controller access to the main app.
             ED.Tablet.controller.mainCtrl controller = loader.getController();
@@ -101,7 +101,7 @@ public class App extends Application {
 
 	
     public static void main(String[] args) {
-		//Får Start() til at køre når main kører, således at loginView åbnes.
+        //Runs start() when main initiates, so that the loginView is opened
         launch(args); 
         
 
