@@ -10,12 +10,12 @@
 
 <AnchorPane fx:id="anchorpaneHrView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1005.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.heartRateGraphCtrl">
    <children>
-      <Label layoutX="257.0" layoutY="21.0" prefHeight="70.0" prefWidth="504.0" text="HEART RATE" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="348.0" layoutY="14.0" prefHeight="71.0" prefWidth="308.0" text="HEART RATE" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Button fx:id="btnBack" layoutX="829.0" layoutY="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnBack" prefHeight="46.0" prefWidth="113.0" text="BACK">
+      <Button fx:id="btnBack" layoutX="829.0" layoutY="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnBack" prefHeight="46.0" prefWidth="113.0" text="BACK" AnchorPane.bottomAnchor="526.8113190924921" AnchorPane.leftAnchor="829.0" AnchorPane.rightAnchor="62.79244875610814" AnchorPane.topAnchor="33.000000000000014">
          <font>
             <Font size="18.0" />
          </font>

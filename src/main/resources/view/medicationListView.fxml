@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollBar?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="470.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1005.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ED.Tablet.controller.medicationCtrl">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="470.0" style="-fx-background-color: white;">
-         <children>
-            <AnchorPane layoutX="-1.0" prefHeight="71.0" prefWidth="470.0" style="-fx-background-color: black; -fx-border-color: white;">
-               <children>
-                  <Button layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="BACK" />
-               </children>
-            </AnchorPane>
-            <ListView layoutY="71.0" prefHeight="131.0" prefWidth="470.0" />
-            <TextField layoutY="202.0" prefHeight="81.0" prefWidth="470.0" text="EXTENDED NOTES ON MEDICATION" />
-            <ScrollBar layoutX="2.0" layoutY="72.0" orientation="VERTICAL" prefHeight="131.0" prefWidth="17.0" />
-         </children>
-      </AnchorPane>
+      <Label layoutX="309.0" layoutY="20.0" prefHeight="71.0" prefWidth="387.0" text="MEDICATION LIST" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnBack" layoutX="839.0" layoutY="43.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnBack" prefHeight="46.0" prefWidth="113.0" text="BACK" AnchorPane.bottomAnchor="526.8113190924921" AnchorPane.leftAnchor="829.0" AnchorPane.rightAnchor="62.79244875610814" AnchorPane.topAnchor="33.000000000000014">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tblViewFullMed" layoutX="-1.0" layoutY="98.0" prefHeight="512.0" prefWidth="1005.0">
+        <columns>
+          <TableColumn fx:id="medTimestampColumn" prefWidth="96.90563595294952" text="Time Stamp" />
+          <TableColumn fx:id="medNameColumn" prefWidth="313.3584899902344" text="Name" />
+            <TableColumn fx:id="medAmountColumn" minWidth="0.0" prefWidth="92.37738037109375" text="Amount" />
+            <TableColumn fx:id="medNoteColumn" prefWidth="506.26422119140625" text="Note" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
