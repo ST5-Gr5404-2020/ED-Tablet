@@ -7,21 +7,23 @@ import javafx.beans.property.StringProperty;
 
 public class medication {
 
-    private final StringProperty timestamp;
+    private Timestamp timestamp;
     private final StringProperty name;
     private final StringProperty amount;
 	private final StringProperty note;
-
-
 	
 	// Constructor to medication
 	public medication(Timestamp timestamp, String name, String amount, String note){
-		this.timestamp= new SimpleStringProperty(timestamp.toString().substring(11,19));
+		this.timestamp= timestamp;
 		this.name= new SimpleStringProperty(name);
 		this.amount= new SimpleStringProperty(amount);
 		this.note= new SimpleStringProperty(note); 
 
 
+	}
+
+	public Timestamp getTimestamp() {
+		return this.timestamp;
 	}
 
 	// Initializes properties for the TableView
@@ -33,7 +35,7 @@ public class medication {
 	}
 
 	public StringProperty medTimestamp(){
-		return timestamp;
+		return new SimpleStringProperty(this.timestamp.toString().substring(11,19));
 	}
 	public StringProperty medNote(){
 		return note;

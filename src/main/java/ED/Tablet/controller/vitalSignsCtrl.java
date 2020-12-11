@@ -9,10 +9,8 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 
-public class vitalSignsCtrl {
-	public App mainApp;	
-	public patient patient;
-	private mainCtrl mainCtrl;
+public class vitalSignsCtrl extends genericInMainCtrl {
+
 	CategoryAxis xAxis = new CategoryAxis();
 	NumberAxis yAxis = new NumberAxis();
 	@FXML
@@ -34,38 +32,36 @@ public class vitalSignsCtrl {
 	@FXML 
 	Button btnBack;
 	
-
-    //Give the controller access to the main app
-	public void setMainApp(App mainApp) {
-		this.mainApp = mainApp;
+	public void updateView() {
+		updateBPChart();
+		updateEtCo2Chart();
+		updateSpO2Chart();
+		updateHrChart();
 	}
-
-	public void setMainCtrl(mainCtrl mainCtrl) {
-        this.mainCtrl = mainCtrl;
-    }
-
-	public void setPatient(patient patient){
-		this.patient = patient;
-	}
-
 
 	public void handleEtcO2Extend(){
-		this.mainCtrl.showEtCo2Extend(this.patient.cpr);
+		this.mainCtrl.showInMainView("view/etco2Graph.fxml", this.patient.cpr);
+		//this.mainCtrl.showEtCo2Extend(this.patient.cpr);
 	}
 
 	public void handleHrExtend(){
-		this.mainCtrl.showHrExtend(this.patient.cpr);
+		this.mainCtrl.showInMainView("view/heartRateGraph.fxml", this.patient.cpr);
+		//this.mainCtrl.showHrExtend(this.patient.cpr);
 	}
 
 	public void handleSpO2Extend(){
-		this.mainCtrl.showSpO2Extend(this.patient.cpr);
+		this.mainCtrl.showInMainView("view/spo2Graph.fxml", this.patient.cpr);
+		//this.mainCtrl.showSpO2Extend(this.patient.cpr);
 	}
 
 	public void handleBpExtend(){
-		this.mainCtrl.showBpExtend(this.patient.cpr);
+		this.mainCtrl.showInMainView("view/bloodPressureGraph.fxml", this.patient.cpr);
+		//this.mainCtrl.showBpExtend(this.patient.cpr);
 	}
+
 	public void handleBtnBack(){
-		this.mainCtrl.showPatientDataView(this.patient.cpr);
+		this.mainCtrl.showInMainView("view/patientDataView.fxml", this.patient.cpr);
+		//this.mainCtrl.showPatientDataView(this.patient.cpr);
 	}
 	
 	public void updateBPChart(){

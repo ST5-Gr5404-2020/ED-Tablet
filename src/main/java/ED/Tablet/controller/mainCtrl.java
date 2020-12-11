@@ -2,6 +2,8 @@ package ED.Tablet.controller;
 
 import java.io.IOException;
 import java.util.Observable;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import ED.Tablet.App;
 import ED.Tablet.model.*;
@@ -31,25 +33,14 @@ public class mainCtrl {
 	@FXML
 	private Label txtPatientsAss;
 
-
-    public mainCtrl(){}
+	public mainCtrl(){}
+	
     //Give the controller access to the main app
     public void setMainApp(App mainApp) {
         this.mainApp = mainApp;
         this.mainApp.personnel.updatePatientList();
         cprList.setAll(this.mainApp.personnel.getPatientList().keySet());
-        this.lstListView.setItems(cprList);
-    }
-    // This method is automatically run after FXML file is loaded
-    @FXML
-    private void initialize(){
-        lstListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedCpr){
-                showPatientDataView(selectedCpr);
-            }
-        });
-        
+		this.lstListView.setItems(cprList);
 		
 		//Displays personnel ID
 		this.txtSignedInAs.setText("Signed in as: " + Integer.toString(this.mainApp.personnel.personnelID));
@@ -57,146 +48,40 @@ public class mainCtrl {
 		this.mainApp.personnel.updatePatientList();
 		//Displays number of patients assigned to the personnel
 		this.txtPatientsAss.setText("Patients Assigned: " + Integer.toString((this.mainApp.personnel.getPatientList()).size()));
-		
-    }
-    public void showPatientDataView (String cpr){
-        try {
-            // Load mainView
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getClassLoader().getResource("view/patientDataView.fxml"));
-            AnchorPane anchorPatientDataView= (AnchorPane) loader.load();
-            // Set loginView into the center of root layout.
-            this.anchorPatientData.getChildren().setAll(anchorPatientDataView);
-            // Give the controller access to the main app.
-            ED.Tablet.controller.patientDataCtrl controller = loader.getController();
-            controller.setMainApp(this.mainApp);
-            controller.setMainCtrl(this);
-            controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
-            controller.updateView();
-        } catch (IOException e) {
-            e.printStackTrace();
+	}
+	
+    // This method is automatically run after FXML file is loaded
+    @FXML
+    private void initialize(){
+        lstListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String selectedCpr){
+				showInMainView("view/patientDataView.fxml", selectedCpr);
+				//showPatientDataView(selectedCpr);
+            }
+        });
+	}
+	
+	/**
+	 * Generic show in main view screne
+	 */
+	public void showInMainView(String viewPath, String cpr) {
+		try {
+			// Load HrExtended View
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(App.class.getClassLoader().getResource(viewPath));
+			AnchorPane anchorpane = (AnchorPane) loader.load();
+			// Set pane into the center of root layout.
+			this.anchorPatientData.getChildren().setAll(anchorpane);
+			ED.Tablet.controller.genericInMainCtrl controller = loader.getController();
+			controller.setMainCtrl(this);
+			controller.setMainApp(this.mainApp); 
+			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
+			controller.updateView();
+		} catch(IOException e) {
+			e.printStackTrace();
 		}
-    }
-    public void showVitalSignsView(String cpr){
-        try {
-            // Load vitalSignsView
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getClassLoader().getResource("view/vitalSignsView.fxml"));
-            AnchorPane anchorpaneVitalSignsView = (AnchorPane) loader.load();
-            // Set loginView into the center of root layout.
-            this.anchorPatientData.getChildren().setAll(anchorpaneVitalSignsView);
-            // Give the controller access to the main app.
-			ED.Tablet.controller.vitalSignsCtrl controller = loader.getController();			
-			controller.setMainApp(this.mainApp);  
-			controller.setMainCtrl(this);          
-			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
-			controller.updateBPChart();
-			controller.updateEtCo2Chart();
-			controller.updateSpO2Chart();
-			controller.updateHrChart();
-			
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-		}
-    }
-
-	public void showEtCo2Extend(String cpr){
-		try {
-			// Load EtCo2Extended View
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(App.class.getClassLoader().getResource("view/etco2Graph.fxml"));
-			AnchorPane anchorpaneEtCo2View = (AnchorPane) loader.load();
-			// Set loginView into the center of root layout.
-			this.anchorPatientData.getChildren().setAll(anchorpaneEtCo2View);
-			ED.Tablet.controller.etco2GraphCtrl controller = loader.getController();
-			controller.setMainCtrl(this);
-			controller.setMainApp(this.mainApp); 
-			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
-			controller.updateEtCo2Chart();
-
-		} catch(IOException e) {
-			e.printStackTrace();
-			}
 	}
-
-	public void showHrExtend(String cpr){
-		try {
-			// Load HrExtended View
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(App.class.getClassLoader().getResource("view/heartRateGraph.fxml"));
-			AnchorPane anchorpaneHrView = (AnchorPane) loader.load();
-			// Set Hr into the center of root layout.
-			this.anchorPatientData.getChildren().setAll(anchorpaneHrView);
-			ED.Tablet.controller.heartRateGraphCtrl controller = loader.getController();
-			controller.setMainCtrl(this);
-			controller.setMainApp(this.mainApp); 
-			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
-			controller.updateHrChart();
-
-		} catch(IOException e) {
-			e.printStackTrace();
-			}
-	}
-
-	public void showSpO2Extend(String cpr){
-		try {
-			// Load HrExtended View
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(App.class.getClassLoader().getResource("view/spo2Graph.fxml"));
-			AnchorPane anchorpaneSpO2View = (AnchorPane) loader.load();
-			// Set Hr into the center of root layout.
-			this.anchorPatientData.getChildren().setAll(anchorpaneSpO2View);
-			ED.Tablet.controller.spo2GraphCtrl controller = loader.getController();
-			controller.setMainCtrl(this);
-			controller.setMainApp(this.mainApp); 
-			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
-			controller.updateSpO2Chart();
-
-		} catch(IOException e) {
-			e.printStackTrace();
-			}
-	}
-
-	public void showBpExtend(String cpr){
-		try {
-			// Load HrExtended View
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(App.class.getClassLoader().getResource("view/bloodPressureGraph.fxml"));
-			AnchorPane anchorpaneBpView = (AnchorPane) loader.load();
-			// Set Hr into the center of root layout.
-			this.anchorPatientData.getChildren().setAll(anchorpaneBpView);
-			ED.Tablet.controller.bpGraphCtrl controller = loader.getController();
-			controller.setMainCtrl(this);
-			controller.setMainApp(this.mainApp); 
-			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
-			controller.updateBpChart();
-
-		} catch(IOException e) {
-			e.printStackTrace();
-			}
-	}
-
-	public void showExtendedMedication(String cpr){
-		try {
-			// Load HrExtended View
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(App.class.getClassLoader().getResource("view/medicationListView.fxml"));
-			AnchorPane anchorpaneMedListView = (AnchorPane) loader.load();
-			// Set Hr into the center of root layout.
-			this.anchorPatientData.getChildren().setAll(anchorpaneMedListView);
-			ED.Tablet.controller.medicationCtrl controller = loader.getController();
-			controller.setMainCtrl(this);
-			controller.setMainApp(this.mainApp); 
-			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
-			controller.displayFullMedication();
-
-		} catch(IOException e) {
-			e.printStackTrace();
-			}
-	}
-
-
 
     @FXML
     public void handleSelectPatient(){

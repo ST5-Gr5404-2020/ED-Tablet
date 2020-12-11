@@ -26,49 +26,63 @@ import jdk.nashorn.api.tree.ForLoopTree;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 
-public class patientDataCtrl {
+public class patientDataCtrl extends genericInMainCtrl {
     // Vitalsigns labels
     @FXML
     private Label valBPsys;
+    
     @FXML
     private Label valBPdia;
+    
     @FXML
     public Label valSPO2;
+    
     @FXML
     public Label valETCO2;
+    
     @FXML
     public Label valHR;
+    
     @FXML
     public Label valBP;
+    
     @FXML
     public Label lblBpTimestamp;
+    
     @FXML
     public Label lblSpo2Timestamp;
+    
     @FXML
     public Label lblEtco2Timestamp;
+    
     @FXML
     public Label lblHrTimestamp;
 
-
-    
     @FXML 
     public StackPane myStackpaneHR;
 
     // Tripinfo labels
     @FXML
     public Label txtPatientName;
+    
     @FXML
     public Label txtCprNumber;
+    
     @FXML
     public Label txtAccidentNumber;
+    
     @FXML
     public Label txtAmbulancePhone;
+    
     @FXML
     public Label txtArrivedAtScene;
+    
     @FXML
     public Label txtEta;
+    
     @FXML
     public Label txtTriageScore;
+    
     @FXML
     public Label txtDkIndex;
 
@@ -76,25 +90,23 @@ public class patientDataCtrl {
     @FXML
     public TextArea txtNoteArea;
 
+    public ObservableList<medication> medList = FXCollections.observableArrayList();
+
     // Medication labels
     @FXML
     public TableView<medication> tblViewMed;
-    public ObservableList<medication> medList = FXCollections.observableArrayList();
+    
     @FXML
     public TableColumn<medication, String> medNameColumn;
+    
     @FXML
     public TableColumn<medication, String> medAmountColumn;
 
-    public App mainApp;
-    public patient patient;
-
-    private mainCtrl mainCtrl;
-
     @FXML
     private Button btnExtendVitalSigns;
+    
     @FXML 
     private Button btnFullMedList;
-
 
     public int patientBirthYear;
     public int todaysYear;
@@ -102,30 +114,12 @@ public class patientDataCtrl {
 
     tripInfo tripInfo;
 
-    // Constructor
-    public patientDataCtrl() {
-
-    }
-
-    public void setMainCtrl(mainCtrl mainCtrl) {
-        this.mainCtrl = mainCtrl;
-    }
-
     @FXML
     private void initialize() {
         // Initialize the med table with the two columns.
         medNameColumn.setCellValueFactory(cellData -> cellData.getValue().medName());
         medAmountColumn.setCellValueFactory(cellData -> cellData.getValue().medAmount());
 
-    }
-
-    // Give the controller access to the main app
-    public void setMainApp(App mainApp) {
-        this.mainApp = mainApp;
-    }
-
-    public void setPatient(patient patient) {
-        this.patient = patient;
     }
 
     public void updateView() {
@@ -199,12 +193,14 @@ public class patientDataCtrl {
     
     @FXML
     public void handleExtendVitalSigns(){
-        this.mainCtrl.showVitalSignsView(this.patient.cpr);
+        this.mainCtrl.showInMainView("view/vitalSignsView.fxml", this.patient.cpr);
+        //this.mainCtrl.showVitalSignsView(this.patient.cpr);
     }
 
     @FXML
     public void handleMedList(){
-        this.mainCtrl.showExtendedMedication(this.patient.cpr);
+        this.mainCtrl.showInMainView("view/medicationListView.fxml", this.patient.cpr);
+        //this.mainCtrl.showExtendedMedication(this.patient.cpr);
     }
     
     

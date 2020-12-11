@@ -8,39 +8,34 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class medicationCtrl {
-    public App mainApp;	
-	public patient patient;
-    private mainCtrl mainCtrl;
+public class medicationCtrl extends genericInMainCtrl {
     
+    public ObservableList<medication> medList = FXCollections.observableArrayList();
+
     // Medication labels
     @FXML
     public TableView<medication> tblViewFullMed;
-    public ObservableList<medication> medList = FXCollections.observableArrayList();
+    
     @FXML
     public TableColumn<medication, String> medNameColumn;
+    
     @FXML
     public TableColumn<medication, String> medAmountColumn;
+    
     @FXML
     public TableColumn<medication, String> medTimestampColumn;
+    
     @FXML
     public TableColumn<medication, String> medNoteColumn;
     
     
-    public void setMainApp(App mainApp) {
-		this.mainApp = mainApp;
-	}
-
-	public void setMainCtrl(mainCtrl mainCtrl) {
-		this.mainCtrl = mainCtrl;
-	}
-
-	public void setPatient(patient patient){
-		this.patient = patient;
-	}
+    public void updateView() {
+        displayFullMedication();
+    }
 
 	public void handleBtnBack(){
-		this.mainCtrl.showPatientDataView(this.patient.cpr);
+        this.mainCtrl.showInMainView("view/patientDataView.fxml", this.patient.cpr);
+		//this.mainCtrl.showPatientDataView(this.patient.cpr);
 	}
 
     @FXML

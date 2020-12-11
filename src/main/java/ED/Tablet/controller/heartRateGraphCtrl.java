@@ -10,32 +10,26 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 
-public class heartRateGraphCtrl {
-	public App mainApp;	
-public patient patient;
-private mainCtrl mainCtrl;
-CategoryAxis xAxis = new CategoryAxis();
-NumberAxis yAxis = new NumberAxis();
-@FXML
-LineChart<String,Number> lineChartHr = new LineChart<String,Number>(xAxis, yAxis);
-@FXML 
-Button btnBack;
+public class heartRateGraphCtrl extends genericInMainCtrl {
 
-public void setMainApp(App mainApp) {
-	this.mainApp = mainApp;
-}
+	CategoryAxis xAxis = new CategoryAxis();
+	NumberAxis yAxis = new NumberAxis();
+	
+	@FXML
+	LineChart<String,Number> lineChartHr = new LineChart<String,Number>(xAxis, yAxis);
+	
+	@FXML 
+	Button btnBack;
 
-public void setMainCtrl(mainCtrl mainCtrl) {
-	this.mainCtrl = mainCtrl;
-}
+	public void updateView() {
+		updateHrChart();
+	}
 
-public void setPatient(patient patient){
-	this.patient = patient;
-}
+	public void handleBtnBack(){
+		this.mainCtrl.showInMainView("view/vitalSignsView.fxml", this.patient.cpr);
+		//this.mainCtrl.showVitalSignsView(this.patient.cpr);
+	}
 
-public void handleBtnBack(){
-	this.mainCtrl.showVitalSignsView(this.patient.cpr);
-}
 	public void updateHrChart(){
 		this.patient.updateVitalSigns();
 		vitalSigns[] vitalSigns = this.patient.getVitalSigns();
@@ -43,11 +37,10 @@ public void handleBtnBack(){
 		
 		for(int i = 0;i<vitalSigns.length;i++){			
 			series.getData().add(new XYChart.Data<>(((vitalSigns[i].timestamp).toString()).substring(11, 16), vitalSigns[i].hr)); 
-			 
+				
 		}
 		lineChartHr.getData().add(series);	
 		series.setName("Heart rate");
 		
-	}
-	
+	}	
 }

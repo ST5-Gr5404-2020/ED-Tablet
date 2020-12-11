@@ -10,34 +10,26 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 
-public class spo2GraphCtrl {
-	public App mainApp;	
-	public patient patient;
-	private mainCtrl mainCtrl;
+public class spo2GraphCtrl extends genericInMainCtrl {
 	CategoryAxis xAxis = new CategoryAxis();
 	NumberAxis yAxis = new NumberAxis();
+
 	@FXML
 	LineChart<String,Number> lineChartSpO2 = new LineChart<String,Number>(xAxis, yAxis);
+
 	@FXML 
 	Button btnBack;
 
-	public void setMainApp(App mainApp) {
-		this.mainApp = mainApp;
-	}
-
-	public void setMainCtrl(mainCtrl mainCtrl) {
-		this.mainCtrl = mainCtrl;
-	}
-
-	public void setPatient(patient patient){
-		this.patient = patient;
+	public void updateView() {
+		updateSpO2Chart();
 	}
 
 	public void handleBtnBack(){
-		this.mainCtrl.showVitalSignsView(this.patient.cpr);
+		this.mainCtrl.showInMainView("view/vitalSignsView.fxml", this.patient.cpr);
+		//this.mainCtrl.showVitalSignsView(this.patient.cpr);
 	}
 
-	public void updateSpO2Chart(){
+	protected void updateSpO2Chart(){
 		this.patient.updateVitalSigns();
 		vitalSigns[] vitalSigns = this.patient.getVitalSigns();
 		XYChart.Series<String,Number> series = new XYChart.Series<>();

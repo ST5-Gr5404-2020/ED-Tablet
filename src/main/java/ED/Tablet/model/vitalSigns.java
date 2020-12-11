@@ -18,4 +18,9 @@ public class vitalSigns {
         this.spo2=spo2;
         this.etco2=etco2;
 	}
+
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
+
 }
