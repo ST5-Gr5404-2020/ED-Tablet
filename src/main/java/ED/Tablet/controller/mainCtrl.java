@@ -1,9 +1,6 @@
 package ED.Tablet.controller;
 
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import ED.Tablet.App;
 import ED.Tablet.model.*;
@@ -15,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Font;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -75,7 +71,6 @@ public class mainCtrl {
 			this.anchorPatientData.getChildren().setAll(anchorpane);
 			ED.Tablet.controller.genericInMainCtrl controller = loader.getController();
 			controller.setMainCtrl(this);
-			controller.setMainApp(this.mainApp); 
 			controller.setPatient(this.mainApp.personnel.getPatientList().get(cpr));
 			controller.updateView();
 		} catch(IOException e) {

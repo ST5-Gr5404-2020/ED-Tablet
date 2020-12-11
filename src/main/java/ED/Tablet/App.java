@@ -4,17 +4,11 @@
 package ED.Tablet;
 
 import java.io.IOException;
-import java.util.HashMap;
-
-import ED.Tablet.controller.*;
-import ED.Tablet.model.patient;
 import ED.Tablet.model.personnel;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -82,9 +76,9 @@ public class App extends Application {
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
         initRootLayout();
-		// showLoginView();
-		personnel.personnelID = 123456;
-        showMainView();
+		showLoginView();
+		//personnel.personnelID = 123456;
+        //showMainView();
         
         
 

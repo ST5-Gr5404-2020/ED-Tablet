@@ -1,7 +1,5 @@
 package ED.Tablet.controller;
 
-import ED.Tablet.App;
-import ED.Tablet.model.patient;
 import ED.Tablet.model.vitalSigns;
 import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;

@@ -1,7 +1,6 @@
 package ED.Tablet.controller;
 
-import ED.Tablet.App;
-import ED.Tablet.model.*;
+import ED.Tablet.model.medication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -1,28 +1,22 @@
 package ED.Tablet.controller;
 
-import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Observable;
 
-import javax.swing.text.html.ListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import ED.Tablet.App;
-import ED.Tablet.model.*;
-import ED.Tablet.controller.*;
+import ED.Tablet.model.vitalSigns;
+import ED.Tablet.model.medication;
+import ED.Tablet.model.tripInfo;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import jdk.nashorn.api.tree.ForLoopTree;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 

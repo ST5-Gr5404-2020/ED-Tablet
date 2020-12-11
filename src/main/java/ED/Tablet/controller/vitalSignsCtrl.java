@@ -1,7 +1,6 @@
 package ED.Tablet.controller;
 
-import ED.Tablet.App;
-import ED.Tablet.model.*;
+import ED.Tablet.model.vitalSigns;
 import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
