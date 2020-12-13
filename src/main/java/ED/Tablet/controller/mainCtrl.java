@@ -50,11 +50,8 @@ public class mainCtrl {
         this.mainApp.personnel.updatePatientList();
         cprList.setAll(this.mainApp.personnel.getPatientList().keySet());
 		this.lstListView.setItems(cprList);
-		
 		//Displays personnel ID
 		this.txtSignedInAs.setText("Signed in as: " + Integer.toString(this.mainApp.personnel.personnelID));
-		//Updates patient list
-		this.mainApp.personnel.updatePatientList();
 		//Displays number of patients assigned to the personnel
 		this.txtPatientsAss.setText("Patients Assigned: " + Integer.toString((this.mainApp.personnel.getPatientList()).size()));
 	}

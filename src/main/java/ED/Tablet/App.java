@@ -5,11 +5,9 @@ package ED.Tablet;
 
 import java.io.IOException;
 
-import ED.Tablet.model.patient;
 import ED.Tablet.model.personnel;
 
 import javafx.application.Application;
-import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -80,74 +78,10 @@ public class App extends Application {
         this.primaryStage = primaryStage;
         initRootLayout();
 		showLoginView();
-		//personnel.personnelID = 123456;
-        //showMainView();
-        
-        
-
-        //patient patient = new patient("");
-        //new updater(patient);
-        
-        //Thread th = new Thread(updater);
-        //th.setDaemon(true);
-        //th.start();
-        // updater.setPatient(patient);
-
-
-
-        // FXMLLoader loader = new FXMLLoader();
-        // ED.Tablet.controller.loginCtrl controller = loader.getController();
-        // System.out.println(controller);
-        // controller.setMainApp(this);
-        // controller.showLoginView();
     }
-
-
-
-	
+    	
     public static void main(String[] args) {
         //Runs start() when main initiates, so that the loginView is opened
         launch(args); 
-        
-
-        
-
-
-        // System.out.println(robert);
-
-		// robert.updatePatientList();
-		// System.out.println(robert.getPatientList());
-
-        // patient deep = robert.getPatientList().get("0906634738");
-
-        // deep.updateTripInfo();
-        // deep.getTripInfo().printTripInfo();
-
-        // 1. Instantierer de tre databaser connections.
-        //      a. Cppj, Login, Cetrea conn er klar til at blive brugt. 
-        // 2. Instancier personnel, som der kan lægges password/ID ind i. 
-        // 3. Vis loginView.
-        // 4. LoginCtrl --> sæt værdier ind i personnel.
-        //      a. Login verified / not verified. 
-        //      b. If not verified --> delete instance of personnel --> go to 2. 
-        // 5. Skift til / vis mainView
-        // 6. (i mainCtrl) mainView skal bruge personnel til at hente patients, som er assigned.
-        //      a. input til mainCtrl er personnel. 
-        //      b. personnel.updatePatientList().
-        //      c. Display patientList
-        // 7. mainCtrl kør funktion for at der trykkes på patient
-        // 8. mainCtrl indsætter patientDataView i mainView, for valgt patient.
-        // 9. For hvert view laves en controller, som gør det muligt at hoppe fra et view til et andet. 
-
-        // Evt. 
-        // Implementer stages for hvert view som der kan hoppes imellem. Eksempel login = stage1 og spo2=stage 9, 
-        // og så en funktion der hopper fra stage 9 til stage 2. 
-
-		
-
-        
-
-
-        
     }
 }

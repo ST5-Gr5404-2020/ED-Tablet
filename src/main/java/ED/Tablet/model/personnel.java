@@ -5,7 +5,7 @@ import java.util.HashMap;
 import ED.Tablet.updateble;
 
 public class personnel implements updateble {
-    public int personnelID;
+    public int personnelID = 0;
     public String password;
     private HashMap <String, patient> patientList; 
     public boolean loggedIn;
@@ -19,11 +19,13 @@ public class personnel implements updateble {
 	}
 
 	public void updatePatientList(){
-		String[] cprPatientList = cetreaConn.getPatientCprList(this.personnelID);
+		if (this.personnelID != 0) {			
+			String[] cprPatientList = cetreaConn.getPatientCprList(this.personnelID);
 
-		for (int i=0; i<cprPatientList.length; i++){
-			this.patientList.put(cprPatientList[i], new patient(cprPatientList[i]));
-		}    
+			for (int i=0; i<cprPatientList.length; i++){
+				this.patientList.put(cprPatientList[i], new patient(cprPatientList[i]));
+			}    
+		}
 	}
 	
 	public HashMap <String, patient> getPatientList(){
