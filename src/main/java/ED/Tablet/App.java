@@ -4,9 +4,12 @@
 package ED.Tablet;
 
 import java.io.IOException;
+
+import ED.Tablet.model.patient;
 import ED.Tablet.model.personnel;
 
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -17,7 +20,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     public BorderPane rootLayout;
     public Stage primaryStage;
-    public static personnel personnel = new personnel();
+    public personnel personnel = new personnel();
 
     public void initRootLayout(){
         try {
@@ -81,6 +84,14 @@ public class App extends Application {
         //showMainView();
         
         
+
+        //patient patient = new patient("");
+        //new updater(patient);
+        
+        //Thread th = new Thread(updater);
+        //th.setDaemon(true);
+        //th.start();
+        // updater.setPatient(patient);
 
 
 

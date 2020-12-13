@@ -106,8 +106,6 @@ public class patientDataCtrl extends genericInMainCtrl {
     public int todaysYear;
     public int patientAge;
 
-    tripInfo tripInfo;
-
     @FXML
     private void initialize() {
         // Initialize the med table with the two columns.
@@ -125,15 +123,11 @@ public class patientDataCtrl extends genericInMainCtrl {
     }
 
     public void displayVitalSigns() {
-        this.patient.updateVitalSigns();
         vitalSigns[] vitalSigns = this.patient.getVitalSigns();
-
-        if (vitalSigns == null) {
-            System.out.println("Den gik ik Theis");
-        } else {
+        if (vitalSigns != null) {
             //this.valBPsys.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].bpsys)));
             //this.valBPdia.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].bpdia)));
-
+            
             this.valBP.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].bpsys)) + " / " + (Integer.toString(vitalSigns[vitalSigns.length - 1].bpdia)));
             this.valHR.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].hr)));
             this.valSPO2.setText((Integer.toString(vitalSigns[vitalSigns.length - 1].spo2)));
@@ -142,138 +136,135 @@ public class patientDataCtrl extends genericInMainCtrl {
             this.lblSpo2Timestamp.setText(vitalSigns[vitalSigns.length - 1].timestamp.toString().substring(11,19));
             this.lblEtco2Timestamp.setText(vitalSigns[vitalSigns.length - 1].timestamp.toString().substring(11,19));
             this.lblHrTimestamp.setText(vitalSigns[vitalSigns.length - 1].timestamp.toString().substring(11,19));
+            
+            int patientBirthYear=1900 + Integer.parseInt(this.patient.cpr.toString().substring(4,6));
+            int todaysYear = LocalDate.now().getYear();
+            int patientAge = todaysYear - patientBirthYear;
+            // Set alarm colors
+            setAlarmHr(patientAge);
+            setAlarmBp(patientAge);
+            setAlarmSpo2();
+            setAlarmEtco2();
         }
-        int patientBirthYear=1900 + Integer.parseInt(this.patient.cpr.toString().substring(4,6));
-        int todaysYear = LocalDate.now().getYear();
-        int patientAge = todaysYear - patientBirthYear;
-        // Set alarm colors
-        setAlarmHr(patientAge);
-        setAlarmBp(patientAge);
-        setAlarmSpo2();
-        setAlarmEtco2();
     }
 
     public void displayTripInfo(){ 
-        this.patient.updateTripInfo();
-        this.tripInfo = this.patient.getTripInfo(); 
-		//Sets value from this.tripInfo in patientDataView
-		this.txtPatientName.setText(this.tripInfo.patientName);	
-		this.txtCprNumber.setText(this.patient.cpr);	
-		this.txtAccidentNumber.setText(this.tripInfo.accidentNumber);	
-        this.txtAmbulancePhone.setText(this.tripInfo.ambulancePhoneNumber);
-        this.txtDkIndex.setText(this.tripInfo.dkIndex);			
-		//TimeStamps converted to string with .toString(), substring removes year/month/date, so that only time is left
-		this.txtArrivedAtScene.setText((this.tripInfo.arrivedAtScene.toString()).substring(11,19));	
-        this.txtEta.setText((this.tripInfo.eta.toString()).substring(11,19));	
-        //Integer converted to string
-        this.txtTriageScore.setText(Integer.toString(this.tripInfo.triageScore));	
-
+        tripInfo tripInfo = this.patient.getTripInfo(); 
+        if (tripInfo != null) {
+            //Sets value from this.tripInfo in patientDataView
+            this.txtPatientName.setText(tripInfo.patientName);	
+            this.txtCprNumber.setText(patient.cpr);	
+            this.txtAccidentNumber.setText(tripInfo.accidentNumber);	
+            this.txtAmbulancePhone.setText(tripInfo.ambulancePhoneNumber);
+            this.txtDkIndex.setText(tripInfo.dkIndex);			
+            //TimeStamps converted to string with .toString(), substring removes year/month/date, so that only time is left
+            this.txtArrivedAtScene.setText((tripInfo.arrivedAtScene.toString()).substring(11,19));	
+            this.txtEta.setText((tripInfo.eta.toString()).substring(11,19));	
+            //Integer converted to string
+            this.txtTriageScore.setText(Integer.toString(tripInfo.triageScore));	
+        }
     }
 
     public void displayNote(){
-        this.txtNoteArea.setText(this.tripInfo.note);
+        tripInfo tripInfo = this.patient.getTripInfo(); 
+        if (tripInfo != null) {
+            this.txtNoteArea.setText(tripInfo.note);
+        }
     }
 
     public void displayMedication(){
-        this.patient.updateMedication();
         medication[] med = this.patient.getMedication();
-        if(med==null){
-            System.out.println("Der er ikke noget medicin");
-        } else {
-            this.medList.addAll(med);
+        if(med != null){
+            this.medList.setAll(med);
+            //this.medList.addAll(med);
             this.tblViewMed.setItems(this.medList);
         }
     }
     
     @FXML
     public void handleExtendVitalSigns(){
-        this.mainCtrl.showInMainView("view/vitalSignsView.fxml", this.patient.cpr);
+        this.mainCtrl.showInMainView("view/vitalSignsView.fxml");
         //this.mainCtrl.showVitalSignsView(this.patient.cpr);
     }
 
     @FXML
     public void handleMedList(){
-        this.mainCtrl.showInMainView("view/medicationListView.fxml", this.patient.cpr);
+        this.mainCtrl.showInMainView("view/medicationListView.fxml");
         //this.mainCtrl.showExtendedMedication(this.patient.cpr);
     }
     
     
 
     public void setAlarmHr(int patientAge){
-        this.patient.updateVitalSigns();
         vitalSigns[] vitalSigns = this.patient.getVitalSigns();
-
-         // Set alert colours for heartrate
-        if(patientAge>18){
-            if (vitalSigns[vitalSigns.length - 1].hr>=60 && vitalSigns[vitalSigns.length - 1].hr<=100){
-                valHR.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
-            }
+        if (vitalSigns != null) {
+            // Set alert colours for heartrate
+            if(patientAge>18){
+                if (vitalSigns[vitalSigns.length - 1].hr>=60 && vitalSigns[vitalSigns.length - 1].hr<=100){
+                    valHR.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+                else{
+                    valHR.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+            } 
             else{
-                valHR.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
-            }
-        } 
-        else{
-            if (vitalSigns[vitalSigns.length - 1].hr>=70 && vitalSigns[vitalSigns.length - 1].hr<=100){
-                valHR.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
-            }
-            else{
-                valHR.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
+                if (vitalSigns[vitalSigns.length - 1].hr>=70 && vitalSigns[vitalSigns.length - 1].hr<=100){
+                    valHR.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+                else{
+                    valHR.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
+                }
             }
         }
-
     }
 
     public void setAlarmBp(int patientAge){
-        this.patient.updateVitalSigns();
         vitalSigns[] vitalSigns = this.patient.getVitalSigns();
-
-        // Set alert for the systolic
-        if(patientAge>60){
-            if(vitalSigns[vitalSigns.length - 1].bpsys>=120 && vitalSigns[vitalSigns.length - 1].bpsys<=140){
-                valBP.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
+        if (vitalSigns != null) {
+            // Set alert for the systolic
+            if(patientAge>60){
+                if(vitalSigns[vitalSigns.length - 1].bpsys>=120 && vitalSigns[vitalSigns.length - 1].bpsys<=140){
+                    valBP.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+                else{
+                    valBP.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
+                }
             }
             else{
-                valBP.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
+                if(vitalSigns[vitalSigns.length - 1].bpsys>=100 && vitalSigns[vitalSigns.length - 1].bpsys<=130){
+                    valBP.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+                else{
+                    valBP.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
+                }
             }
         }
-        else{
-            if(vitalSigns[vitalSigns.length - 1].bpsys>=100 && vitalSigns[vitalSigns.length - 1].bpsys<=130){
-                valBP.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
-            }
-            else{
-                valBP.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
-            }
-        }
-        
     }
 
     public void setAlarmEtco2(){
-        this.patient.updateVitalSigns();
         vitalSigns[] vitalSigns = this.patient.getVitalSigns();
-
-        // Set alert for the end tidal co2 volume
-        if(vitalSigns[vitalSigns.length - 1].etco2>=35 && vitalSigns[vitalSigns.length - 1].etco2<=45){
-            valETCO2.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
+        if (vitalSigns != null) {
+            // Set alert for the end tidal co2 volume
+            if(vitalSigns[vitalSigns.length - 1].etco2>=35 && vitalSigns[vitalSigns.length - 1].etco2<=45){
+                valETCO2.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
+            }
+            else{
+                valETCO2.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
+            }
         }
-        else{
-            valETCO2.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
-        }
-
     }
 
     public void setAlarmSpo2(){
-        this.patient.updateVitalSigns();
         vitalSigns[] vitalSigns = this.patient.getVitalSigns();
-
-        // Set alert for the end tidal co2 volume
-        if(vitalSigns[vitalSigns.length - 1].spo2>=97 && vitalSigns[vitalSigns.length - 1].spo2<=100){
-            valSPO2.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
+        if (vitalSigns != null) {
+            // Set alert for the end tidal co2 volume
+            if(vitalSigns[vitalSigns.length - 1].spo2>=97 && vitalSigns[vitalSigns.length - 1].spo2<=100){
+                valSPO2.setBackground(new Background(new BackgroundFill(Color.web("#2b9d31"), CornerRadii.EMPTY, Insets.EMPTY)));
+            }
+            else{
+                valSPO2.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
+            }
         }
-        else{
-            valSPO2.setBackground(new Background(new BackgroundFill(Color.web("#f80c0c"), CornerRadii.EMPTY, Insets.EMPTY)));
-        }
-
     }
 
 }
-

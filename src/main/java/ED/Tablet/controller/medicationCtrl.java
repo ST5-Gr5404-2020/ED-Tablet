@@ -33,7 +33,7 @@ public class medicationCtrl extends genericInMainCtrl {
     }
 
 	public void handleBtnBack(){
-        this.mainCtrl.showInMainView("view/patientDataView.fxml", this.patient.cpr);
+        this.mainCtrl.showInMainView("view/patientDataView.fxml");
 		//this.mainCtrl.showPatientDataView(this.patient.cpr);
 	}
 
@@ -47,18 +47,10 @@ public class medicationCtrl extends genericInMainCtrl {
     }
 
     public void displayFullMedication(){
-        this.patient.updateMedication();
         medication[] med = this.patient.getMedication();
-        if(med==null){
-            System.out.println("Der er ikke noget medicin");
-        } else {
-            this.medList.addAll(med);
+        if (med != null) {
+            this.medList.setAll(med);
             this.tblViewFullMed.setItems(this.medList);
         }
     }
-
-
-
-
-
 }
