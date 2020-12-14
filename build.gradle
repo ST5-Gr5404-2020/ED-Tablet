@@ -43,3 +43,37 @@ application {
     // Define the main class for the application.
     mainClassName = 'ED.Tablet.App'
 }
+
+task fatJar(type: Jar, group: 'Custom Tasks', description: 'Produces a jar with all dependencies included'){
+    manifest {
+        attributes  'Implementation-Title': 'PEPS Nord',
+                    'Implementation-Version': '1.0.0',
+                    'Main-Class': mainClassName
+    }
+    archivesBaseName = project.name
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it) 
+        }
+    }
+    with jar
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    group 'Custom Tasks'
+    description 'Produces a jar with javadocumentation'
+    getArchiveClassifier().set("javadoc")
+    from javadoc.destinationDir
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    group 'Custom Tasks'
+    description 'Produces a jar with source code'
+    getArchiveClassifier().set("sources")
+    from sourceSets.main.allSource
+}
+
+task completeBuild(dependsOn: ['clean','fatJar','javadocJar','sourcesJar']){
+    group 'Custom Tasks'
+    description 'Cleans and builds fatJar, javadocJar and sourcesJar'
+}

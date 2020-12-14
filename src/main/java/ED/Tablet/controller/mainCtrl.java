@@ -76,7 +76,7 @@ public class mainCtrl {
 			this.selectedPatient.stopUpdating();
 		}
 		// Get instance of patient from personnel
-		this.selectedPatient = this.mainApp.personnel.getPatientList().get(cpr);
+		this.selectedPatient = this.mainApp.personnel.getPatientList().get(cpr); // En patient instans
 		// Create and store a updater
 		this.selectedPatient.setUpdater(new updater(this.selectedPatient));
 	}
@@ -108,11 +108,6 @@ public class mainCtrl {
 			e.printStackTrace();
 		}
 	}
-
-    @FXML
-    public void handleSelectPatient(){
-        System.out.println("Der er klikket");
-    }
 
     @FXML
     public void handleLogout(){
